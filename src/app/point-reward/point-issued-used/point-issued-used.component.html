@@ -15,18 +15,15 @@
         <mat-label class="la-font">{{ "ຜະລິດຕະພັນ" | translate }}</mat-label>
         <mat-select formControlName="product" multiple>
           <mat-checkbox
-            [checked]="isSelectAllOrderStatus"
+            [checked]="isSelectAllProduct"
             (change)="setAll($event.checked)"
             style="padding: 0 16px; margin-top: 10px"
           >
             {{ "ທັງໝົດ" | translate }}
           </mat-checkbox>
-          <mat-option
-            *ngFor="let item of dataProductType"
-            [value]="item"
-            (click)="onBtnOrderStatusClick(item)"
-            >{{ item.pointTypeDesc }}</mat-option
-          >
+          <mat-option *ngFor="let item of dataProductType" [value]="item">{{
+            item.pointTypeDesc
+          }}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
@@ -45,7 +42,6 @@
     </div>
   </form>
 </div>
-
 
 <div class="_box" style="text-align: right" *ngIf="submitted">
   <button
@@ -89,21 +85,19 @@
     </tr>
 
     <tr class="text-number" *ngFor="let item of dataPointIssued">
-      <td class="text-title">{{item.product}}</td>
-      <td>{{formatCurrency(item.pointGenerated)}}</td>
-      <td>{{formatCurrency(item.pointUsaged)}}</td>
-      <td>{{formatCurrency(item.return)}}</td>
-      <td>{{formatCurrency(item.getBack)}}</td>
+      <td class="text-title">{{ item.product }}</td>
+      <td>{{ formatCurrency(item.pointGenerated) }}</td>
+      <td>{{ formatCurrency(item.pointUsaged) }}</td>
+      <td>{{ formatCurrency(item.return) }}</td>
+      <td>{{ formatCurrency(item.getBack) }}</td>
     </tr>
-
-
 
     <tr style="font-weight: 700" class="text-number">
       <td style="text-align: center">ທັງໝົດ</td>
-      <td>{{formatCurrency(totalPointGenerated)}}</td>
-      <td>{{formatCurrency(totalPointUsaged)}}</td>
-      <td>{{formatCurrency(totalReturn)}}</td>
-      <td>{{formatCurrency(totalGetBack)}}</td>
+      <td>{{ formatCurrency(totalPointGenerated) }}</td>
+      <td>{{ formatCurrency(totalPointUsaged) }}</td>
+      <td>{{ formatCurrency(totalReturn) }}</td>
+      <td>{{ formatCurrency(totalGetBack) }}</td>
     </tr>
   </table>
 </div>

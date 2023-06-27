@@ -22,10 +22,8 @@ export class PointIssuedUsedComponent implements OnInit {
   resultsLength = 0;
   loading = false;
 
-  isSelectAllOrderStatus = false;
+  isSelectAllProduct = false;
   dataSource: MatTableDataSource<any> = new MatTableDataSource();
-  // orderStatuses = [];
-  idProducts: Array<any> = [];
   submitted = false;
   dataProductType: Array<any> = [];
   dataPointIssued: Array<any> = [];
@@ -40,32 +38,6 @@ export class PointIssuedUsedComponent implements OnInit {
     product: new FormControl(null, Validators.required),
   });
 
-  setAll(isChecked: boolean) {
-    if (isChecked) {
-      this.form.get('product')?.setValue(this.dataProductType);
-      this.idProducts = this.dataProductType.map((item) => {
-        return item.id;
-      });
-      this.dataProductType;
-    } else {
-      this.idProducts = [];
-      this.form.get('product')?.setValue([]);
-    }
-
-    // this.loadData();
-  }
-
-  onBtnOrderStatusClick(item: any) {
-    const index = this.idProducts.indexOf(item.id);
-    console.log(index);
-    if (index == -1) {
-      this.idProducts.push(item.id);
-    } else {
-      this.idProducts.splice(index, 1);
-    }
-    // this.loadData();
-  }
-
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
 
   constructor(private service: PointRewardService) {}
@@ -74,7 +46,17 @@ export class PointIssuedUsedComponent implements OnInit {
     // this.loadData();
     this.loadProductType();
   }
-  // home
+  setAll(isChecked: boolean) {
+    if (isChecked) {
+      this.form.get('product')?.setValue(this.dataProductType);
+
+      this.dataProductType;
+    } else {
+      this.form.get('product')?.setValue([]);
+    }
+
+    // this.loadData();
+  }
 
   formatCurrency(data: number) {
     return Number(data).toLocaleString();
@@ -82,10 +64,14 @@ export class PointIssuedUsedComponent implements OnInit {
   // summery
 
   loadProductType() {
-    // console.log(this.AppName)
     this.service.findPointProductType(this.AppName).subscribe((res: any) => {
-      // console.log(res)
       this.dataProductType = res;
+
+      const lottoProd = this.dataProductType.filter((product) => {
+        return product.pointTypeDesc == 'LOTTERY';
+      });
+
+      this.form.get('product')?.setValue(lottoProd);
     });
   }
 
@@ -114,7 +100,11 @@ export class PointIssuedUsedComponent implements OnInit {
     const reportSheet: XLSX.WorkSheet = XLSX.utils.table_to_sheet(report);
     const workbook: XLSX.WorkBook = XLSX.utils.book_new();
 
-    XLSX.utils.book_append_sheet(workbook, reportSheet, 'ການໃຫ້ ແລະ ນຳໃຊ້ຄະແນນ ');
+    XLSX.utils.book_append_sheet(
+      workbook,
+      reportSheet,
+      'ການໃຫ້ ແລະ ນຳໃຊ້ຄະແນນ '
+    );
 
     let filename = 'ການໃຫ້ ແລະ ນຳໃຊ້ຄະແນນ ';
     XLSX.writeFile(workbook, `${filename}.xlsx`);
@@ -181,9 +171,9 @@ export class PointIssuedUsedComponent implements OnInit {
     let month = moment(monthFormat).format('MM-YYYY');
     // console.log(month); // 08-2022
 
-    let dataProduct = this.form.value.product.map( (item:any) => ({
-      Product:item.pointTypeDesc
-    }))
+    let dataProduct = this.form.value.product.map((item: any) => ({
+      Product: item.pointTypeDesc,
+    }));
 
     // console.log("data = " + dataProduct)
 

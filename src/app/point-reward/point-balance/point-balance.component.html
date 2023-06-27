@@ -14,7 +14,7 @@
 
       <mat-form-field appearance="outline" style="margin-left: 10px">
         <mat-label class="la-font">{{ "ຜະລິດຕະພັນ" | translate }}</mat-label>
-        <mat-select formControlName="products" multiple [(ngModel)]="company">
+        <mat-select formControlName="products" multiple >
           <mat-checkbox
             [checked]="isSelectAllProduct"
             (change)="setAll($event.checked)"

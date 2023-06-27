@@ -22,29 +22,21 @@ export class TokenInterceptor implements HttpInterceptor {
     const token = localStorage.getItem('token');
     const lang = localStorage.getItem('lang') || 'lo';
 
-    if (request.url.includes('http://103.137.89.98:9797')) {
-      request = request.clone({
-        setHeaders: {
-          Authorization:
-            'jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.e30.bURdQEASC5aegXUKh65DbBCkMOOyfhgrSAX3qRGCPJY',
-          AcceptLanguage: lang,
-        },
-      });
-    } else if (request.url.includes('https://sxlottodev.svengit.com/Api')) {
+    if (request.url.includes('https://sxlottodev.svengit.com/Api')) {
       request = request.clone({
         setHeaders: {
           Authorization: `Bearer ${token}`,
-          AcceptLanguage: lang
-        }
+          AcceptLanguage: lang,
+        },
       });
     } else if (request.url.includes('http://localhost:5135')) {
       request = request.clone({
         setHeaders: {
           Authorization: `Bearer ${token}`,
-          AcceptLanguage: lang
-        }
+          AcceptLanguage: lang,
+        },
       });
-    }else {
+    } else {
       if (token) {
         request = request.clone({
           setHeaders: {

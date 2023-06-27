@@ -21,7 +21,6 @@ export class PointBalanceComponent implements OnInit {
 
   resultsLength = 0;
   loading = false;
-  company: any = '';
   isSelectAllProduct = false;
   monthFormat: any;
   pointBalance: any;
@@ -44,12 +43,9 @@ export class PointBalanceComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadProducts();
-    console.log('form', this.form.value);
   }
 
   setAll(isChecked: boolean) {
-    console.log('products', this.products);
-
     if (isChecked) {
       this.form.get('products')?.setValue(this.products);
     } else {
@@ -103,7 +99,7 @@ export class PointBalanceComponent implements OnInit {
       .subscribe((res: any) => {
         // console.log(res)
         this.products = res;
-        console.log('112 prod', this.products);
+
         const lottoProd = this.products.filter((product) => {
           return product.pointTypeDesc == 'LOTTERY';
         });
