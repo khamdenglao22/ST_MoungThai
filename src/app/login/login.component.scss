@@ -1,0 +1,27 @@
+.login-box-outer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-repeat: no-repeat, no-repeat;
+    background-position: center center, center center;
+    background-size: cover, cover
+  }
+  
+  .login-box {
+    width: 400px;
+  }
+  
+  .mat-form-field-invalid {
+    margin-bottom: 20px;
+  
+    mat-hint {
+      line-height: 2;
+    }
+  }
+  
+  .mat-card {
+    padding: 30px;
+    border-radius: 0;
+  }

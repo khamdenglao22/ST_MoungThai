@@ -1,0 +1,57 @@
+.order-status-item {
+    padding: 6px 20px;
+    cursor: pointer;
+    transition: .3s;
+    &:hover {
+        background-color: #f4433645;
+    }
+}
+
+.filter-order-status-box {
+    display: flex;
+    justify-content: right;
+    flex: 1;
+    margin-right: 20px;
+    flex-wrap: wrap;
+}
+
+.filter-order-status-item {
+    background-color: #00e676;
+    color: #000;
+    padding: 7px 10px;
+    border-radius: 25px;
+    margin: 5px;
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    mat-icon {
+        margin-left: 5px;
+        cursor: pointer;
+        font-size: 20px;
+    }
+}
+
+.mat-column-number {
+    flex: 0 0 50px;
+}
+
+.mat-column-user {
+    flex: 0 0 300px;
+}
+
+// .mat-column-action_detail {
+//     flex: 0 0 450px;
+// }
+
+.mat-column-action_date {
+    flex: 0 0 200px;
+}
+
+.mat-column-tag {
+    flex: 0 0 100px;
+}
+
+.mat-column-action_from {
+    flex: 0 0 100px;
+}

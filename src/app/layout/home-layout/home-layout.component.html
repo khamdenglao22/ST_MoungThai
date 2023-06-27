@@ -1,0 +1,406 @@
+<div style="height: 100%">
+  <mat-toolbar color="primary">
+    <button mat-icon-button (click)="toggleSideNav()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="main-logo">
+      <img src="assets/images/logo.jpg" />
+    </span>
+    <span class="example-spacer"></span>
+    <div style="display: flex; align-items: center">
+      <div class="conversation-box" *ngIf="showConversationBox">
+        <!-- Conversation Box -->
+        <ul
+          class="conversation-list"
+          *ngIf="!showConversationDetailBox"
+          style="max-height: 400px; overflow-y: scroll; overflow-x: hidden"
+        >
+          <li
+            *ngFor="let conversation of conversations"
+            class="conversation-item"
+            (click)="onConversationItemClick(conversation)"
+          >
+            <div class="conversation-item-image">
+              <img [src]="conversation.conversation_image" />
+            </div>
+            <div style="flex: 1; padding-right: 30px">
+              <h4 class="conversation-title la-font">
+                {{ conversation.conversation_name }}
+              </h4>
+              <div style="color: gray; font-size: 12px; line-height: 19px">
+                <span>{{ formatDate(conversation.last_send) }}</span>
+              </div>
+              <div class="conversation-detail la-font">
+                <span *ngIf="conversation.message.sender_type == 'admin'"
+                  >you:&nbsp;&nbsp;</span
+                >
+                <span *ngIf="conversation.message.message">{{
+                  conversation.message.message
+                }}</span>
+                <span *ngIf="conversation.message.file"> ຄິກເພື່ອເປີດໄຟລ</span>
+                <div
+                  class="conversation-bage"
+                  *ngIf="conversation.unread_message_count > 0"
+                >
+                  {{ conversation.unread_message_count }}
+                </div>
+              </div>
+            </div>
+          </li>
+          <li style="text-align: center; margin: 15px 0">
+            <button mat-mini-fab color="warn" (click)="loadMore()">
+              <mat-icon>expand_more</mat-icon>
+            </button>
+          </li>
+        </ul>
+
+        <!-- Conversation Detail -->
+        <div *ngIf="showConversationDetailBox" class="conversation-detail-box">
+          <div class="conversation-detail-box-header">
+            <button
+              mat-icon-button
+              color="warn"
+              style="margin-left: 10px"
+              (click)="onBackButtonClick()"
+            >
+              <mat-icon>keyboard_backspace</mat-icon>
+            </button>
+
+            <div style="display: flex; align-items: center">
+              <div class="conversation-item-image">
+                <img [src]="conversation.conversation_image" />
+              </div>
+              <h4 class="conversation-title la-font">
+                {{ conversation.conversation_name }}
+              </h4>
+            </div>
+          </div>
+
+          <div
+            class="conversation-detail-body"
+            id="conversation-detail-body"
+            *ngIf="!shouldPreviewImage"
+          >
+            <div
+              style="
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              "
+              *ngIf="messages.length == 0"
+            >
+              <mat-spinner></mat-spinner>
+            </div>
+
+            <!-- Load more -->
+            <div style="text-align: center; margin: 15px 0">
+              <button mat-mini-fab color="warn" (click)="loadMessageMore()">
+                <mat-icon>keyboard_arrow_up</mat-icon>
+              </button>
+            </div>
+
+            <!-- Messages -->
+            <div *ngFor="let message of messages">
+              <div
+                class="message-box-right"
+                *ngIf="message.message.sender_type == 'admin'"
+              >
+                <div
+                  class="message-box-right-item la-font"
+                  *ngIf="message.message.message"
+                >
+                  {{ message.message.message }}
+                </div>
+                <div
+                  class="message-box-right-item la-font"
+                  *ngIf="message.message.file"
+                >
+                  <mat-icon> attach_file</mat-icon>
+                  <a
+                    [href]="message.message.file"
+                    target="_blank"
+                    style="text-decoration: none; color: #fff"
+                    >ຄິກເພື່ອເປີດໄຟລ</a
+                  >
+                </div>
+                <span class="message-time">{{
+                  formatDate(message.message.created_at)
+                }}</span>
+              </div>
+
+              <div
+                class="message-box-left"
+                *ngIf="message.message.sender_type == 'customer'"
+              >
+                <div
+                  class="message-box-left-item la-font"
+                  *ngIf="message.message.message"
+                >
+                  {{ message.message.message }}
+                </div>
+                <div
+                  class="message-box-left-item la-font"
+                  *ngIf="message.message.file"
+                >
+                  <mat-icon> attach_file</mat-icon>
+                  <a
+                    [href]="message.message.file"
+                    target="_blank"
+                    style="text-decoration: none; color: #333"
+                    >ຄິກເພື່ອເປີດໄຟລ</a
+                  >
+                </div>
+                <span class="message-time">{{
+                  formatDate(message.message.created_at)
+                }}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- preview image -->
+          <div *ngIf="shouldPreviewImage" class="preview-image-box">
+            <button
+              mat-icon-button
+              color="warn"
+              (click)="onClosePreviewImage()"
+            >
+              <mat-icon>cancel</mat-icon>
+            </button>
+            <img [src]="previewImageUrl" alt="" />
+            <span
+              class="la-font"
+              style="color: #333; font-size: 14px; display: block; margin: 10px"
+              >{{ previewFilename }}</span
+            >
+          </div>
+
+          <div class="conversation-detail-box-footer">
+            <button
+              mat-icon-button
+              color="warn"
+              style="margin-left: 10px"
+              (click)="openFileDialog()"
+            >
+              <mat-icon>image</mat-icon>
+            </button>
+
+            <input
+              type="text"
+              class="input-send la-font"
+              [(ngModel)]="messageToSend"
+            />
+
+            <button
+              mat-icon-button
+              color="warn"
+              style="margin-right: 10px"
+              (click)="onBtnSendClick()"
+            >
+              <mat-icon>send</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <button mat-button [routerLink]="'/send-push-notification'">
+        <mat-icon style="margin-right: 5px">backup</mat-icon>
+        Push Notification
+      </button>
+      <div>
+        <button mat-button [matMenuTriggerFor]="menu" class="la-font">
+          <mat-icon style="margin-right: 5px"> person_pin</mat-icon
+          >{{ user ? user.fullname : "" }}
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item class="la-font">
+            <strong>{{ "ປະເພດຜູ້ໃຊ້ລະບົບ" | translate }}:</strong>
+            {{ user ? user.role_name : "" }}
+          </button>
+          <button mat-menu-item class="la-font" (click)="logout()">
+            {{ "ອອກຈາກລະບົບ" | translate }}
+          </button>
+        </mat-menu>
+      </div>
+      <!-- <button mat-icon-button>
+        <img src="assets/images/en-icon.svg" width="31.5" height="21">
+      </button> -->
+      <div style="margin: 15px">
+        <button mat-icon-button [matMenuTriggerFor]="langMenu">
+          <img [src]="activeLanguageFlag" width="31.5" height="21" />
+          <mat-icon>keyboard_arrow_down</mat-icon>
+        </button>
+        <mat-menu #langMenu="matMenu">
+          <button
+            mat-menu-item
+            style="align-items: center; display: flex; justify-content: center"
+            (click)="onBtnChangeLanguageClick()"
+          >
+            <img [src]="unActiveLanguageFlag" width="31.5" height="21" />
+          </button>
+        </mat-menu>
+      </div>
+    </div>
+  </mat-toolbar>
+
+  <mat-sidenav-container>
+    <!-- Side bar -->
+    <mat-sidenav [(opened)]="opened" mode="side">
+      <a
+        routerLink=""
+        class="sidenav-link"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <mat-icon>dashboard</mat-icon>DASHBOARD
+      </a>
+
+      <!--Lotto MOdule-->
+      <a
+        class="sidenav-link"
+        routerLinkActive="active-link"
+        (click)="showDropdownLottoMenu = !showDropdownLottoMenu"
+      >
+        <mat-icon>confirmation_number</mat-icon>{{ "ຫວຍ" | translate }}
+        <mat-icon style="margin-left: 10px">keyboard_arrow_down</mat-icon>
+      </a>
+
+      <div style="padding-left: 30px" *ngIf="showDropdownLottoMenu">
+        <a
+          [routerLink]="baseUrl + '/lottery/SalesSummaryDate'"
+          class="sidenav-link"
+          routerLinkActive="active-link"
+        >
+          <mat-icon>date_range</mat-icon>{{ "ຍອດຂາຍລວມຕາມວັນທີ" | translate }}
+        </a>
+        <a
+          [routerLink]="baseUrl + '/lottery/SalesSummaryDraw'"
+          class="sidenav-link"
+          routerLinkActive="active-link"
+        >
+          <mat-icon>details</mat-icon>{{ "ຍອດຂາຍລວມຕາມງວດ" | translate }}
+        </a>
+        <a
+          [routerLink]="baseUrl + '/lottery/SalesDetails'"
+          class="sidenav-link"
+          routerLinkActive="active-link"
+        >
+          <mat-icon>description</mat-icon>{{ "ລາຍລະອຽດການຂາຍ" | translate }}
+        </a>
+        <a
+          [routerLink]="baseUrl + '/lottery/WinBills'"
+          class="sidenav-link"
+          routerLinkActive="active-link"
+        >
+          <mat-icon>chrome_reader_mode</mat-icon
+          >{{ "ຍອດຖືກລາງວັນລວມຕາມງວດ" | translate }}
+        </a>
+        <a
+          [routerLink]="baseUrl + '/lottery/WinSummary'"
+          class="sidenav-link"
+          routerLinkActive="active-link"
+        >
+          <mat-icon>playlist_add_check</mat-icon>
+          {{ "ລາຍລະອຽດການຖືກລາງວັນ" | translate }}
+        </a>
+      </div>
+      <!--End Lotto Module-->
+
+      <!-- point -->
+      <a
+        class="sidenav-link"
+        routerLinkActive="active-link"
+        (click)="showDropdownPoint = !showDropdownPoint"
+      >
+        <mat-icon>archive</mat-icon>{{ "ຄະແນນ" | translate }}
+        <mat-icon style="margin-left: 10px">keyboard_arrow_down</mat-icon>
+      </a>
+      <div style="padding-left: 30px" *ngIf="showDropdownPoint">
+        <a
+          [routerLink]="baseUrl + '/point-balance'"
+          class="sidenav-link"
+          routerLinkActive="active-link"
+        >
+          <mat-icon>score</mat-icon>{{ "ຍອດຄະແນນຍັງເຫຼືອ" | translate }}
+        </a>
+
+        <a
+          [routerLink]="baseUrl + '/point-issued-used'"
+          class="sidenav-link"
+          routerLinkActive="active-link"
+        >
+          <mat-icon>assignment</mat-icon
+          >{{ "ການໃຫ້ ແລະ ນຳໃຊ້ຄະແນນ" | translate }}
+        </a>
+
+        <a
+          [routerLink]="baseUrl + '/point-type'"
+          class="sidenav-link"
+          routerLinkActive="active-link"
+        >
+          <mat-icon>assignment</mat-icon>{{ "ຕັ້ງຄ່າ" | translate }}
+        </a>
+      </div>
+      <!-- end point -->
+
+      <!-- user -->
+      <a
+        class="sidenav-link"
+        routerLinkActive="active-link"
+        (click)="showDropdownUser = !showDropdownUser"
+        style="cursor: pointer"
+      >
+        <mat-icon>account_circle</mat-icon>{{ "ຜູ້ໃຊ້ລະບົບ" | translate }}
+        <mat-icon style="margin-left: 10px">keyboard_arrow_down</mat-icon>
+      </a>
+      <div style="padding-left: 30px" *ngIf="showDropdownUser">
+        <a
+          [routerLink]="baseUrl + '/users'"
+          class="sidenav-link"
+          routerLinkActive="active-link"
+        >
+          <mat-icon>account_circle</mat-icon>{{ "ຜູ້ໃຊ້ລະບົບ" | translate }}
+        </a>
+
+        <a
+          [routerLink]="baseUrl + '/customer'"
+          class="sidenav-link"
+          routerLinkActive="active-link"
+        >
+          <mat-icon>supervised_user_circle</mat-icon>{{ "ລູກຄ້າ" | translate }}
+        </a>
+
+        <a
+          [routerLink]="baseUrl + '/role'"
+          class="sidenav-link"
+          routerLinkActive="active-link"
+        >
+          <mat-icon>verified_user</mat-icon>{{ "ປະເພດຜູ້ໃຊ້ລະບົບ" | translate }}
+        </a>
+      </div>
+      <!-- end user -->
+
+      <a
+        class="sidenav-link"
+        style="cursor: pointer"
+        (click)="showDropdownSettingMenu = !showDropdownSettingMenu"
+      >
+        <mat-icon>settings</mat-icon>{{ "ຕັ້ງຄ່າ" | translate }}
+        <mat-icon style="margin-left: 10px">keyboard_arrow_down</mat-icon>
+      </a>
+      <div style="padding-left: 30px" *ngIf="showDropdownSettingMenu">
+        <a
+          [routerLink]="baseUrl + '/setting'"
+          class="sidenav-link"
+          routerLinkActive="active-link"
+        >
+          <mat-icon>build</mat-icon>{{ "ທົ່ວໄປ" | translate }}
+        </a>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

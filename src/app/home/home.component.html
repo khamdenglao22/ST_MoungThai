@@ -1,0 +1,41 @@
+<div class="data-box-outer">
+  <div class="data-box-left" style="display: none">
+    <div class="data-box order-decline-box">
+      <h2 class="la-font data-box-title" style="text-transform: uppercase">
+        Order Decline
+      </h2>
+      <div style="width: 100%">
+        <mat-paginator
+          [length]="resultsLength"
+          [pageSize]="limit"
+          style="background-color: #ffd600"
+        ></mat-paginator>
+      </div>
+    </div>
+  </div>
+
+  <div class="data-box-right">
+    <div class="data-box-list">
+      <div class="data-box">
+        <h2 class="la-font data-box-title">
+          {{ "ລູກຄ້າທັງໝົດ" | translate }}
+        </h2>
+        <p class="data-box-value">{{ total_customer }}</p>
+      </div>
+
+      <div class="data-box" style="background-color: #ff6e40">
+        <h2 class="la-font data-box-title">
+          {{ "ຈຳນວນເງິນເດືອນນີ້" | translate }}
+        </h2>
+        <p class="data-box-value">{{ formatCurrency(total_amount_month) }}</p>
+      </div>
+
+      <div class="data-box" style="background-color: #bf360c">
+        <h2 class="la-font data-box-title">
+          {{ "ຈຳນວນການຊື້ຫວຍເດືອນນີ້" | translate }}
+        </h2>
+        <p class="data-box-value">{{ total_order_month }}</p>
+      </div>
+    </div>
+  </div>
+</div>

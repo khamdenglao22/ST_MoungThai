@@ -1,0 +1,77 @@
+<div class="_box box-toolbar" 
+  style="text-align: right;margin-bottom: 30px;display: flex;justify-content: right;">
+
+  <div class="filter-order-status-box">
+    <div class="filter-order-status-item la-font" *ngFor="let item of selectedTags; let i = index">
+      {{ item }} <mat-icon (click)="removeItemInSelectedTags(i)">cancel</mat-icon>
+    </div>
+  </div>
+
+    <div>
+      <button [matMenuTriggerFor]="menu" mat-flat-button color="warn" class="la-font">
+        <mat-icon>search</mat-icon>
+        TAG
+      </button>
+      <mat-menu #menu="matMenu">
+        <div *ngFor="let item of TagList" class="la-font order-status-item"
+          (click)="onBtnTagClick(item)">
+          {{ item }}
+        </div>
+      </mat-menu>
+    </div>
+    
+</div>
+
+<div class="_box box">
+  <div class="loading-box" *ngIf="loading">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <div *ngIf="!loading">
+    <mat-table mat-table [dataSource]="data">
+      <!-- Number Column -->
+      <ng-container matColumnDef="number" style="width: 20px;">
+        <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
+        <mat-cell *matCellDef="let element;let i = index">{{i + 1}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="user">
+        <mat-header-cell *matHeaderCellDef> <span class="la-font">User</span> </mat-header-cell>
+        <mat-cell mat-cell *matCellDef="let element">
+            <span class="la-font">{{ element.user }}</span>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="action_detail">
+        <mat-header-cell *matHeaderCellDef> <span class="la-font">Action</span> </mat-header-cell>
+        <mat-cell mat-cell *matCellDef="let element">
+            <span class="la-font">{{ element.action_detail }}</span>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="action_date">
+        <mat-header-cell *matHeaderCellDef><span class="la-font">Action Date</span></mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.action_date|date: 'dd/MM/yyyy hh:mm:ss'}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="tag">
+        <mat-header-cell *matHeaderCellDef><span class="la-font">Tag</span></mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span class="la-font">{{element.tag}}</span>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="action_from">
+        <mat-header-cell *matHeaderCellDef><span class="la-font">Action From</span></mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span class="la-font">{{ element.action_from }}</span>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+
+  <mat-paginator [length]="resultsLength" [pageSize]="limit"></mat-paginator>
+</div>

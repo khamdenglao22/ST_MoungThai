@@ -1,0 +1,13 @@
+.mat-column-no {
+    flex: 0 0 50px;
+}
+
+.mat-column-edit {
+    flex: 0 0 80px;
+    justify-content: center;
+}
+
+.mat-column-send_to_store, .mat-column-send_to_delivery , .mat-column-send_to_customer  {
+    flex: 0 0 140px;
+    justify-content: center;
+}

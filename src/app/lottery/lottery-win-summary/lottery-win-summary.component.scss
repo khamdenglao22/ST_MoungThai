@@ -1,0 +1,54 @@
+$main-la-font: "noto_sans_laoregular";
+
+h1{
+ font-family: $main-la-font ;
+}
+.queue-element-row {
+  border-bottom-width: 0;
+}
+
+.queue-element-detail {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+ background-color: #F0EDEC;
+
+}
+tr.queue-detail-row {
+  height: 0;
+
+}
+
+tr.queue-element-row:not(.queue-expanded-row):hover {
+  background: whitesmoke;
+}
+
+tr.queue-element-row:not(.queue-expanded-row):active {
+  background: #efefef;
+}
+
+
+table{
+  font-family: $main-la-font ;
+  width: 100%;
+  border-collapse: collapse;
+ }
+
+ table{
+  font-family: $main-la-font ;
+  width: 100%;
+  border-collapse: collapse;
+ }
+
+ .number{
+  text-align: right;
+  padding-right: 15px;
+}
+
+table th{
+  text-align: center;
+  padding-right: 15px;
+}
+

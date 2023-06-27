@@ -1,0 +1,98 @@
+<div class="_box box-toolbar">
+  <button
+    mat-flat-button
+    color="primary"
+    class="la-font my-btn"
+    [routerLink]="baseUrl + '/users/create'"
+  >
+    <mat-icon>add</mat-icon>
+    {{ "ເພີ່ມ" | translate }}
+  </button>
+</div>
+<div class="_box box" style="margin-bottom: 50px">
+  <div class="loading-box" *ngIf="loading">
+    <mat-spinner></mat-spinner>
+  </div>
+  <mat-table [dataSource]="dataSource" *ngIf="!loading">
+    <ng-container matColumnDef="fullname">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ຊື່ ແລະ ນາມສະກຸນ" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <span class="la-font">{{ element.fullname }}</span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="username">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">USERNAME</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <span class="la-font">{{ element.username }}</span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="role">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ປະເພດຜູ້ໃຊ້ລະບົບ" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <span class="la-font">{{
+          element.role ? element.role.role_name : "---"
+        }}</span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="active">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">ACTIVE</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-slide-toggle
+          (change)="updateUser(element)"
+          [checked]="element.active"
+        >
+        </mat-slide-toggle>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="change_password">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ປ່ຽນລະຫັດຜ່ານ" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button
+          mat-button
+          color="primary"
+          [routerLink]="[baseUrl + '/users/change-password', element.id]"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ແກ້ໄຂ" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button
+          mat-icon-button
+          color="primary"
+          class="button-edit"
+          [routerLink]="[baseUrl + '/users/update', element.id]"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+  <mat-paginator
+    [pageSize]="50"
+    [length]="users.length"
+    aria-label="Select page"
+  ></mat-paginator>
+</div>

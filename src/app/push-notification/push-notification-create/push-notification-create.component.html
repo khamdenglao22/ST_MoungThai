@@ -1,0 +1,48 @@
+<div class="box" style="border: none;text-align: right;">
+
+    <button mat-flat-button color="warn" routerLink="/push-notification-log">
+      <mat-icon>access_time</mat-icon>
+      LOG
+    </button>
+
+</div>
+
+<form [formGroup]="form">
+  <div class="box">
+    <div *ngIf="loading" class="loading-box">
+      <mat-spinner></mat-spinner>
+    </div>
+    <div style="padding: 1rem;">
+      <h2 class="la-font box-title">{{ "ສົ່ງ Push Notification ໄປຫາລູກຄ້າທັງໝົດ" | translate }}</h2>
+
+      <mat-form-field appearance="outline">
+        <mat-label class="la-font">{{ "ຫົວຂໍ້" | translate }}</mat-label>
+        <input matInput formControlName="title" class="la-font">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label class="la-font">{{ "ລາຍລະອຽດ" | translate }}</mat-label>
+        <input matInput formControlName="body" class="la-font">
+      </mat-form-field>
+
+      <div style="margin-bottom: 30px">
+        <div style="margin-bottom: 10px">
+          <label for="" class="la-font"><strong>{{ "ຮູບພາບ" | translate }}</strong></label>
+        </div>
+        <input type="file" class="my-input" [class]="imageError ? 'my-input-error' : ''" id="image"
+          (change)="onFileChange($event)">
+      </div>
+
+      <div style="margin: 40px 0 10px">
+        <a mat-stroked-button class="la-font" [routerLink]="'/'">
+          <mat-icon style="font-size: 22px;">keyboard_backspace</mat-icon>
+          {{ "ຍົກເລີກ" | translate }}
+        </a>
+        <button mat-flat-button color="primary" class="la-font my-btn" style="margin-left: 10px" (click)="submit()">
+          <mat-icon style="font-size: 22px;">save</mat-icon>
+          {{ "ບັນທຶກ" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,63 @@
+<form (submit)="submit()" [formGroup]="form">
+    <div class="box">
+      <div *ngIf="loading" class="loading-box">
+        <mat-spinner></mat-spinner>
+      </div>
+      <div style="padding: 1rem;">
+        <h2 class="la-font box-title">{{ "ເພີ່ມການຕັ້ງຄ່າ" | translate }}</h2>
+        <mat-form-field appearance="outline">
+            <mat-label class="la-font">{{ "ປະເພດຜະລິດຕະພັນ" | translate }}</mat-label>
+            <mat-select class="la-font" formControlName="PointMethod">
+              <mat-option value="LOTTERY">
+                {{"LOTTERY"}}
+              </mat-option>
+              <mat-option value="TOPUP">
+                {{"TOPUP"}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label class="la-font">{{ "ຜະລິດຕະພັນ" | translate }}</mat-label>
+            <mat-select class="la-font" formControlName="PointTypeDesc">
+              <mat-option value="LOTTERY">
+                {{"LOTTERY"}}
+              </mat-option>
+              <mat-option value="LTC">
+                {{"LTC"}}
+              </mat-option>
+
+              <mat-option value="UNITEL">
+                {{"UNITEL"}}
+              </mat-option>
+
+              <mat-option value="ETL">
+                {{"ETL"}}
+              </mat-option>
+
+              <mat-option value="BEST">
+                {{"BEST"}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+  
+  
+        <mat-form-field appearance="outline">
+          <mat-label class="la-font">{{ "ມູນຄ່າທີ່ໄດ້ (%)" | translate }}</mat-label>
+          <input type="text" matInput formControlName="PointPercent" class="la-font">
+        </mat-form-field>
+  
+        <div style="margin: 40px 0 10px">
+          <a mat-stroked-button class="la-font" [routerLink]="baseUrl + '/point-type'">
+            <mat-icon style="font-size: 16px;">keyboard_backspace</mat-icon>
+            {{ "ຍົກເລີກ" | translate }}
+          </a>
+          <button mat-flat-button color="primary" class="la-font my-btn" style="margin-left: 10px">
+            <mat-icon style="font-size: 16px;">save</mat-icon>
+            {{ "ບັນທຶກ" | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+  

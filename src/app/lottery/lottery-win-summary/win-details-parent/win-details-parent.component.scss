@@ -1,0 +1,26 @@
+$main-la-font: "noto_sans_laoregular";
+
+.h1{
+  font-family: $main-la-font;
+}
+.h2{
+  font-family: $main-la-font;
+}
+
+.table-details {
+  width: 90%;
+
+  font-family: $main-la-font;
+}
+
+td,
+th {
+  border-collapse: collapse;
+  border: 1px solid #333;
+  text-align: center;
+}
+
+td,
+th {
+  padding: 10px 8px;
+}

@@ -1,0 +1,39 @@
+$main-la-font: "noto_sans_laoregular";
+
+h1{
+  font-family: $main-la-font ;
+
+}
+table{
+  font-family: $main-la-font ;
+  width: 100%;
+ }
+
+
+ tr.queue-detail-row {
+   height: 0;
+
+ }
+
+ tr.queue-element-row:not(.queue-expanded-row):hover {
+   background: whitesmoke;
+ }
+
+ tr.queue-element-row:not(.queue-expanded-row):active {
+   background: #efefef;
+ }
+
+ .queue-element-row {
+   border-bottom-width: 0;
+ }
+
+ .number{
+  text-align: right;
+ }
+
+ table th{
+  text-align: center;
+ }
+//  table td{
+//   text-align: center;
+//  }

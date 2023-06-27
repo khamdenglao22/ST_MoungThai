@@ -1,0 +1,67 @@
+<!-- <form [formGroup]="form">
+  <div class="box">
+    <div *ngIf="loading" class="loading-box">
+      <mat-spinner></mat-spinner>
+    </div>
+    <div style="padding: 1rem;">
+      <h2 class="la-font box-title">{{ "ຕັ້ງຄ່າ" | translate }} Push Notification</h2>
+
+      <mat-form-field appearance="outline">
+        <mat-label class="la-font">{{ "ສະຖານະອໍເດີ້" | translate }}</mat-label>
+        <mat-select formControlName="order_status_id" class="la-font">
+            <mat-option *ngFor="let item of orderStatus" [value]="item.id">{{item.order_status_name }}</mat-option>
+          </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label class="la-font">{{ "ຫົວຂໍ້" | translate }}</mat-label>
+        <input matInput formControlName="title" class="la-font">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label class="la-font">{{ "ລາຍລະອຽດ" | translate }}</mat-label>
+        <input matInput formControlName="body" class="la-font">
+      </mat-form-field>
+
+      <div style="margin-bottom: 30px">
+        <div style="margin-bottom: 10px">
+          <label for="" class="la-font"><strong>{{ "ຮູບພາບ" | translate }}</strong></label>
+        </div>
+        <input type="file" class="my-input" [class]="imageError ? 'my-input-error' : ''" id="image"
+          (change)="onFileChange($event)">
+        <div style="margin: 20px 0">
+          <img [src]="imageUrl" width="150">
+        </div>
+      </div>
+
+      <div style="margin-bottom: 15px">
+        <mat-slide-toggle formControlName="send_to_store">
+          <span class="la-font">{{ "ແຈ້ງເຕືອນໄປຫາຮ້ານຄ້າທີ່ກ່ຽວຂ້ອງ" | translate }}</span>
+        </mat-slide-toggle>
+      </div>
+
+      <div style="margin-bottom: 15px">
+        <mat-slide-toggle formControlName="send_to_delivery">
+          <span class="la-font">{{ "ແຈ້ງເຕືອນໄປຫາຄົນສົ່ງສິນຄ້າ" | translate }}</span>
+        </mat-slide-toggle>
+      </div>
+
+      <div style="margin-bottom: 15px">
+        <mat-slide-toggle formControlName="send_to_customer">
+          <span class="la-font">{{ "ແຈ້ງເຕືອນໄປຫາລູກຄ້າ" | translate }}</span>
+        </mat-slide-toggle>
+      </div>
+
+      <div style="margin: 40px 0 10px">
+        <a mat-stroked-button class="la-font" [routerLink]="'/push-notification-setting'">
+          <mat-icon style="font-size: 16px;">keyboard_backspace</mat-icon>
+          {{ "ຍົກເລີກ" | translate }}
+        </a>
+        <button mat-flat-button color="primary" class="la-font my-btn" style="margin-left: 10px" (click)="submit()">
+          <mat-icon style="font-size: 16px;">save</mat-icon>
+          {{ "ບັນທຶກ" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</form> -->
