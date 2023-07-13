@@ -1,0 +1,119 @@
+<div class="loading-box" *ngIf="loading">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div class="_box">
+    <form [formGroup]="form" #f="ngForm">
+        <div style="display: flex;align-items: center;">
+            <mat-form-field appearance="outline" style="margin: 0 10px;">
+                <mat-label class="la-font">{{ "ແຕ່ວັນທີ" | translate }}</mat-label>
+                <input matInput type="date" formControlName="from_date">
+                <!-- <input matInput type="date"> -->
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" style="margin: 0 10px;">
+                <mat-label class="la-font">{{ "ຫາວັນທີ" | translate }}</mat-label>
+                <input matInput type="date" formControlName="to_date">
+                <!-- <input matInput type="date"> -->
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" style=" margin-left: 10px">
+                <mat-label class="la-font">{{ "ຜະລິດຕະພັນ" | translate }}</mat-label>
+                <mat-select formControlName="product" multiple>
+                    <mat-checkbox [checked]="isSelectAllOrderStatus" (change)="setAll($event.checked)"
+                        style="padding: 0 16px; margin-top: 10px;">
+                        {{ "ທັງໝົດ" | translate }}
+                    </mat-checkbox>
+
+                    <mat-option *ngFor="let item of rewardProduct" [value]="item"
+                        (click)="onBtnOrderStatusClick(item)">{{item.rewardTypeDesc}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" style=" margin-left: 10px">
+                <mat-label class="la-font">{{ "ເລກຜູ້ຖືກແນະນຳ" | translate }}</mat-label>
+                <input matInput type="text" formControlName="cus_hone">
+            </mat-form-field>
+        </div>
+
+        <div style="margin:-5px auto 0;">
+            <div style="margin: 0 10px;">
+                <button mat-flat-button color="primary" class="la-font my-btn"
+                    (click)="onBtnReportClick()">ລາຍງານ</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<!-- <div class="_box" *ngIf="submitted" style="text-align: right">
+    <button mat-flat-button (click)="exportToExcel()" style="background-color: #00c853;color: #fff">Export To
+      Excel</button>
+  </div> -->
+
+<div class="_box" style="text-align: right" *ngIf="submitted">
+  <button
+    mat-flat-button
+    style="
+      background-color: #ff0506;
+      color: #fff;
+      margin-right: 10px;
+      border-radius: 50%;
+      min-width: 40px !important;
+      height: 40px;
+      padding: 0;
+      margin-right: 30px;
+    "
+    (click)="printIsSuedPoint()"
+  >
+    <mat-icon>print</mat-icon>
+  </button>
+
+  <button
+    mat-flat-button
+    style="background-color: #00c853; color: #fff"
+    (click)="exportToExcel()"
+  >
+    Export To Excel
+  </button>
+</div>
+
+<div class="_box" style="margin-top: 20px" *ngIf="submitted">
+
+    <div class="loading-box" *ngIf="loading">
+        <mat-spinner></mat-spinner>
+    </div>
+
+    <table class="table la-font"id="report">
+        <tr class="la-font">
+            <th width="10%">{{ "ວັນທີ" | translate }} </th>
+            <th width="10%">{{ "ຜະລິດຕະພັນ" | translate }}</th>
+            <th width="10%">{{ "ເລກອ້າງອິງ" | translate }}</th>
+            <th width="10%">{{ "ລະຫັດລູກຄ້າ" | translate }}</th>
+            <th width="10%">{{ "ຊື່ລູກຄ້າ" | translate }}</th>
+            <th width="10%">{{ "ເບີໂທລະສັບ" | translate }}</th>
+            <th width="10%">{{ "ເລກຜູ້ຖືກແນະນຳ" | translate }}</th>
+            <th width="10%">{{ "ຊື່ຜູ້ຖືກແນະນຳ" | translate }}</th>
+            <th width="10%">{{ "ຈຳນວນເງິນ" | translate }}</th>
+
+        </tr>
+
+
+        <tr *ngFor="let row of rewardTransaction">
+            <td style="text-align: center;">{{row.createdDate | date:"dd/MM/yyyy"}}</td>
+            <td>{{row.product}}</td>
+            <td>{{row.refID}}</td>
+            <td style="text-align: center;">{{row.rewardID}}</td>
+            <td>{{row.rewardFullname}}</td>
+            <td style="text-align: center;">{{row.rewardID}}</td>
+            <td style="text-align: center;">{{row.custPhone}}</td>
+            <td> {{row.custFullname}} </td>
+            <td style="text-align: right;">{{formatCurrency(row.rewardPaidAmount)}}</td>
+        </tr>
+
+        <tr style="font-weight: 700;">
+            <td colspan="8" style="text-align: center;">ທັງໝົດ</td>
+            <td style="text-align: right;">{{formatCurrency(total_amount)}}</td>
+        </tr>
+    </table>
+</div>

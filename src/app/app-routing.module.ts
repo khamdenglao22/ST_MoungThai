@@ -39,6 +39,14 @@ import { PointIssuedUsedComponent } from './point-reward/point-issued-used/point
 import { PointTypeListComponent } from './point-reward/point-type/point-type-list/point-type-list.component';
 import { PointTypeCreateComponent } from './point-reward/point-type/point-type-create/point-type-create.component';
 import { PointTypeUpdateComponent } from './point-reward/point-type/point-type-update/point-type-update.component';
+import { RewardBalanceComponent } from './reward/reward-balance/reward-balance.component';
+import { RewardSummaryComponent } from './reward/reward-summary/reward-summary.component';
+import { RewardPayoutSummaryComponent } from './reward/reward-payout-summary/reward-payout-summary.component';
+import { RewardTransactionComponent } from './reward/reward-transaction/reward-transaction.component';
+import { RewardPayoutDetailComponent } from './reward/reward-payout-detail/reward-payout-detail.component';
+import { RewardTypeListComponent } from './reward/reward-type/reward-type-list/reward-type-list.component';
+import { RewardTypeCreateComponent } from './reward/reward-type/reward-type-create/reward-type-create.component';
+import { RewardTypeUpdateComponent } from './reward/reward-type/reward-type-update/reward-type-update.component';
 
 const routes: Routes = [
   {
@@ -170,6 +178,34 @@ const routes: Routes = [
       {
         path: 'point-type/update/:id',
         component: PointTypeUpdateComponent,
+      },
+      { path: 'reward-balance', component: RewardBalanceComponent },
+      { path: 'reward-summary', component: RewardSummaryComponent },
+      {
+        path: 'reward-payout-summary',
+        component: RewardPayoutSummaryComponent,
+      },
+      {
+        path: 'reward-transaction',
+        component: RewardTransactionComponent,
+      },
+      {
+        path: 'reward-payout-detail',
+        component: RewardPayoutDetailComponent,
+      },
+      {
+        path: 'reward-type',
+        component: RewardTypeListComponent,
+      },
+
+      {
+        path: 'reward-type/create',
+        component: RewardTypeCreateComponent,
+      },
+
+      {
+        path: 'reward-type/update/:id',
+        component: RewardTypeUpdateComponent,
       },
     ],
   },

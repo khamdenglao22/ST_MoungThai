@@ -80,6 +80,14 @@ import { PointTypeListComponent } from './point-reward/point-type/point-type-lis
 import { PointTypeUpdateComponent } from './point-reward/point-type/point-type-update/point-type-update.component';
 
 import { PointTypeCreateComponent } from './point-reward/point-type/point-type-create/point-type-create.component';
+import { RewardBalanceComponent } from './reward/reward-balance/reward-balance.component';
+import { RewardSummaryComponent } from './reward/reward-summary/reward-summary.component';
+import { RewardTransactionComponent } from './reward/reward-transaction/reward-transaction.component';
+import { RewardPayoutSummaryComponent } from './reward/reward-payout-summary/reward-payout-summary.component';
+import { RewardPayoutDetailComponent } from './reward/reward-payout-detail/reward-payout-detail.component';
+import { RewardTypeListComponent } from './reward/reward-type/reward-type-list/reward-type-list.component';
+import { RewardTypeCreateComponent } from './reward/reward-type/reward-type-create/reward-type-create.component';
+import { RewardTypeUpdateComponent } from './reward/reward-type/reward-type-update/reward-type-update.component';
 
 initializeApp(environment.firebase);
 
@@ -125,6 +133,14 @@ export function HttpLoaderFactory(http: HttpClient) {
     PointTypeListComponent,
     PointTypeUpdateComponent,
     PointTypeCreateComponent,
+    RewardBalanceComponent,
+    RewardSummaryComponent,
+    RewardTransactionComponent,
+    RewardPayoutSummaryComponent,
+    RewardPayoutDetailComponent,
+    RewardTypeListComponent,
+    RewardTypeCreateComponent,
+    RewardTypeUpdateComponent,
   ],
   imports: [
     NgxChartsModule,

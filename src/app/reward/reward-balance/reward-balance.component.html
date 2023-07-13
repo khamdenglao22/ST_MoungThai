@@ -1,0 +1,225 @@
+<div class="_box" style="text-align: right">
+  <button
+    mat-mini-fab
+    color="primary"
+    class="my-btn"
+    style="margin-right: 30px"
+    (click)="printDiv()"
+  >
+    <mat-icon>local_printshop</mat-icon>
+  </button>
+
+  <button
+    mat-flat-button
+    (click)="exportToExcel()"
+    style="background-color: #00c853; color: #fff"
+  >
+    Export To Excel
+  </button>
+</div>
+
+<div class="_box" style="margin-bottom: 50px">
+  <table class="table la-font" id="report">
+    <tr>
+      <th>
+        <div>
+          {{ "ຜະລິດຕະພັນ" | translate }}
+        </div>
+      </th>
+      <th>
+        <div>
+          {{ "ຈຳນວນເງິນ" | translate }}
+        </div>
+      </th>
+    </tr>
+    <tr *ngFor="let item of productRewardBalance">
+      <!-- <tr *ngFor="let item of allProducts"> -->
+      <td>
+        <div style="
+        text-align: center;">
+          {{ item.product }}
+        </div>
+      </td>
+      <td class="la-font">
+        <div style="
+        text-align: right;">
+          {{ formatCurrency(item.productTotalAmt) }}
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <div style="
+        text-align: right;">Total Rewarded</div>
+      </th>
+      <th>
+        <div style="
+        text-align: right;">
+          {{ formatCurrency(totalAmt) }}
+        </div>
+      </th>
+    </tr>
+    <tr>
+      <th>
+        <div style="
+        text-align: right;">Total Paid Out</div>
+      </th>
+      <th>
+        <div style="
+        text-align: right;">
+          {{ formatCurrency(paidAmt) }}
+        </div>
+      </th>
+    </tr>
+    <tr>
+      <th>
+        <div style="
+        text-align: right;">Total Pending</div>
+      </th>
+      <th>
+        <div style="
+        text-align: right;">
+          {{ formatCurrency(balanceAmt) }}
+        </div>
+      </th>
+    </tr>
+  </table>
+</div>
+
+<div class="_box" >
+
+    <div style=" display: flex;
+    align-items: right;
+    justify-content: right;">
+
+      <mat-form-field appearance="outline" style="margin: 0 10px;">
+        <mat-label class="la-font">{{ "ຊື່" | translate }}</mat-label>
+        <input matInput type="text"  [(ngModel)]="firstname">
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="margin: 0 10px;">
+        <mat-label class="la-font">{{ "ເບີໂທຕິດຕໍ່" | translate }}</mat-label>
+        <input matInput type="text"  [(ngModel)]="phone">
+      </mat-form-field>
+
+        <div style="margin: 15px 15px 15px 0;">
+            <button mat-flat-button color="primary" class="la-font my-btn"
+            (click)="onBtnReportClick()"  >{{ "ລາຍງານ" | translate }}</button>
+        </div>
+
+
+
+
+    </div>
+</div>
+
+<div class="_box" style="text-align: right">
+  <button
+    mat-flat-button
+    (click)="exportRewardBalanceToExcel()"
+    style="background-color: #00c853; color: #fff"
+  >
+    Export To Excel
+  </button>
+</div>
+
+<div class="_box box">
+  <div style="width: 100%;">
+    <mat-table mat-table [dataSource]="shopRewardBalance" style="width: 100%">
+      <!-- Number Column -->
+      <ng-container matColumnDef="cus_id" style="width: 20px">
+        <mat-header-cell *matHeaderCellDef><span class="la-font">{{
+            "ລະຫັດຜູ້ໃຊ້" | translate
+            }}</span></mat-header-cell>
+        <mat-cell *matCellDef="let element"><span class="la-font" >{{ element.custId }}</span></mat-cell>
+      </ng-container>
+
+      <!-- Order date Column -->
+      <ng-container matColumnDef="cus_phone">
+        <mat-header-cell *matHeaderCellDef><span class="la-font">{{
+            "ເບີໂທຜູ້ໃຊ້" | translate
+            }}</span></mat-header-cell>
+        <mat-cell *matCellDef="let element"><span class="la-font" >{{ element.custPhone }}</span></mat-cell>
+      </ng-container>
+
+      <!-- Store Column -->
+      <ng-container matColumnDef="cus_name">
+        <mat-header-cell *matHeaderCellDef><span class="la-font">{{
+            "ຊື່ຜູ້ໃຊ້" | translate
+            }}</span></mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span class="la-font">{{ element.custFullName }}</span>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="cus_account">
+        <mat-header-cell *matHeaderCellDef><span class="la-font">{{
+            "ບັນຊີທະນາຄານ" | translate
+            }}</span></mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span class="la-font">{{ element.custBankAcc }}</span>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="rewardTotal">
+        <mat-header-cell *matHeaderCellDef><span class="la-font">{{
+            "ເງິນແນະນຳທັງໝົດ" | translate
+            }}</span></mat-header-cell>
+        <mat-cell *matCellDef="let element" class="number">
+          <span class="la-font">{{ formatCurrency(element.rewardTotal) }}</span>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="rewardPaid">
+        <mat-header-cell *matHeaderCellDef><span class="la-font">{{
+            "ຈ່າຍໄປແລ້ວ" | translate
+            }}</span></mat-header-cell>
+        <mat-cell *matCellDef="let element" class="number">
+          <span class="la-font">{{ formatCurrency(element.rewardPaid) }}</span>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="rewardBalance">
+        <mat-header-cell *matHeaderCellDef><span class="la-font">{{
+            "ຍັງລໍຖ້າຈ່າຍ" | translate
+            }}</span></mat-header-cell>
+        <mat-cell *matCellDef="let element" class="number">
+          <span class="la-font">{{ formatCurrency(element.rewardBalance) }}</span>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+
+    <mat-paginator [length]="resultsLength" [pageSize]="limit"></mat-paginator>
+  </div>
+
+
+  <!-- <table
+    class="Phetsarath_OT"
+    style="margin-top: 50px; border-collapse: collapse"
+  >
+    <tr>
+      <th width="7.14%">
+        {{ "ລະຫັດຜູ້ໃຊ້" | translate }}
+      </th>
+      <th width="7.14%">{{ "ເບີໂທຜູ້ໃຊ້" | translate }}</th>
+      <th width="7.14%">{{ "ຊື່ຜູ້ໃຊ້" | translate }}</th>
+      <th width="7.14%">{{ "ບັນຊີທະນາຄານ" | translate }}</th>
+      <th width="7.14%">
+        {{ "ເງິນແນະນຳທັງໝົດ" | translate }}
+      </th>
+      <th width="7.14%">{{ "ຈ່າຍໄປແລ້ວ" | translate }}</th>
+      <th width="7.14%">{{ "ຍັງລໍຖ້າຈ່າຍ" | translate }}</th>
+    </tr>
+    <tr *ngFor="let item of shopRewardBalance">
+      <td width="7.14%">{{ item.custId }}</td>
+      <td>{{ item.custPhone }}</td>
+      <td>{{ item.custFullName }}</td>
+      <td>{{ item.custBankAcc }}</td>
+      <td>{{ formatCurrency(item.rewardTotal) }}</td>
+      <td>{{ formatCurrency(item.rewardPaid) }}</td>
+      <td>{{ formatCurrency(item.rewardBalance) }}</td>
+    </tr>
+  </table>
+</div> -->

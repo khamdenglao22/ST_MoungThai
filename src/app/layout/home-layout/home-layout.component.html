@@ -344,6 +344,60 @@
       </div>
       <!-- end point -->
 
+      <!-- reward -->
+      <a class="sidenav-link" routerLinkActive="active-link" (click)="showDropdownRewards = !showDropdownRewards">
+        <mat-icon>monetization_on</mat-icon>{{ "ເງິນແນະນຳ" | translate }}
+        <mat-icon style="margin-left: 10px">keyboard_arrow_down</mat-icon>
+      </a>
+      <div style="padding-left: 30px" *ngIf="showDropdownRewards">
+        <a
+          [routerLink]="baseUrl + '/reward-balance'"
+          class="sidenav-link"
+          routerLinkActive="active-link"
+        >
+          <mat-icon>swap_horizontal_circle</mat-icon
+          >{{ "ຍອດເງິນແນະນຳ" | translate }}
+        </a>
+
+        <a [routerLink]="baseUrl + '/reward-summary'" class="sidenav-link" routerLinkActive="active-link">
+          <mat-icon>theaters</mat-icon>{{ "ສັງລວມການໃຫ້" | translate }}
+        </a>
+
+        <a
+          [routerLink]="baseUrl + '/reward-transaction'"
+          class="sidenav-link"
+          routerLinkActive="active-link"
+        >
+          <mat-icon>dns</mat-icon>{{ "ລາຍລະອຽດການໃຫ້" | translate }}
+        </a>
+
+        <a
+          [routerLink]="baseUrl + '/reward-payout-summary'"
+          class="sidenav-link"
+          routerLinkActive="active-link"
+        >
+          <mat-icon>loyalty</mat-icon>{{ "ສັງລວມໂອນໃຫ້ລູກຄ້າ" | translate }}
+        </a>
+
+        <a
+          [routerLink]="baseUrl + '/reward-payout-detail'"
+          class="sidenav-link"
+          routerLinkActive="active-link"
+        >
+          <mat-icon>loyalty</mat-icon>{{ "ລາຍລະອຽດການໂອນ" | translate }}
+        </a>
+
+        <a
+          [routerLink]="baseUrl + '/reward-type'"
+          class="sidenav-link"
+          routerLinkActive="active-link"
+        >
+          <mat-icon>assignment</mat-icon>{{ "ຕັ້ງຄ່າ" | translate }}
+        </a>
+      </div>
+      <!-- end point and reward -->
+
+
       <!-- user -->
       <a
         class="sidenav-link"

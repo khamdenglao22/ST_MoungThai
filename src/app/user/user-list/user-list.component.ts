@@ -34,13 +34,14 @@ export class UserListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.loadData();
+        this.loadData();
   }
 
   private loadData() {
     this.loading = true;
     this.service.findAllUser().subscribe(
       (response: any) => {
+        console.log("data",response.data)
         this.users = response.data;
         this.dataSource = new MatTableDataSource(this.users);
         this.dataSource.paginator = this.paginator;

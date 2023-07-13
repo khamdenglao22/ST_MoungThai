@@ -84,7 +84,7 @@ export class PointBalanceComponent implements OnInit {
     this.service
       .findPointProduct({ AppName: this.AppName })
       .subscribe((res: any) => {
-        // console.log(res)
+        console.log(res)
         this.products = res;
         const lottoProd = this.products.filter((product) => {
           return product.pointTypeDesc == 'LOTTERY';

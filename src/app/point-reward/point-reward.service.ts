@@ -48,12 +48,5 @@ export class PointRewardService {
     return this.httpClient.get(`${this.publicDev}/Api/RewardBof/RewardPayoutDetail${parameter}`);
   }
 
-  getRewardAge() {
-    return this.httpClient.get(`${this.publicDev}/Api/RewardAge?CompanyId=1`);
-  }
-
-  updateRewardAge(data: any) {
-    return this.httpClient.put(`${this.publicDev}/Api/RewardAge/${data.RewardAgeId}`, data);
-  }
 
 }

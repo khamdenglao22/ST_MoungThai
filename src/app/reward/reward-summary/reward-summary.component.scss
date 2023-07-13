@@ -1,0 +1,95 @@
+$main-la-font: "noto_sans_laoregular";
+._box {
+  width: 80%;
+  margin: 20px auto;
+  padding: 0;
+}
+
+.data-box-list{
+  display: flex;
+  gap: 4%;
+
+
+  .data-box{
+    width: 24%;
+    text-align: center;
+    padding: 32px 0 20px;
+    border-radius: 20px;
+    // border: 1px solid #ff0506;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  }
+
+  .data-box-value{
+    color: white;
+    margin: 12px 0;
+    font-size: 2em;
+    font-weight: 500;
+  }
+
+}
+
+.table {
+
+  border-collapse: collapse;
+}
+
+td,
+th {
+  border-collapse: collapse;
+  border: 1px solid #333;
+}
+
+td,
+th {
+  padding: 10px 8px;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.form-box{
+  display: flex;
+  align-items: center;
+  margin-top: 50px;
+  flex-wrap: wrap;
+  gap: 2%;
+
+
+  form, .mat-form{
+    width: 32%;
+
+  }
+
+  form{
+    .mat-form-field{
+      margin-left: unset !important;
+    }
+  }
+
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: #3f51b5 !important;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-label {
+  color: #3f51b5 !important;
+}
+
+.table {
+  font-family: $main-la-font ;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+
+.number{
+  text-align: right;
+}
