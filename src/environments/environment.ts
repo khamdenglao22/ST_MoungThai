@@ -4,10 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: "https://apidevsokxayall.sokxaygroup.com:5000/backoffice",
-  // apiUrl: "http://localhost:3002/backoffice",
-  localUrl: "http://localhost:5135",
-  public_dev: "https://sxlottodev.svengit.com",
+  apiUrl: "http://localhost:8089",
   phetsarathUrl: "https://admindevsokxayall.sokxaygroup.com/assets/font-face/phetsarath/stylesheet.css",
   baseUrl: '',
   firebase: {

@@ -60,22 +60,10 @@ export class PointBalanceComponent implements OnInit {
 
   loadData() {
     this.loading = false;
-
-    console.log('value', this.form.value.products);
-
     this.formProduct = this.form.value.products.map((item: any) => ({
       Product: item.pointTypeDesc,
     }));
     this.monthFormat = this.form.value.month;
-
-    console.log(this.formProduct);
-    console.log(this.monthFormat);
-
-    // console.log(this.Offset)
-    // console.log(this.limit)
-    // console.log(this.AppName)
-    // console.log(this.monthFormat);
-
     this.service
       .findPointBalance({
         Offset: this.Offset,
@@ -85,7 +73,6 @@ export class PointBalanceComponent implements OnInit {
         Products: this.formProduct,
       })
       .subscribe((res: any) => {
-        // console.log(res);
         this.pointBalance = res.pointvbalances;
         this.total_pointGenerated = res.totalPointGenerated;
         this.total_pointUsaged = res.totalPointUsaged;
@@ -99,15 +86,10 @@ export class PointBalanceComponent implements OnInit {
       .subscribe((res: any) => {
         // console.log(res)
         this.products = res;
-
         const lottoProd = this.products.filter((product) => {
           return product.pointTypeDesc == 'LOTTERY';
         });
-
-        console.log('lottoProd', lottoProd);
-
         this.form.get('products')?.setValue(lottoProd);
-
         this.loadData();
       });
   }

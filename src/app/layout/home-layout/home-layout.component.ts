@@ -73,6 +73,7 @@ export class HomeLayoutComponent implements OnInit {
     }
 
     const token = this.authService.getToken();
+
     if (!token) {
       this.redirectToLogin();
       return;
@@ -80,11 +81,6 @@ export class HomeLayoutComponent implements OnInit {
 
     try {
       const decoded = this.authService.decodeToken() as any;
-      if (!decoded || !decoded.can_access_web) {
-        this.redirectToLogin();
-        return;
-      }
-
       this.user = {
         user_id: decoded.user_id,
         fullname: decoded.fullname,

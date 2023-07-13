@@ -37,8 +37,6 @@ export class PointTypeCreateComponent implements OnInit {
       ','
     );
 
-    console.log(this.form.value);
-    
     this.service
       .createPointType({
         PointMethod: this.form.value.PointMethod,

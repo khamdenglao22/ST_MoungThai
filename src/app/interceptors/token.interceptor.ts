@@ -22,21 +22,15 @@ export class TokenInterceptor implements HttpInterceptor {
     const token = localStorage.getItem('token');
     const lang = localStorage.getItem('lang') || 'lo';
 
-    if (request.url.includes('https://sxlottodev.svengit.com/Api')) {
+    if (request.url.includes('http://localhost:8089')) {
       request = request.clone({
         setHeaders: {
           Authorization: `Bearer ${token}`,
           AcceptLanguage: lang,
         },
       });
-    } else if (request.url.includes('http://localhost:5135')) {
-      request = request.clone({
-        setHeaders: {
-          Authorization: `Bearer ${token}`,
-          AcceptLanguage: lang,
-        },
-      });
-    } else {
+    }
+    else {
       if (token) {
         request = request.clone({
           setHeaders: {
@@ -46,6 +40,7 @@ export class TokenInterceptor implements HttpInterceptor {
         });
       }
     }
+
 
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {

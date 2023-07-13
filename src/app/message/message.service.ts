@@ -14,12 +14,12 @@ export class MessageService {
 
   findAllConversation(offset: Number, limit: Number) {
     let query = `limit=${limit}&offset=${offset}`
-    return this.httpClient.get(`${this.url}/api/chat?${query}`)
+    return this.httpClient.get(`${this.url}/Api/chat?${query}`)
   }
 
   findConversationDetail(conversationId: number, offset: Number, limit: Number) {
     let query = `limit=${limit}&offset=${offset}`
-    return this.httpClient.get(`${this.url}/api/chat/${conversationId}/detail?${query}`)
+    return this.httpClient.get(`${this.url}/Api/chat/${conversationId}/detail?${query}`)
   }
 
   sendMessage(data: any) {

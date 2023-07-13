@@ -12,7 +12,7 @@ export class DashboardService {
 
   findAllDashboardData(limit: number, offset: number) {
     return this.httpClient.get<Response>(
-      `${this.url}/api/dashboard?limit=${limit}&offset=${offset}`
+      `${this.url}/Api/dashboard?limit=${limit}&offset=${offset}`
     );
   }
 }

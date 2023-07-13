@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class PointRewardService {
-  private publicDev = environment.public_dev
+  private publicDev = environment.apiUrl
 
   constructor(
     private httpClient: HttpClient

@@ -57,7 +57,7 @@ interface WinResponse {
 })
 export class LotteryService {
 
-  private url = environment.public_dev;
+  private url = environment.apiUrl;
   constructor(
     private httpClient: HttpClient
   ) { }
