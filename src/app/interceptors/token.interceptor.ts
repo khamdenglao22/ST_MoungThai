@@ -22,7 +22,7 @@ export class TokenInterceptor implements HttpInterceptor {
     const token = localStorage.getItem('token');
     const lang = localStorage.getItem('lang') || 'lo';
 
-    if (request.url.includes('http://localhost:8089')) {
+    if (request.url.includes('http://localhost:8888')) {
       request = request.clone({
         setHeaders: {
           Authorization: `Bearer ${token}`,

@@ -16,7 +16,7 @@ export class AuthService {
       .set('content-type', 'application/json')
       .set('Access-Control-Allow-Origin', '*');
     return this.httpClient.post(
-      `${this.url}/Api/Auth/Login`,
+      `${this.url}/backoffice/api/auth/login`,
       {
         username,
         password,

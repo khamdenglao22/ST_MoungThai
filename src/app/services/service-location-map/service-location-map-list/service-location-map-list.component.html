@@ -1,0 +1,67 @@
+<div class="_box box-toolbar">
+  <button
+    mat-flat-button
+    color="primary"
+    class="la-font my-btn"
+    [routerLink]="baseUrl + '/service-location-map/create'"
+  >
+    <mat-icon>add</mat-icon>
+    {{ "ເພີ່ມ" | translate }}
+  </button>
+</div>
+<div class="_box box" style="margin-bottom: 50px">
+  <div class="loading-box" *ngIf="loading">
+    <mat-spinner></mat-spinner>
+  </div>
+  <mat-table [dataSource]="dataSource" *ngIf="!loading">
+    <ng-container matColumnDef="image">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ຮູບພາບ" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+          <img width="100" [src]="element.image">
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="province">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ແຂວງ" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <span class="la-font">{{ element.Province ? element.Province.prov_name_la :'---' }}</span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="country">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ທີ່" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <span class="la-font">{{ element.Section ? element.Section.section_name_la  : '---'}}</span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ແກ້ໄຂ" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button
+          mat-icon-button
+          color="primary"
+          class="button-edit"
+          [routerLink]="[baseUrl + '/service-location-map/update', element.id]"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+  <mat-paginator
+    [pageSize]="50"
+    [length]="dataMap.length"
+    aria-label="Select page"
+  ></mat-paginator>
+</div>

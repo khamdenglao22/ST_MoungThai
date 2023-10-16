@@ -8,9 +8,16 @@
 
       <mat-form-field appearance="outline">
         <mat-label class="la-font">{{
-          "ຊື່ ແລະ ນາມສະກຸນ" | translate
+          "ຊື່ ແລະ ນາມສະກຸນ (ລາວ)" | translate
         }}</mat-label>
-        <input matInput formControlName="fullname" class="la-font" />
+        <input matInput formControlName="fullname_la" class="la-font" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label class="la-font">{{
+          "ຊື່ ແລະ ນາມສະກຸນ (ອັງກິດ)" | translate
+        }}</mat-label>
+        <input matInput formControlName="fullname_la" class="la-font" />
       </mat-form-field>
 
       <mat-form-field appearance="outline">
@@ -24,7 +31,7 @@
         }}</mat-label>
         <mat-select class="la-font" formControlName="role_id">
           <mat-option *ngFor="let role of roles" [value]="role.id">
-            {{ role.role_name }}
+            {{ role.role_name_la }}
           </mat-option>
         </mat-select>
       </mat-form-field>

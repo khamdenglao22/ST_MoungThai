@@ -15,38 +15,45 @@ import { HomeComponent } from './home/home.component';
 import { LoginLayoutComponent } from './layout/login-layout/login-layout.component';
 
 import { environment } from '../environments/environment';
-import { SettingComponent } from './setting/setting/setting.component';
 
-import { PushNotificationSettingListComponent } from './push-notification-setting/push-notification-setting-list/push-notification-setting-list.component';
-import { PushNotificationSettingUpdateComponent } from './push-notification-setting/push-notification-setting-update/push-notification-setting-update.component';
-import { PushNotificationCreateComponent } from './push-notification/push-notification-create/push-notification-create.component';
-import { CustomerListComponent } from './customer/customer-list/customer-list.component';
-
-import { PushNotificationLogComponent } from './push-notification/push-notification-log/push-notification-log.component';
-import { CustomerDetailComponent } from './customer/customer-detail/customer-detail.component';
-import { AuditListComponent } from './audit/audit-list/audit-list.component';
-
-import { LotteryWinBillsComponent } from './lottery/lottery-win-bills/lottery-win-bills.component';
-
-import { LotterySalesDetailsComponent } from './lottery/lottery-sales-details/lottery-sales-details.component';
-import { LotterySalesSummaryDateComponent } from './lottery/lottery-sales-summary-date/lottery-sales-summary-date.component';
-import { LotterySalesSummaryDrawComponent } from './lottery/lottery-sales-summary-draw/lottery-sales-summary-draw.component';
-import { LotteryWinSummaryComponent } from './lottery/lottery-win-summary/lottery-win-summary.component';
-
-import { PointBalanceComponent } from './point-reward/point-balance/point-balance.component';
-import { PointIssuedUsedComponent } from './point-reward/point-issued-used/point-issued-used.component';
-
-import { PointTypeListComponent } from './point-reward/point-type/point-type-list/point-type-list.component';
-import { PointTypeCreateComponent } from './point-reward/point-type/point-type-create/point-type-create.component';
-import { PointTypeUpdateComponent } from './point-reward/point-type/point-type-update/point-type-update.component';
-import { RewardBalanceComponent } from './reward/reward-balance/reward-balance.component';
-import { RewardSummaryComponent } from './reward/reward-summary/reward-summary.component';
-import { RewardPayoutSummaryComponent } from './reward/reward-payout-summary/reward-payout-summary.component';
-import { RewardTransactionComponent } from './reward/reward-transaction/reward-transaction.component';
-import { RewardPayoutDetailComponent } from './reward/reward-payout-detail/reward-payout-detail.component';
-import { RewardTypeListComponent } from './reward/reward-type/reward-type-list/reward-type-list.component';
-import { RewardTypeCreateComponent } from './reward/reward-type/reward-type-create/reward-type-create.component';
-import { RewardTypeUpdateComponent } from './reward/reward-type/reward-type-update/reward-type-update.component';
+import { BannerCreateComponent } from './banner/banner-create/banner-create.component';
+import { BannerListComponent } from './banner/banner-list/banner-list.component';
+import { BannerUpdateComponent } from './banner/banner-update/banner-update.component';
+import { WorkListComponent } from './work/work-list/work-list.component';
+import { WorkCreateComponent } from './work/work-create/work-create.component';
+import { WorkUpdateComponent } from './work/work-update/work-update.component';
+import { ServiceTypeListComponent } from './services/service-type/service-type-list/service-type-list.component';
+import { ServiceTypeCreateComponent } from './services/service-type/service-type-create/service-type-create.component';
+import { ServiceTypeUpdateComponent } from './services/service-type/service-type-update/service-type-update.component';
+import { ServiceCountryListComponent } from './services/service-country/service-country-list/service-country-list.component';
+import { ServiceCountryCreateComponent } from './services/service-country/service-country-create/service-country-create.component';
+import { ServiceCountryUpdateComponent } from './services/service-country/service-country-update/service-country-update.component';
+import { ServiceLocationListComponent } from './services/service-location/service-location-list/service-location-list.component';
+import { ServiceLocationCreateComponent } from './services/service-location/service-location-create/service-location-create.component';
+import { ServiceLocationUpdateComponent } from './services/service-location/service-location-update/service-location-update.component';
+import { ServiceSectionListComponent } from './services/service-section/service-section-list/service-section-list.component';
+import { ServiceSectionCreateComponent } from './services/service-section/service-section-create/service-section-create.component';
+import { ServiceSectionUpdateComponent } from './services/service-section/service-section-update/service-section-update.component';
+import { NewsActivityListComponent } from './news-activity/news-activity-list/news-activity-list.component';
+import { NewsActivityCreateComponent } from './news-activity/news-activity-create/news-activity-create.component';
+import { NewsActivityUpdateComponent } from './news-activity/news-activity-update/news-activity-update.component';
+import { SocialListComponent } from './social/social-list/social-list.component';
+import { SocialCreateComponent } from './social/social-create/social-create.component';
+import { SocialUpdateComponent } from './social/social-update/social-update.component';
+import { NewsActivityGalleryComponent } from './news-activity/news-activity-gallery/news-activity-gallery.component';
+import { NewsActivityGalleryCreateComponent } from './news-activity/news-activity-gallery/news-activity-gallery-create/news-activity-gallery-create.component';
+import { ServiceLocationMapListComponent } from './services/service-location-map/service-location-map-list/service-location-map-list.component';
+import { ServiceLocationMapCreateComponent } from './services/service-location-map/service-location-map-create/service-location-map-create.component';
+import { ServiceLocationMapUpdateComponent } from './services/service-location-map/service-location-map-update/service-location-map-update.component';
+import { ProductListComponent } from './product/product/product-list/product-list.component';
+import { ProductCreateComponent } from './product/product/product-create/product-create.component';
+import { ProductUpdateComponent } from './product/product/product-update/product-update.component';
+import { ProductCategoryListComponent } from './product/product-category/product-category-list/product-category-list.component';
+import { ProductCategoryCreateComponent } from './product/product-category/product-category-create/product-category-create.component';
+import { ProductCategoryUpdateComponent } from './product/product-category/product-category-update/product-category-update.component';
+import { ProductCategorySubListComponent } from './product/product-category-sub/product-category-sub-list/product-category-sub-list.component';
+import { ProductCategorySubCreateComponent } from './product/product-category-sub/product-category-sub-create/product-category-sub-create.component';
+import { ProductCategorySubUpdateComponent } from './product/product-category-sub/product-category-sub-update/product-category-sub-update.component';
 
 const routes: Routes = [
   {
@@ -87,126 +94,162 @@ const routes: Routes = [
         path: 'users/change-password/:id',
         component: ChangePasswordComponent,
       },
+
+      // STI
       {
-        path: 'setting',
-        component: SettingComponent,
+        path: 'banner',
+        component: BannerListComponent,
       },
       {
-        path: 'push-notification-setting',
-        component: PushNotificationSettingListComponent,
+        path: 'banner/create',
+        component: BannerCreateComponent,
       },
       {
-        path: 'push-notification-setting/update/:id',
-        component: PushNotificationSettingUpdateComponent,
+        path:'banner/update/:id',
+        component:BannerUpdateComponent
       },
       {
-        path: 'send-push-notification',
-        component: PushNotificationCreateComponent,
+        path:'work',
+        component:WorkListComponent
       },
       {
-        path: 'customer',
-        component: CustomerListComponent,
+        path:'work/create',
+        component:WorkCreateComponent
       },
       {
-        path: 'push-notification-log',
-        component: PushNotificationLogComponent,
+        path:'work/update/:id',
+        component:WorkUpdateComponent
       },
       {
-        path: 'customer/detail/:id',
-        component: CustomerDetailComponent,
+        path:'service-type',
+        component:ServiceTypeListComponent
       },
       {
-        path: 'audit-log',
-        component: AuditListComponent,
+        path:'service-type/create',
+        component:ServiceTypeCreateComponent
       },
       {
-        path: 'lottery/WinBills',
-        component: LotteryWinBillsComponent,
+        path:'service-type/update/:id',
+        component:ServiceTypeUpdateComponent
       },
       {
-        path: 'lottery/SalesDetails',
-        component: LotterySalesDetailsComponent,
+        path:'service-country',
+        component:ServiceCountryListComponent
       },
       {
-        path: 'lottery/SalesDetails',
-        component: LotterySalesDetailsComponent,
+        path:'service-country/create',
+        component: ServiceCountryCreateComponent
       },
       {
-        path: 'lottery/SalesSummaryDate',
-        component: LotterySalesSummaryDateComponent,
+        path:'service-country/update/:id',
+        component:ServiceCountryUpdateComponent
       },
       {
-        path: 'lottery/SalesSummaryDraw',
-        component: LotterySalesSummaryDrawComponent,
+        path:'service-location',
+        component:ServiceLocationListComponent
       },
       {
-        path: 'lottery/WinBills',
-        component: LotteryWinBillsComponent,
+        path:'service-location/create',
+        component: ServiceLocationCreateComponent
       },
       {
-        path: 'lottery/WinSummary',
-        component: LotteryWinSummaryComponent,
+        path:'service-location/update/:id',
+        component:ServiceLocationUpdateComponent
       },
       {
-        path: 'lottery/SalesSummaryDate',
-        component: LotterySalesSummaryDateComponent,
+        path:'service-section',
+        component:ServiceSectionListComponent
       },
       {
-        path: 'lottery/SalesSummaryDraw',
-        component: LotterySalesSummaryDrawComponent,
+        path:'service-section/create',
+        component: ServiceSectionCreateComponent
       },
       {
-        path: 'lottery/WinSummary',
-        component: LotteryWinSummaryComponent,
+        path:'service-section/update/:id',
+        component:ServiceSectionUpdateComponent
       },
       {
-        path: 'point-balance',
-        component: PointBalanceComponent,
+        path:'news-activity',
+        component:NewsActivityListComponent
       },
       {
-        path: 'point-issued-used',
-        component: PointIssuedUsedComponent,
+        path:'news-activity/create',
+        component:NewsActivityCreateComponent
       },
       {
-        path: 'point-type',
-        component: PointTypeListComponent,
+        path:'news-activity/update/:id',
+        component:NewsActivityUpdateComponent
       },
       {
-        path: 'point-type/create',
-        component: PointTypeCreateComponent,
-      },
-      {
-        path: 'point-type/update/:id',
-        component: PointTypeUpdateComponent,
-      },
-      { path: 'reward-balance', component: RewardBalanceComponent },
-      { path: 'reward-summary', component: RewardSummaryComponent },
-      {
-        path: 'reward-payout-summary',
-        component: RewardPayoutSummaryComponent,
-      },
-      {
-        path: 'reward-transaction',
-        component: RewardTransactionComponent,
-      },
-      {
-        path: 'reward-payout-detail',
-        component: RewardPayoutDetailComponent,
-      },
-      {
-        path: 'reward-type',
-        component: RewardTypeListComponent,
+        path:'news-activity/gallery/:id',
+        component:NewsActivityGalleryComponent
       },
 
       {
-        path: 'reward-type/create',
-        component: RewardTypeCreateComponent,
+        path:'news-activity/gallery/create/:id',
+        component:NewsActivityGalleryCreateComponent
       },
-
       {
-        path: 'reward-type/update/:id',
-        component: RewardTypeUpdateComponent,
+        path:'social',
+        component:SocialListComponent
       },
+      {
+        path:'social/create',
+        component:SocialCreateComponent
+      },
+      {
+        path:'social/update/:id',
+        component:SocialUpdateComponent
+      },
+      {
+        path:'service-location-map/list',
+        component:ServiceLocationMapListComponent
+      },
+      {
+        path:'service-location-map/create',
+        component:ServiceLocationMapCreateComponent
+      },
+      {
+        path:'service-location-map/update/:id',
+        component:ServiceLocationMapUpdateComponent
+      },
+      {
+        path:'product',
+        component:ProductListComponent
+      },
+      {
+        path:'product/create',
+        component:ProductCreateComponent
+      },
+      {
+        path:'product/update/:id',
+        component:ProductUpdateComponent
+      },
+      {
+        path:'product-category',
+        component:ProductCategoryListComponent
+      },
+      {
+        path:'product-category/create',
+        component:ProductCategoryCreateComponent
+      },
+      {
+        path:'product-category/update/:id',
+        component:ProductCategoryUpdateComponent
+      },
+      {
+        path:'product-category-sub',
+        component:ProductCategorySubListComponent
+      },
+      {
+        path:'product-category-sub/create',
+        component:ProductCategorySubCreateComponent
+      },
+      {
+        path:'product-category-sub/update/:id',
+        component:ProductCategorySubUpdateComponent
+      }
+
     ],
   },
   {

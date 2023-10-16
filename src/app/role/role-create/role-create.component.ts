@@ -16,8 +16,8 @@ export class RoleCreateComponent implements OnInit {
   loading = false;
   permissions: Array<any> = [];
   form = new FormGroup({
-    role_name: new FormControl('', [Validators.required]),
-    // can_access_web: new FormControl(true, [Validators.required]),
+    role_name_la: new FormControl('', [Validators.required]),
+    role_name_en: new FormControl('', [Validators.required]),
   });
 
   constructor(
@@ -29,26 +29,6 @@ export class RoleCreateComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.loading = true;
-
-    this.menuService.findAllMenu().subscribe(
-      (response: any) => {
-        this.permissions = response.data.map((menu: any) => {
-          return {
-            menu_id: menu.id,
-            menu_name: menu.menu_name,
-            can_create: false,
-            can_update: false,
-            can_read: false,
-            can_delete: false,
-          };
-        });
-        this.loading = false;
-      },
-      () => {
-        this.loading = false;
-      }
-    );
   }
 
   submit() {
@@ -59,17 +39,7 @@ export class RoleCreateComponent implements OnInit {
       return;
     }
 
-    const data = {
-      role_name: this.form.controls['role_name'].value,
-      // can_access_web: this.form.controls['can_access_web'].value,
-      permissions: this.permissions.map((permission: any) => {
-        const _permission = { ...permission };
-        delete _permission.menu_name;
-        return _permission;
-      }),
-    };
-
-    this.service.createRole(data).subscribe(
+    this.service.createRole(this.form.value).subscribe(
       (response: any) => {
         this.router.navigate([this.baseUrl + '/role']);
         this.loading = false;

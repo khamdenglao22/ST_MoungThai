@@ -1,0 +1,96 @@
+<div class="_box box-toolbar">
+  <button
+    mat-flat-button
+    color="primary"
+    class="la-font my-btn"
+    [routerLink]="baseUrl + '/work/create'"
+  >
+    <mat-icon>add</mat-icon>
+    {{ "ເພີ່ມ" | translate }}
+  </button>
+</div>
+<div class="_box box" style="margin-bottom: 50px">
+  <div class="loading-box" *ngIf="loading">
+    <mat-spinner></mat-spinner>
+  </div>
+  <mat-table [dataSource]="dataSource" *ngIf="!loading">
+
+    <ng-container matColumnDef="depart_name_la">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ພະແນກ (ລາວ)" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <span class="la-font">{{ element.depart_name_la }}</span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="depart_name_en">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ພະແນກ (ອັງກິດ)" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <span class="la-font">{{ element.depart_name_en }}</span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="position_name_la">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ຕຳແໜ່ງ (ລາວ)" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <span class="la-font">{{ element.position_name_la }}</span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="position_name_en">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ຕຳແໜ່ງ (ອັງກິດ)" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <span class="la-font">{{ element.position_name_en }}</span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="province">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ປະຈຳແຂວງ" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <span class="la-font">{{ element.Province ? element.Province.prov_name_la :'---' }}</span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="amount">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ຈຳນວນ" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <span class="la-font">{{ element.amount }}</span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ແກ້ໄຂ" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button
+          mat-icon-button
+          color="primary"
+          class="button-edit"
+          [routerLink]="[baseUrl + '/work/update', element.id]"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+  <mat-paginator
+    [pageSize]="50"
+    [length]="works.length"
+    aria-label="Select page"
+  ></mat-paginator>
+</div>

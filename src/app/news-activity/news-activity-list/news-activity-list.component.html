@@ -1,0 +1,116 @@
+<div class="_box box-toolbar">
+
+  <button
+    mat-flat-button
+    color="primary"
+    class="la-font my-btn"
+    [routerLink]="baseUrl + '/news-activity/create'"
+  >
+    <mat-icon>add</mat-icon>
+    {{ "ເພີ່ມ" | translate }}
+  </button>
+</div>
+<div class="_box box" style="margin-bottom: 50px">
+  <div class="loading-box" *ngIf="loading">
+    <mat-spinner></mat-spinner>
+  </div>
+  <mat-table [dataSource]="dataSource" *ngIf="!loading">
+    <ng-container matColumnDef="image">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ຮູບພາບ" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <img [src]="element.image" width="150" height="80">
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="title_la">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ຫົວຂໍ (ລາວ)" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <span class="la-font">{{ element.title_la }}</span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="title_en">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ຫົວຂໍ (ອັງກິດ)" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <span class="la-font">{{ element.title_en }}</span>
+      </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="to_date">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ວັນທີ" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <span class="la-font">{{element.to_date| date:"dd/MM/yyyy" }}</span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="end_date">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ຫາວັນທີ" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <span class="la-font">{{element.end_date| date:"dd/MM/yyyy" }}</span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="active">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">ACTIVE</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-slide-toggle
+          (change)="updateNews(element)"
+          [checked]="element.active"
+        >
+        </mat-slide-toggle>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="gallery">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "Gallery" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button
+          mat-icon-button
+          color="primary"
+          class="button-edit"
+          [routerLink]="[baseUrl + '/news-activity/gallery', element.id]"
+        >
+          <mat-icon>image</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ແກ້ໄຂ" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button
+          mat-icon-button
+          color="primary"
+          class="button-edit"
+          [routerLink]="[baseUrl + '/news-activity/update', element.id]"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+  <mat-paginator
+    [pageSize]="50"
+    [length]="dataNews.length"
+    aria-label="Select page"
+  ></mat-paginator>
+</div>

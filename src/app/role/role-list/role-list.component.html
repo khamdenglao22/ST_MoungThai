@@ -19,7 +19,7 @@
         <span class="la-font">{{ "ປະເພດຜູ້ໃຊ້ລະບົບ" | translate }}</span>
       </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <span class="la-font">{{ element.role_name }}</span>
+        <span class="la-font">{{ element.role_name_la }}</span>
       </mat-cell>
     </ng-container>
 
@@ -38,17 +38,6 @@
         </button>
       </mat-cell>
     </ng-container>
-
-    <!-- <ng-container matColumnDef="delete">
-          <mat-header-cell *matHeaderCellDef> <span class="la-font">ລົບ</span> </mat-header-cell>
-          <mat-cell *matCellDef="let element">
-            <button mat-icon-button color="primary" class="button-edit"
-            (click)="deleteRole(element.id)">
-              <mat-icon>delete</mat-icon>
-            </button>
-          </mat-cell>
-        </ng-container> -->
-
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
   </mat-table>

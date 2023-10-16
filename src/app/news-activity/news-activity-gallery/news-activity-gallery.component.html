@@ -1,0 +1,39 @@
+<div class="_box box-toolbar">
+  <button mat-stroked-button style="margin-right: 10px;" class="la-font" [routerLink]="baseUrl + '/news-activity'">
+    <mat-icon>keyboard_backspace</mat-icon>
+    {{ "ກັບຄືນ" | translate }}
+  </button>
+
+  <button mat-flat-button color="primary" class="la-font my-btn" [routerLink]="[baseUrl + '/news-activity/gallery/create', news_id]">
+    <mat-icon>add</mat-icon>
+    {{ "ເພີ່ມ" | translate }}
+  </button>
+</div>
+<div class="_box box" style="margin-bottom: 50px">
+  <div class="loading-box" *ngIf="loading">
+    <mat-spinner></mat-spinner>
+  </div>
+  <mat-table [dataSource]="dataSource" *ngIf="!loading">
+    <ng-container matColumnDef="image">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ຮູບພາບ" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <img [src]="element.image" width="150" height="80">
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="delete">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "Action" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button mat-icon-button color="primary" class="button-edit" (click)="deleteGallery(element.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+  <mat-paginator [pageSize]="50" [length]="dataNewsGallery.length" aria-label="Select page"></mat-paginator>
+</div>

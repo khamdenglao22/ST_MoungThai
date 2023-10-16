@@ -12,22 +12,22 @@ export class RoleService {
   constructor(private httpClient: HttpClient) { }
 
   findAllRole() {
-    return this.httpClient.get(`${this.url}/api/role`)
+    return this.httpClient.get(`${this.url}/backoffice/api/role`)
   }
 
   findRoleById(roleId: number) {
-    return this.httpClient.get(`${this.url}/api/role/${roleId}`)
+    return this.httpClient.get(`${this.url}/backoffice/api/role/${roleId}`)
   }
 
   deleteRole(roleId: number) {
-    return this.httpClient.delete(`${this.url}/api/role/${roleId}`)
+    return this.httpClient.delete(`${this.url}/backoffice/api/role/${roleId}`)
   }
 
   createRole(data: any) {
-    return this.httpClient.post(`${this.url}/api/role`, data)
+    return this.httpClient.post(`${this.url}/backoffice/api/role`, data)
   }
 
   updateRole(roleId: number, data: any) {
-    return this.httpClient.put(`${this.url}/api/role/${roleId}`, data)
+    return this.httpClient.put(`${this.url}/backoffice/api/role/${roleId}`, data)
   }
 }

@@ -1,0 +1,40 @@
+<form (submit)="submit()" [formGroup]="form">
+  <div class="box">
+    <div *ngIf="loading" class="loading-box">
+      <mat-spinner></mat-spinner>
+    </div>
+    <div style="padding: 1rem">
+      <h2 class="la-font box-title">{{ "ເພີ່ມພາກ" | translate }}</h2>
+
+      <mat-form-field appearance="outline">
+        <mat-label class="la-font">{{
+          "ພາກ (ລາວ)" | translate
+        }}</mat-label>
+        <input matInput formControlName="section_name_la" class="la-font" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label class="la-font">{{
+          "ພາກ (ອັງກິດ)" | translate
+        }}</mat-label>
+        <input matInput formControlName="section_name_en" class="la-font" />
+      </mat-form-field>
+
+      <div style="margin: 40px 0 10px">
+        <a mat-stroked-button class="la-font" [routerLink]="baseUrl + '/service-section'">
+          <mat-icon style="font-size: 16px">keyboard_backspace</mat-icon>
+          {{ "ຍົກເລີກ" | translate }}
+        </a>
+        <button
+          mat-flat-button
+          color="primary"
+          class="la-font my-btn"
+          style="margin-left: 10px"
+        >
+          <mat-icon style="font-size: 16px">save</mat-icon>
+          {{ "ບັນທຶກ" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

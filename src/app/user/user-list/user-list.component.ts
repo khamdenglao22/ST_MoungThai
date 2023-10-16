@@ -15,7 +15,7 @@ export class UserListComponent implements OnInit {
   baseUrl = environment.baseUrl != '' ? '/' + environment.baseUrl : '';
   users: Array<any> = [];
   displayedColumns = [
-    'fullname',
+    'fullname_la',
     'username',
     'role',
     'active',
@@ -41,7 +41,6 @@ export class UserListComponent implements OnInit {
     this.loading = true;
     this.service.findAllUser().subscribe(
       (response: any) => {
-        console.log("data",response.data)
         this.users = response.data;
         this.dataSource = new MatTableDataSource(this.users);
         this.dataSource.paginator = this.paginator;

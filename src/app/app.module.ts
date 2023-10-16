@@ -43,53 +43,61 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatRadioModule } from '@angular/material/radio';
-import { SettingComponent } from './setting/setting/setting.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatListModule } from '@angular/material/list';
-import { PushNotificationSettingListComponent } from './push-notification-setting/push-notification-setting-list/push-notification-setting-list.component';
-import { PushNotificationSettingUpdateComponent } from './push-notification-setting/push-notification-setting-update/push-notification-setting-update.component';
-import { PushNotificationCreateComponent } from './push-notification/push-notification-create/push-notification-create.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatBadgeModule } from '@angular/material/badge';
-import { CustomerListComponent } from './customer/customer-list/customer-list.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { PushNotificationLogComponent } from './push-notification/push-notification-log/push-notification-log.component';
-import { CustomerDetailComponent } from './customer/customer-detail/customer-detail.component';
-import { AuditListComponent } from './audit/audit-list/audit-list.component';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { environment } from '../environments/environment';
 import { initializeApp } from 'firebase/app';
 
-import { LotteryWinBillsComponent } from './lottery/lottery-win-bills/lottery-win-bills.component';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { LotterySalesSummaryDrawComponent } from './lottery/lottery-sales-summary-draw/lottery-sales-summary-draw.component';
-import { LotterySalesSummaryDateComponent } from './lottery/lottery-sales-summary-date/lottery-sales-summary-date.component';
-import { LotterySalesDetailsComponent } from './lottery/lottery-sales-details/lottery-sales-details.component';
-import { LotteryWinSummaryComponent } from './lottery/lottery-win-summary/lottery-win-summary.component';
-
-import { PointBalanceComponent } from './point-reward/point-balance/point-balance.component';
-import { PointIssuedUsedComponent } from './point-reward/point-issued-used/point-issued-used.component';
 
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { SaleDetailsParentComponent } from './lottery/lottery-sales-details/sale-details-parent/sale-details-parent.component';
-import { WinDetailsParentComponent } from './lottery/lottery-win-summary/win-details-parent/win-details-parent.component';
-import { PointTypeListComponent } from './point-reward/point-type/point-type-list/point-type-list.component';
-import { PointTypeUpdateComponent } from './point-reward/point-type/point-type-update/point-type-update.component';
+import { BannerListComponent } from './banner/banner-list/banner-list.component';
+import { BannerCreateComponent } from './banner/banner-create/banner-create.component';
+import { BannerUpdateComponent } from './banner/banner-update/banner-update.component';
+import { WorkListComponent } from './work/work-list/work-list.component';
+import { WorkCreateComponent } from './work/work-create/work-create.component';
+import { WorkUpdateComponent } from './work/work-update/work-update.component';
+import { ServiceTypeListComponent } from './services/service-type/service-type-list/service-type-list.component';
+import { ServiceTypeCreateComponent } from './services/service-type/service-type-create/service-type-create.component';
+import { ServiceTypeUpdateComponent } from './services/service-type/service-type-update/service-type-update.component';
+import { ServiceCountryListComponent } from './services/service-country/service-country-list/service-country-list.component';
+import { ServiceCountryCreateComponent } from './services/service-country/service-country-create/service-country-create.component';
+import { ServiceCountryUpdateComponent } from './services/service-country/service-country-update/service-country-update.component';
+import { ServiceSectionListComponent } from './services/service-section/service-section-list/service-section-list.component';
+import { ServiceSectionCreateComponent } from './services/service-section/service-section-create/service-section-create.component';
+import { ServiceSectionUpdateComponent } from './services/service-section/service-section-update/service-section-update.component';
+import { ServiceLocationListComponent } from './services/service-location/service-location-list/service-location-list.component';
+import { ServiceLocationCreateComponent } from './services/service-location/service-location-create/service-location-create.component';
+import { ServiceLocationUpdateComponent } from './services/service-location/service-location-update/service-location-update.component';
+import { NewsActivityListComponent } from './news-activity/news-activity-list/news-activity-list.component';
+import { NewsActivityCreateComponent } from './news-activity/news-activity-create/news-activity-create.component';
+import { NewsActivityUpdateComponent } from './news-activity/news-activity-update/news-activity-update.component';
+import { SocialListComponent } from './social/social-list/social-list.component';
+import { SocialCreateComponent } from './social/social-create/social-create.component';
+import { SocialUpdateComponent } from './social/social-update/social-update.component';
 
-import { PointTypeCreateComponent } from './point-reward/point-type/point-type-create/point-type-create.component';
-import { RewardBalanceComponent } from './reward/reward-balance/reward-balance.component';
-import { RewardSummaryComponent } from './reward/reward-summary/reward-summary.component';
-import { RewardTransactionComponent } from './reward/reward-transaction/reward-transaction.component';
-import { RewardPayoutSummaryComponent } from './reward/reward-payout-summary/reward-payout-summary.component';
-import { RewardPayoutDetailComponent } from './reward/reward-payout-detail/reward-payout-detail.component';
-import { RewardTypeListComponent } from './reward/reward-type/reward-type-list/reward-type-list.component';
-import { RewardTypeCreateComponent } from './reward/reward-type/reward-type-create/reward-type-create.component';
-import { RewardTypeUpdateComponent } from './reward/reward-type/reward-type-update/reward-type-update.component';
-
-initializeApp(environment.firebase);
+import { AngularEditorModule } from '@kolkov/angular-editor';
+import { NewsActivityGalleryComponent } from './news-activity/news-activity-gallery/news-activity-gallery.component';
+import { NewsActivityGalleryCreateComponent } from './news-activity/news-activity-gallery/news-activity-gallery-create/news-activity-gallery-create.component';
+import { ServiceLocationMapListComponent } from './services/service-location-map/service-location-map-list/service-location-map-list.component';
+import { ServiceLocationMapCreateComponent } from './services/service-location-map/service-location-map-create/service-location-map-create.component';
+import { ServiceLocationMapUpdateComponent } from './services/service-location-map/service-location-map-update/service-location-map-update.component';
+import { ProductListComponent } from './product/product/product-list/product-list.component';
+import { ProductCreateComponent } from './product/product/product-create/product-create.component';
+import { ProductUpdateComponent } from './product/product/product-update/product-update.component';
+import { ProductCategorySubListComponent } from './product/product-category-sub/product-category-sub-list/product-category-sub-list.component';
+import { ProductCategorySubCreateComponent } from './product/product-category-sub/product-category-sub-create/product-category-sub-create.component';
+import { ProductCategorySubUpdateComponent } from './product/product-category-sub/product-category-sub-update/product-category-sub-update.component';
+import { ProductCategoryListComponent } from './product/product-category/product-category-list/product-category-list.component';
+import { ProductCategoryUpdateComponent } from './product/product-category/product-category-update/product-category-update.component';
+import { ProductCategoryCreateComponent } from './product/product-category/product-category-create/product-category-create.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -110,37 +118,45 @@ export function HttpLoaderFactory(http: HttpClient) {
     HomeLayoutComponent,
     LoginLayoutComponent,
     HomeComponent,
-    SettingComponent,
-    PushNotificationSettingListComponent,
-    PushNotificationSettingUpdateComponent,
-    PushNotificationCreateComponent,
-    CustomerListComponent,
-    PushNotificationLogComponent,
-    CustomerDetailComponent,
-    AuditListComponent,
-    LotteryWinBillsComponent,
-    LotterySalesSummaryDrawComponent,
-    LotterySalesSummaryDateComponent,
-    LotterySalesDetailsComponent,
-    LotteryWinSummaryComponent,
-    LotteryWinBillsComponent,
-    LotterySalesSummaryDrawComponent,
-    LotterySalesSummaryDateComponent,
-    LotterySalesDetailsComponent,
-    LotteryWinSummaryComponent,
-    PointBalanceComponent,
-    PointIssuedUsedComponent,
-    PointTypeListComponent,
-    PointTypeUpdateComponent,
-    PointTypeCreateComponent,
-    RewardBalanceComponent,
-    RewardSummaryComponent,
-    RewardTransactionComponent,
-    RewardPayoutSummaryComponent,
-    RewardPayoutDetailComponent,
-    RewardTypeListComponent,
-    RewardTypeCreateComponent,
-    RewardTypeUpdateComponent,
+    BannerListComponent,
+    BannerCreateComponent,
+    BannerUpdateComponent,
+    WorkListComponent,
+    WorkCreateComponent,
+    WorkUpdateComponent,
+    ServiceTypeListComponent,
+    ServiceTypeCreateComponent,
+    ServiceTypeUpdateComponent,
+    ServiceCountryListComponent,
+    ServiceCountryCreateComponent,
+    ServiceCountryUpdateComponent,
+    ServiceSectionListComponent,
+    ServiceSectionCreateComponent,
+    ServiceSectionUpdateComponent,
+    ServiceLocationListComponent,
+    ServiceLocationCreateComponent,
+    ServiceLocationUpdateComponent,
+    NewsActivityListComponent,
+    NewsActivityCreateComponent,
+    NewsActivityUpdateComponent,
+    SocialListComponent,
+    SocialCreateComponent,
+    SocialUpdateComponent,
+    NewsActivityGalleryComponent,
+    NewsActivityGalleryCreateComponent,
+    ServiceLocationMapListComponent,
+    ServiceLocationMapCreateComponent,
+    ServiceLocationMapUpdateComponent,
+    ProductListComponent,
+    ProductCreateComponent,
+    ProductUpdateComponent,
+    ProductCategorySubListComponent,
+    ProductCategorySubCreateComponent,
+    ProductCategorySubUpdateComponent,
+    ProductCategoryListComponent,
+    ProductCategoryUpdateComponent,
+    ProductCategoryCreateComponent,
+
   ],
   imports: [
     NgxChartsModule,
@@ -177,6 +193,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatExpansionModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    AngularEditorModule,
 
     TranslateModule.forRoot({
       loader: {

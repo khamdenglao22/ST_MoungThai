@@ -1,0 +1,58 @@
+<div class="_box box-toolbar">
+  <button
+    mat-flat-button
+    color="primary"
+    class="la-font my-btn"
+    [routerLink]="baseUrl + '/banner/create'"
+  >
+    <mat-icon>add</mat-icon>
+    {{ "ເພີ່ມ" | translate }}
+  </button>
+</div>
+<div class="_box box" style="margin-bottom: 50px">
+  <div class="loading-box" *ngIf="loading">
+    <mat-spinner></mat-spinner>
+  </div>
+  <mat-table [dataSource]="dataSource" *ngIf="!loading">
+    <ng-container matColumnDef="image">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ຮູບພາບ" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <img [src]="element.image" width="150" height="80">
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="banner_position">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ລຳດັບໃນການສະແດງ Banner" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+      <span class="la-font">{{element.banner_position}}</span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ແກ້ໄຂ" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button
+          mat-icon-button
+          color="primary"
+          class="button-edit"
+          [routerLink]="[baseUrl + '/banner/update', element.id]"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+  <mat-paginator
+    [pageSize]="50"
+    [length]="users.length"
+    aria-label="Select page"
+  ></mat-paginator>
+</div>

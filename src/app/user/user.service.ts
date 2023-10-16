@@ -12,30 +12,27 @@ export class UserService {
   constructor(private httpClient: HttpClient) { }
 
   findAllUser() {
-    return this.httpClient.get(`${this.url}/Api/user`)
+    return this.httpClient.get(`${this.url}/backoffice/api/user`)
   }
 
   findUserByIdOrUsername(data: string | number) {
-    return this.httpClient.get(`${this.url}/Api/user/${data}`)
+    return this.httpClient.get(`${this.url}/backoffice/api/user/${data}`)
   }
 
   createUser(data: any) {
-    return this.httpClient.post(`${this.url}/Api/user`, data)
+    return this.httpClient.post(`${this.url}/backoffice/api/user`, data)
   }
 
   updateUser(userId: number | null, data: any) {
-    return this.httpClient.put(`${this.url}/Api/user/${userId}`, data)
+    return this.httpClient.put(`${this.url}/backoffice/api/user/${userId}`, data)
   }
 
   changePassword(userId: number | null, data: any) {
-    return this.httpClient.put(`${this.url}/Api/user/${userId}/change-password`, data)
+    return this.httpClient.put(`${this.url}/backoffice/api/user/change-password/${userId}`, data)
   }
 
   deleteUser(userId: number) {
-    return this.httpClient.delete(`${this.url}/Api/user/${userId}`)
+    return this.httpClient.delete(`${this.url}/backoffice/api/user/${userId}`)
   }
 
-  updateUserDeviceToken(userId: number, registration_token: string) {
-    return this.httpClient.put(`${this.url}/Api/user/${userId}/device-token`, { registration_token })
-  }
 }

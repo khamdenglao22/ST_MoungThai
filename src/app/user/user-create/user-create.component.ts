@@ -19,12 +19,11 @@ export class UserCreateComponent implements OnInit {
   organizations: any[] = [];
 
   form = new FormGroup({
-    fullname: new FormControl('', [Validators.required]),
+    fullname_la: new FormControl('', [Validators.required]),
+    fullname_en: new FormControl('', [Validators.required]),
     username: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
     role_id: new FormControl('', [Validators.required]),
-    store_id: new FormControl(null),
-    organization_id: new FormControl(null),
   });
 
   constructor(
@@ -46,20 +45,6 @@ export class UserCreateComponent implements OnInit {
 
   submit() {
     this.loading = true;
-
-    // if (this.role?.value == 14) {
-    //   this.store?.addValidators(Validators.required);
-    //   this.store?.updateValueAndValidity();
-    // } else {
-    //   this.store?.setValue(null);
-    // }
-
-    // if (this.role?.value == 19) {
-    //   this.organization_id?.addValidators(Validators.required);
-    //   this.organization_id?.updateValueAndValidity();
-    // } else {
-    //   this.organization_id?.setValue(null);
-    // }
 
     if (this.form.invalid) {
       this.loading = false;

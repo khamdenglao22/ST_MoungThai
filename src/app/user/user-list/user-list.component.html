@@ -14,12 +14,12 @@
     <mat-spinner></mat-spinner>
   </div>
   <mat-table [dataSource]="dataSource" *ngIf="!loading">
-    <ng-container matColumnDef="fullname">
+    <ng-container matColumnDef="fullname_la">
       <mat-header-cell *matHeaderCellDef>
-        <span class="la-font">{{ "ຊື່ ແລະ ນາມສະກຸນ" | translate }}</span>
+        <span class="la-font">{{ "ຊື່ ແລະ ນາມສະກຸນ (ລາວ)" | translate }}</span>
       </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <span class="la-font">{{ element.fullname }}</span>
+        <span class="la-font">{{ element.fullname_la }}</span>
       </mat-cell>
     </ng-container>
 
@@ -38,7 +38,7 @@
       </mat-header-cell>
       <mat-cell *matCellDef="let element">
         <span class="la-font">{{
-          element.role ? element.role.role_name : "---"
+          element.role ? element.role.role_name_la : "---"
         }}</span>
       </mat-cell>
     </ng-container>

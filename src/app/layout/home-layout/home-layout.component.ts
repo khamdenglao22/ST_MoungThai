@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
-import { MessageService } from 'src/app/message/message.service';
 import { environment } from '../../../environments/environment';
 import * as moment from 'moment';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -28,6 +27,7 @@ export class HomeLayoutComponent implements OnInit {
   showDropdownStore = false;
   showDropdownPromotion = false;
   showDropdownUser = false;
+  showDropdownProductMenu = false;
   conversation: any;
   messages: Array<any> = [];
   messageToSend = '';
@@ -53,7 +53,6 @@ export class HomeLayoutComponent implements OnInit {
     private authService: AuthService,
     private userService: UserService,
     private router: Router,
-    private messageService: MessageService,
     private _snackBar: MatSnackBar,
     private translateService: TranslateService
   ) {
@@ -83,14 +82,11 @@ export class HomeLayoutComponent implements OnInit {
       const decoded = this.authService.decodeToken() as any;
       this.user = {
         user_id: decoded.user_id,
-        fullname: decoded.fullname,
+        fullname_la: decoded.fullname_la,
+        fullname_en: decoded.fullname_en,
         role_id: decoded.role_id,
         role_name: decoded.role_name,
       };
-
-      this.loadConversation();
-      this.requestPermission();
-      this.listen();
     } catch (err) {
       this.redirectToLogin();
       return;
@@ -113,40 +109,8 @@ export class HomeLayoutComponent implements OnInit {
     this.router.navigate([this.baseUrl + '/login']);
   }
 
-  requestPermission() {
-    const messaging = getMessaging();
-    getToken(messaging, { vapidKey: environment.firebase.vapidKey })
-      .then((currentToken) => {
-        if (currentToken) {
-          this.userService
-            .updateUserDeviceToken(this.user.user_id, currentToken)
-            .subscribe((response: any) => {});
-        } else {
-          console.log(
-            'No registration token available. Request permission to generate one.'
-          );
-        }
-      })
-      .catch((err) => {
-        // console.log('An error occurred while retrieving token. ', err);
-      });
-  }
-
-  listen() {
-    const messaging = getMessaging();
-    onMessage(messaging, (payload) => {
-      if (payload.data) {
-        const newMessage = JSON.parse(payload.data?.['message']);
-        this.loadConversation();
-        if (newMessage.conversation_id == this.conversation.conversation_id) {
-          this.messages.push(newMessage);
-        }
-      }
-    });
-  }
-
   openConversationBox() {
-    this.loadConversation();
+    // this.loadConversation();
     this.showConversationBox = !this.showConversationBox;
     if (!this.showConversationBox) {
       this.conversationOffset = 1;
@@ -160,15 +124,6 @@ export class HomeLayoutComponent implements OnInit {
   logout() {
     this.authService.removeToken();
     this.redirectToLogin();
-  }
-
-  loadConversation() {
-    this.messageService
-      .findAllConversation(this.conversationOffset, this.conversationLimit)
-      .subscribe((response: any) => {
-        this.conversations = response.conversations;
-        this.unreadMessageCount = response.all_unread_message_count;
-      });
   }
 
   formatDate(date: any) {
@@ -217,15 +172,7 @@ export class HomeLayoutComponent implements OnInit {
 
     form.append('receiver_id', this.conversation.customer_id);
 
-    this.messageService.sendMessage(form).subscribe(
-      (response: any) => {
-        this.messages.push(response);
-        this.onClosePreviewImage();
-      },
-      (err: any) => {
-        this._snackBar.open('ບໍ່ສາມາດສົ່ງຂໍ້ຄວາມໄດ້', '', { duration: 3000 });
-      }
-    );
+
   }
 
   openFileDialog() {
@@ -283,24 +230,10 @@ export class HomeLayoutComponent implements OnInit {
 
   loadMore() {
     this.conversationOffset += 1;
-    this.messageService
-      .findAllConversation(this.conversationOffset, this.conversationLimit)
-      .subscribe((response: any) => {
-        this.conversations.push(...response.conversations);
-      });
+
   }
 
   loadMessages() {
-    this.messageService
-      .findConversationDetail(
-        this.conversation.conversation_id,
-        this.messageOffset,
-        this.messageLimit
-      )
-      .subscribe((response: any) => {
-        for (let message of response.messages) {
-          this.messages.unshift(message);
-        }
-      });
+
   }
 }
