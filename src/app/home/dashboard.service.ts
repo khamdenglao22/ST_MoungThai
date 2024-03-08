@@ -10,9 +10,9 @@ export class DashboardService {
 
   constructor(private httpClient: HttpClient) {}
 
-  findAllDashboardData(limit: number, offset: number) {
-    return this.httpClient.get<Response>(
-      `${this.url}/Api/dashboard?limit=${limit}&offset=${offset}`
-    );
-  }
+  // findAllDashboardData(limit: number, offset: number) {
+  //   return this.httpClient.get<Response>(
+  //     `${this.url}/Api/dashboard?limit=${limit}&offset=${offset}`
+  //   );
+  // }
 }

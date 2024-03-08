@@ -18,6 +18,8 @@ export class WorkUpdateComponent implements OnInit {
   loading = false;
   work_id: number | null;
   provinces:any;
+  image:any;
+  imageUrl:any;
 
   @ViewChild('autosize') autosize: CdkTextareaAutosize;
 
@@ -61,6 +63,8 @@ form = new FormGroup({
             response.data.amount
           );
 
+          this.imageUrl = response.data.image
+
           if(response.data.prov_cd != null){
             this.form.controls['prov_cd'].setValue(
               response.data.prov_cd
@@ -85,8 +89,23 @@ form = new FormGroup({
     });
   }
 
+
+  onChange(event: any) {
+    this.image = event.target.files[0];
+  }
+
   submit() {
-    this.service.updateWork(this.form.value, this.work_id).subscribe(
+
+    let formData = new FormData();
+    formData.append('position_name_la', this.form.value.position_name_la);
+    formData.append('position_name_en', this.form.value.position_name_en);
+    formData.append('depart_name_la', this.form.value.depart_name_la);
+    formData.append('depart_name_en', this.form.value.depart_name_en);
+    formData.append('amount', this.form.value.amount);
+    formData.append('prov_cd', this.form.value.prov_cd);
+    formData.append('image', this.image);
+
+    this.service.updateWork(formData, this.work_id).subscribe(
       (res: any) => {
         this.router.navigate([this.baseUrl + '/work']);
         this.loading = false;

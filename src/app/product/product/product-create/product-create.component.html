@@ -1,25 +1,190 @@
-<div>
-  <form [formGroup]="dynamicFormGroup" (ngSubmit)="onSubmit()">
-      <div class="form-row" *ngFor="let fields of AddressInfo.controls; let i = index" >
-          <div class="form-group col-md-3" >
-              <label for="password"><b>Street Address</b></label>
-              <input type="text" class="form-control" placeholder="Street Address" name="SA" formControlName="streetAddress" />
-            </div>
-            <div class="form-group col-md-3" >
-              <label for="password"><b>City</b></label>
-              <input type="text" class="form-control" placeholder="City" name="city" formControlName="city" />
-            </div>
-            <div class="form-group col-md-3" >
-              <label for="password"><b>State</b></label>
-              <input type="text" class="form-control" placeholder="State" name="state" formControlName="state" />
-            </div>
-      </div>
-      <br/>
-   <button type="submit"  class="btn btn-primary">Submit</button>
-  </form>
-  <br/>
-  <button type = "button" class="btn btn-primary" (click)="addNewAddress()" >Add New Address</button>
-</div>
+<form (submit)="submit()" [formGroup]="productForm">
+  <div class="box">
+    <div *ngIf="loading" class="loading-box">
+      <mat-spinner></mat-spinner>
+    </div>
+    <div style="padding: 1rem">
+      <h2 class="la-font box-title">{{ "ເພີ່ມຜະລິດຕະພັນ" | translate }}</h2>
 
-<h4>OUTPUT</h4>
-<div>{{output}}</div>
+      <mat-form-field appearance="outline">
+        <mat-label class="la-font">{{
+          "ຊື່ຜະລິດຕະພັນ (ລາວ)" | translate
+          }}</mat-label>
+        <input matInput formControlName="p_name_la" class="la-font" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label class="la-font">{{
+          "ຊື່ຜະລິດຕະພັນ (ອັງກິດ)" | translate
+          }}</mat-label>
+        <input matInput formControlName="p_name_en" class="la-font" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label class="la-font">{{
+          "ປະເພດ" | translate
+          }}</mat-label>
+        <mat-select class="la-font" formControlName="p_cate_id" (selectionChange)="onCategorySubChange()">
+          <mat-option *ngFor="let type of dataCate" [value]="type.id" >
+            {{ type.name_la }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label class="la-font">{{
+          "ປະເພດຍ່ອຍ" | translate
+          }}</mat-label>
+        <mat-select class="la-font" formControlName="p_cate_sub_id">
+          <mat-option *ngFor="let type of dataSubCate" [value]="type.id">
+            {{ type.name_la }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div style="display: flex; margin-bottom: 20px">
+        <div style="margin-right: 5px;flex: 1">
+          <div style="margin-bottom: 10px">
+            <label for="" class="la-font"><strong>{{ "ຮູບພາບ" | translate }}</strong></label>
+          </div>
+          <input type="file" class="my-input" (change)="onChangeProductImage($event)">
+        </div>
+      </div>
+
+      <mat-form-field appearance="outline">
+        <mat-label class="la-font">{{
+          "ລຳດັບໃນການສະແດງຜົນ" | translate
+          }}</mat-label>
+        <input matInput formControlName="p_order" class="la-font" />
+      </mat-form-field>
+
+      <div class="section-body" formArrayName="sectionList">
+        <div class="section-form" *ngFor="let student of sectionListArray().controls; let i = index;">
+          <div class="section-main">
+            <div class="section-main-header">
+              <h1 class="la-font">ແຖວທີ່ {{i+1}}</h1>
+              <button type="button" *ngIf="sectionListArray().length != 0" (click)="removeSection(i)">
+                <mat-icon style="font-size: 16px">close</mat-icon>
+              </button>
+            </div>
+            <div class="section-main-input" [formGroupName]="i">
+              <mat-form-field appearance="outline">
+                <mat-label class="la-font">{{
+                  "ຊື່ແຖວ (ລາວ)" | translate
+                  }}</mat-label>
+                <input matInput formControlName="p_section_name_la" class="la-font" />
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label class="la-font">{{
+                  "ຊື່ແຖວ (ອັງກິດ)" | translate
+                  }}</mat-label>
+                <input matInput formControlName="p_section_name_en" class="la-font" />
+              </mat-form-field>
+
+
+              <mat-form-field appearance="outline">
+                <mat-label class="la-font">{{
+                  "ຫົວຂໍ້ (ລາວ)" | translate
+                  }}</mat-label>
+                <input matInput formControlName="p_section_title_la" class="la-font" />
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label class="la-font">{{
+                  "ຫົວຂໍ້ (ອັງກິດ)" | translate
+                  }}</mat-label>
+                <input matInput formControlName="p_section_title_en" class="la-font" />
+              </mat-form-field>
+
+              <div style="display: flex; margin-bottom: 10px">
+                <div style="margin-right: 5px;flex: 1">
+                  <div style="margin-bottom: 10px">
+                    <label for="" class="la-font"><strong>{{ "ຮູບພາບ" | translate }}</strong></label>
+                  </div>
+                  <input type="file" class="my-input" (change)="onImageChange($event,i)">
+                </div>
+              </div>
+
+              <div style="margin: 20px 0;">
+                <mat-label class="la-font">{{
+                  "ລາຍລະອຽດ" | translate
+                  }}</mat-label>
+                <angular-editor id="editor1" formControlName="p_section_des" [config]="editorConfig"></angular-editor>
+              </div>
+
+
+              <mat-form-field appearance="outline">
+                <mat-label class="la-font">{{
+                  "ລຳດັບໃນການສະແດງຜົນ" | translate
+                  }}</mat-label>
+                <input matInput formControlName="p_section_order" class="la-font" />
+              </mat-form-field>
+
+              <mat-checkbox formControlName="p_section_outline"
+                style="margin-left: 5px;margin-bottom: 10px;">
+                  <span class="la-font">ເສັ້ນແບ່ງແຖວ</span>
+              </mat-checkbox>
+
+
+            </div>
+          </div>
+
+        </div>
+        <div class="section-footer">
+          <button mat-flat-button color="primary" type="button" (click)="addSection()">
+            <mat-icon style="font-size: 16px">add</mat-icon>
+            {{ "ເພີ່ມແຖວ" | translate }}</button>
+        </div>
+      </div>
+
+      <div style="margin: 40px 0 10px">
+        <a mat-stroked-button class="la-font" [routerLink]="baseUrl + '/product'">
+          <mat-icon style="font-size: 16px">keyboard_backspace</mat-icon>
+          {{ "ຍົກເລີກ" | translate }}
+        </a>
+        <button mat-flat-button color="primary" class="la-font my-btn" style="margin-left: 10px">
+          <mat-icon style="font-size: 16px">save</mat-icon>
+          {{ "ບັນທຶກ" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</form>
+
+
+<!-- <h1>test</h1>
+
+<form [formGroup]="productForm" (submit)="getFormData()">
+
+  <input type="text" name="" id="" formControlName="username" placeholder="username">
+  <input type="text" name="" id="" formControlName="password" placeholder="password">
+  <input type="text" name="" id="" formControlName="phone" placeholder="phone">
+
+
+  <div class="mul-form" formArrayName="sectionList">
+    <div class="mul-form-main" *ngFor="let student of studentListArray().controls; let i = index;">
+      <div [formGroupName]="i">
+        <input type="text" name="" id="" formControlName="first_name" placeholder="first name">
+        <input type="text" name="" id="" formControlName="last_name" placeholder="last name">
+        <input type="text" name="" id="" formControlName="age" placeholder="age">
+        <button type="button" *ngIf="studentListArray().length > 1" (click)="removeStudent(i)">Remove</button> -->
+
+<!-- <div class="mul-form-chid" [formGroup]="subjectFormGroup(i)">
+          <div formArrayName="studentSubjectArray">
+            <div *ngFor="let item of subjectArray(i).controls; let s = index;">
+              <div [formGroupName]="s">
+                <input type="text" name="" id="" formControlName="subject" placeholder="Subject">
+                <input type="text" name="" id="" formControlName="marks" placeholder="Marks">
+                <button *ngIf="subjectArray(i).length > 1" (click)="removeSubject(i,s)">Remove Subject</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="button" (click)="addNewSubject(i)">Add Subject</button> -->
+<!-- </div>
+    </div>
+  </div>
+  <button type="button" (click)="addStudent()">Add Student</button>
+  <button type="submit">Submit</button>
+</form> -->

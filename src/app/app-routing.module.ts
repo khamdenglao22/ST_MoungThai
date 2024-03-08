@@ -54,6 +54,23 @@ import { ProductCategoryUpdateComponent } from './product/product-category/produ
 import { ProductCategorySubListComponent } from './product/product-category-sub/product-category-sub-list/product-category-sub-list.component';
 import { ProductCategorySubCreateComponent } from './product/product-category-sub/product-category-sub-create/product-category-sub-create.component';
 import { ProductCategorySubUpdateComponent } from './product/product-category-sub/product-category-sub-update/product-category-sub-update.component';
+import { ProvinceListComponent } from './province/province-list/province-list.component';
+import { ProvinceCreateComponent } from './province/province-create/province-create.component';
+import { ProvinceUpdateComponent } from './province/province-update/province-update.component';
+import { DistrictListComponent } from './district/district-list/district-list.component';
+import { DistrictCreateComponent } from './district/district-create/district-create.component';
+import { DistrictUpdateComponent } from './district/district-update/district-update.component';
+import { VillageListComponent } from './village/village-list/village-list.component';
+import { VillageCreateComponent } from './village/village-create/village-create.component';
+import { VillageUpdateComponent } from './village/village-update/village-update.component';
+import { ApplyWorkComponent } from './apply-work/apply-work.component';
+import { BannerAdvertisingListComponent } from './banner-advertising/banner-advertising-list/banner-advertising-list.component';
+import { BannerAdvertisingCreateComponent } from './banner-advertising/banner-advertising-create/banner-advertising-create.component';
+import { BannerAdvertisingUpdateComponent } from './banner-advertising/banner-advertising-update/banner-advertising-update.component';
+import { ProductOrderComponent } from './product/product-order/product-order.component';
+import { AboutStructureListComponent } from './about-structure/about-structure-list/about-structure-list.component';
+import { AboutStructureCreateComponent } from './about-structure/about-structure-create/about-structure-create.component';
+import { AboutStructureUpdateComponent } from './about-structure/about-structure-update/about-structure-update.component';
 
 const routes: Routes = [
   {
@@ -63,7 +80,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: HomeComponent,
+        component: BannerListComponent,
       },
       {
         path: 'role',
@@ -248,6 +265,74 @@ const routes: Routes = [
       {
         path:'product-category-sub/update/:id',
         component:ProductCategorySubUpdateComponent
+      },
+      {
+        path:'province',
+        component:ProvinceListComponent
+      },
+      {
+        path:'province/create',
+        component:ProvinceCreateComponent
+      },
+      {
+        path:'province/update/:id',
+        component:ProvinceUpdateComponent
+      },
+      {
+        path:'district',
+        component:DistrictListComponent
+      },
+      {
+        path:'district/create',
+        component:DistrictCreateComponent
+      },
+      {
+        path:'district/update/:id',
+        component:DistrictUpdateComponent
+      },
+      {
+        path:'village',
+        component:VillageListComponent
+      },
+      {
+        path:'village/create',
+        component:VillageCreateComponent
+      },
+      {
+        path:'village/update/:id',
+        component:VillageUpdateComponent
+      },
+      {
+        path:'apply-work',
+        component:ApplyWorkComponent
+      },
+      {
+        path:'banner-advertising',
+        component:BannerAdvertisingListComponent
+      },
+      {
+        path:'banner-advertising/create',
+        component:BannerAdvertisingCreateComponent
+      },
+      {
+        path:'banner-advertising/update/:id',
+        component:BannerAdvertisingUpdateComponent
+      },
+      {
+        path:'product-order',
+        component:ProductOrderComponent
+      },
+      {
+        path:'about-structure',
+        component:AboutStructureListComponent
+      },
+      {
+        path:'about-structure/create',
+        component:AboutStructureCreateComponent
+      },
+      {
+        path:'about-structure/update/:id',
+        component:AboutStructureUpdateComponent
       }
 
     ],

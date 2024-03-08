@@ -26,7 +26,7 @@
             <label for="" class="la-font"><strong>{{ "ຮູບພາບ" | translate }}</strong></label>
           </div>
           <input type="file" class="my-input" (change)="onLogoChange($event)">
-          <div style="margin: 20px 0; background-color: #E50088; height: 50px; width: 50px; display: flex; justify-content: center; align-items: center;" *ngIf="imageUrl">
+          <div style="margin: 20px 0 0 20px;" *ngIf="imageUrl">
             <img [src]="imageUrl">
           </div>
         </div>

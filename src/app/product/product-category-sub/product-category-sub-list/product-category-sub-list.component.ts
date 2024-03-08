@@ -9,7 +9,7 @@ import { ProductCategorySubService } from '../product-category-sub.service';
 })
 export class ProductCategorySubListComponent implements OnInit {
   baseUrl = environment.baseUrl != '' ? '/' + environment.baseUrl : '';
-  displayedColumns = ['product_sub_la','product_sub_en', 'product_cate_la','product_cate_en', 'edit'];
+  displayedColumns = ['product_sub_la','product_sub_en', 'product_cate_la','product_cate_en','p_cate_sub_position', 'edit','delete'];
   loading = false;
 
 
@@ -19,9 +19,20 @@ export class ProductCategorySubListComponent implements OnInit {
   constructor(private service : ProductCategorySubService) { }
 
   ngOnInit(): void {
+    this.loadData();
+  }
+
+  loadData(){
     this.service.findAllCategorySub().subscribe((res:any) => {
       this.dataProductCateSub = res.data;
-      console.log(res.data)
+      // console.log(res.data)
+    })
+  }
+
+  deleteProduct(id:number | null){
+    this.service.deleteCategorySub(id).subscribe((res:any) => {
+      alert(res.msg)
+      this.loadData();
     })
   }
 }

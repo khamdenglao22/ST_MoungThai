@@ -13,7 +13,7 @@ import { environment } from '../../environments/environment'
 export class LoginComponent implements OnInit {
   loading = false
   baseUrl = environment.baseUrl != '' ? '/' + environment.baseUrl : ''
-  
+
   loginForm = new FormGroup({
     username: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required)
@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
     request.subscribe((response:any) => {
       localStorage.setItem("token", response.token);
       this.loading = false;
-      window.location.href = '/'
+      window.location.href = '/backoffice'
     }, error => {
       this.loading = false;
       let msg = error?.msg || "ເກີດຂໍ້ຜິດພາດບາງຢ່າງ";

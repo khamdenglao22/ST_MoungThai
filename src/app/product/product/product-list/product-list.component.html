@@ -1,1 +1,98 @@
-<p>product-list works!</p>
+<div class="_box box-toolbar">
+  <button
+    mat-flat-button
+    color="primary"
+    class="la-font my-btn"
+    [routerLink]="baseUrl + '/product/create'"
+  >
+    <mat-icon>add</mat-icon>
+    {{ "ເພີ່ມ" | translate }}
+  </button>
+</div>
+<div class="_box box" style="margin-bottom: 50px">
+  <div class="loading-box" *ngIf="loading">
+    <mat-spinner></mat-spinner>
+  </div>
+  <mat-table [dataSource]="dataProduct" *ngIf="!loading">
+
+    <ng-container matColumnDef="image">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ຮູບພາບ" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <img [src]="element.p_image" width="120" height="130">
+      </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="p_name_la">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ຜະລິດຕະພັນ (ລາວ)" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <span class="la-font">{{ element.p_name_la }}</span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="p_name_en">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ຜະລິດຕະພັນ (ລາວ)" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <span class="la-font">{{ element.p_name_en }}</span>
+      </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="p_cate_sub_la">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ປະເພດຍ່ອຍ (ລາວ)" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <span class="la-font">{{ element.ProductCategorySub.name_la }}</span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="p_cate_sub_en">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ປະເພດຍ່ອຍ (ອັງກິດ)" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <span class="la-font">{{ element.ProductCategorySub.name_en }}</span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ແກ້ໄຂ" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button
+          mat-icon-button
+          color="primary"
+          class="button-edit"
+          [routerLink]="[baseUrl + '/product/update', element.id]"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <mat-header-cell *matHeaderCellDef> <span class="la-font">{{ "ລຶບ" | translate }}</span> </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button mat-icon-button color="primary" class="button-edit" (click)="deleteProduct(element.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+  <mat-paginator
+    [pageSize]="50"
+    [length]="dataProduct.length"
+    aria-label="Select page"
+  ></mat-paginator>
+</div>

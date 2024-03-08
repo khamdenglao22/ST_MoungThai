@@ -98,10 +98,32 @@ import { ProductCategorySubUpdateComponent } from './product/product-category-su
 import { ProductCategoryListComponent } from './product/product-category/product-category-list/product-category-list.component';
 import { ProductCategoryUpdateComponent } from './product/product-category/product-category-update/product-category-update.component';
 import { ProductCategoryCreateComponent } from './product/product-category/product-category-create/product-category-create.component';
+import { VillageListComponent } from './village/village-list/village-list.component';
+import { VillageCreateComponent } from './village/village-create/village-create.component';
+import { VillageUpdateComponent } from './village/village-update/village-update.component';
+import { ProvinceListComponent } from './province/province-list/province-list.component';
+import { ProvinceCreateComponent } from './province/province-create/province-create.component';
+import { ProvinceUpdateComponent } from './province/province-update/province-update.component';
+import { DistrictListComponent } from './district/district-list/district-list.component';
+import { DistrictCreateComponent } from './district/district-create/district-create.component';
+import { DistrictUpdateComponent } from './district/district-update/district-update.component';
+import { ApplyWorkComponent } from './apply-work/apply-work.component';
+import { BannerAdvertisingListComponent } from './banner-advertising/banner-advertising-list/banner-advertising-list.component';
+import { BannerAdvertisingCreateComponent } from './banner-advertising/banner-advertising-create/banner-advertising-create.component';
+import { BannerAdvertisingUpdateComponent } from './banner-advertising/banner-advertising-update/banner-advertising-update.component';
+import { ProductOrderComponent } from './product/product-order/product-order.component';
+import { AboutStructureCreateComponent } from './about-structure/about-structure-create/about-structure-create.component';
+import { AboutStructureListComponent } from './about-structure/about-structure-list/about-structure-list.component';
+import { AboutStructureUpdateComponent } from './about-structure/about-structure-update/about-structure-update.component';
+
+// AoT requires an exported function for factories
+// export function HttpLoaderFactory(http: HttpClient) {
+//   return new TranslateHttpLoader(http);
+// }
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http);
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json?v=' + Date.now());
 }
 
 @NgModule({
@@ -156,6 +178,23 @@ export function HttpLoaderFactory(http: HttpClient) {
     ProductCategoryListComponent,
     ProductCategoryUpdateComponent,
     ProductCategoryCreateComponent,
+    VillageListComponent,
+    VillageCreateComponent,
+    VillageUpdateComponent,
+    ProvinceListComponent,
+    ProvinceCreateComponent,
+    ProvinceUpdateComponent,
+    DistrictListComponent,
+    DistrictCreateComponent,
+    DistrictUpdateComponent,
+    ApplyWorkComponent,
+    BannerAdvertisingListComponent,
+    BannerAdvertisingCreateComponent,
+    BannerAdvertisingUpdateComponent,
+    ProductOrderComponent,
+    AboutStructureCreateComponent,
+    AboutStructureListComponent,
+    AboutStructureUpdateComponent,
 
   ],
   imports: [

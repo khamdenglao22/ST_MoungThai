@@ -26,6 +26,7 @@ export class ProductCategorySubCreateComponent implements OnInit {
     name_la: new FormControl('', [Validators.required]),
     name_en: new FormControl('', [Validators.required]),
     p_cate_id: new FormControl('', [Validators.required]),
+    p_cate_sub_position: new FormControl('', [Validators.required]),
   });
 
   ngOnInit(): void {

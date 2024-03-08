@@ -30,5 +30,7 @@ export class ProductCategoryService {
     return this.httpClient.delete(`${this.url}/backoffice/api/product-category/${cate_id}`)
   }
 
+  
+
 
 }

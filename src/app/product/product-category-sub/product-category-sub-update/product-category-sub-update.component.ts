@@ -30,6 +30,7 @@ export class ProductCategorySubUpdateComponent implements OnInit {
     name_la: new FormControl('', [Validators.required]),
     name_en: new FormControl('', [Validators.required]),
     p_cate_id: new FormControl('', [Validators.required]),
+    p_cate_sub_position: new FormControl('', [Validators.required]),
   });
 
   ngOnInit(): void {
@@ -44,6 +45,7 @@ export class ProductCategorySubUpdateComponent implements OnInit {
           this.form.controls['name_la'].setValue(response.data.name_la);
           this.form.controls['name_en'].setValue(response.data.name_en);
           this.form.controls['p_cate_id'].setValue(response.data.p_cate_id);
+          this.form.controls['p_cate_sub_position'].setValue(response.data.p_cate_sub_position);
           this.loading = false;
         },
         (err: any) => {

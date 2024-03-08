@@ -1,0 +1,27 @@
+.box {
+  width: 60%;
+  margin-bottom: 30px;
+  position: relative;
+  padding: 0;
+}
+
+.mat-form-field-invalid {
+  margin-bottom: 20px;
+
+  mat-hint {
+    line-height: 2;
+  }
+}
+
+mat-label {
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+.mat-radio-button~.mat-radio-button {
+  margin-left: 16px;
+}
+
+mat-icon {
+    line-height: 1.3;
+}

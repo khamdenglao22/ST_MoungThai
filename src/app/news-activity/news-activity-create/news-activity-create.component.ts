@@ -40,7 +40,7 @@ editorConfig: AngularEditorConfig = {
       translate: 'yes',
       enableToolbar: true,
       showToolbar: true,
-      placeholder: 'Enter text here...',
+      placeholder: '',
       defaultParagraphSeparator: '',
       defaultFontName: '',
       defaultFontSize: '',

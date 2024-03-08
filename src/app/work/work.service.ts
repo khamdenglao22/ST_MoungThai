@@ -14,6 +14,7 @@ export class WorkService {
     return this.httpClient.get(`${this.url}/backoffice/api/work`)
   }
 
+
   findWorkById(work_id:number | null){
     return this.httpClient.get(`${this.url}/backoffice/api/work/${work_id}`)
   }
@@ -24,5 +25,14 @@ export class WorkService {
 
   updateWork(data:any,work_id:number | null){
     return this.httpClient.put(`${this.url}/backoffice/api/work/${work_id}`,data)
+  }
+
+
+  findAllApplyWork(){
+    return this.httpClient.get(`${this.url}/backoffice/api/apply-work`)
+  }
+
+  deleteWorkById(work_id:number | null){
+    return this.httpClient.delete(`${this.url}/backoffice/api/work/${work_id}`)
   }
 }

@@ -30,4 +30,8 @@ export class ProductCategorySubService {
     return this.httpClient.delete(`${this.url}/backoffice/api/product-category-sub/${sub_id}`);
   }
 
+  findAllSubCategoryOnChange(cate_id:number | null){
+    return this.httpClient.get(`${this.url}/backoffice/api/product-category-sub/onChange/${cate_id}`);
+  }
+
 }

@@ -8,6 +8,7 @@ import { AppService } from 'src/app/app.service';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ProvinceService } from 'src/app/province/province.service';
 
 @Component({
   selector: 'app-service-location-update',
@@ -36,7 +37,8 @@ export class ServiceLocationUpdateComponent implements OnInit {
     private appService: AppService,
     private router: Router,
     private _snackBar: MatSnackBar,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private serviceProvince: ProvinceService
   ) {}
 
   form = new FormGroup({
@@ -122,13 +124,10 @@ export class ServiceLocationUpdateComponent implements OnInit {
 
   onSectionChange() {
     this.service_section = [];
-    const service_country_id = this.form.get('service_country_id')?.value;
+    let service_country_id = this.form.get('service_country_id')?.value;
     if (service_country_id == 4) {
       this.isThai = true;
       this.isLao = false;
-      this.form.get('dist_cd')?.setValue(null);
-      this.form.get('prov_cd')?.setValue(null);
-      this.form.get('vill_cd')?.setValue(null);
       // console.log("isThai",this.isThai)
     } else {
       this.isThai = false;
@@ -139,6 +138,17 @@ export class ServiceLocationUpdateComponent implements OnInit {
       .findAllSectionOnChange(service_country_id)
       .subscribe((res: any) => {
         this.service_section = res.data;
+      });
+
+    if (service_country_id == 6) {
+      service_country_id = 5;
+    }
+
+    this.provinces = [];
+    this.serviceProvince
+      .findAllProvinceByCountry(service_country_id)
+      .subscribe((res: any) => {
+        this.provinces = res.data;
       });
   }
 

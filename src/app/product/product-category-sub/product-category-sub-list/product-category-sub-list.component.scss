@@ -1,4 +1,11 @@
-.mat-column-edit{
+.mat-column-p_cate_sub_position{
   flex: 0 0 120px;
   justify-content: center;
 }
+
+.mat-column-edit,
+.mat-column-delete{
+  flex: 0 0 80px;
+  justify-content: end;
+}
+
