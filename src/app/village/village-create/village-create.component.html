@@ -1,0 +1,69 @@
+<form (submit)="submit()" [formGroup]="form">
+  <div class="box">
+    <div *ngIf="loading" class="loading-box">
+      <mat-spinner></mat-spinner>
+    </div>
+    <div style="padding: 1rem">
+      <h2 class="la-font box-title">{{ "ເພີ່ມບ້ານ" | translate }}</h2>
+
+      <mat-form-field appearance="outline">
+        <mat-label class="la-font">{{
+          "ທີ່ໃຫ້ບໍລີການ" | translate
+          }}</mat-label>
+        <mat-select class="la-font" formControlName="country_id" (selectionChange)="onChangeProvinceByCountry()">
+          <mat-option *ngFor="let type of dataCountry" [value]="type.id">
+            {{ type.country_name_la }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label class="la-font">{{
+          "ແຂວງ" | translate
+          }}</mat-label>
+        <mat-select class="la-font" formControlName="prov_cd" (selectionChange)="onDistrictChange()">
+          <mat-option *ngFor="let type of dataProvince" [value]="type.prov_cd">
+            {{ type.prov_name_la }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label class="la-font">{{
+          "ເມືອງ" | translate
+          }}</mat-label>
+        <mat-select class="la-font" formControlName="dist_cd">
+          <mat-option *ngFor="let item of dataDistrict" [value]="item.dist_cd">
+            {{ item.dist_name_la }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+      <mat-form-field appearance="outline">
+        <mat-label class="la-font">{{
+          "ບ້ານ (ລາວ)" | translate
+          }}</mat-label>
+        <input matInput formControlName="vill_name_la" class="la-font" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label class="la-font">{{
+          "ບ້ານ (ອັງກິດ)" | translate
+          }}</mat-label>
+        <input matInput formControlName="vill_name_en" class="la-font" />
+      </mat-form-field>
+
+      <div style="margin: 40px 0 10px">
+        <a mat-stroked-button class="la-font" [routerLink]="baseUrl + '/village'">
+          <mat-icon style="font-size: 16px">keyboard_backspace</mat-icon>
+          {{ "ຍົກເລີກ" | translate }}
+        </a>
+        <button mat-flat-button color="primary" class="la-font my-btn" style="margin-left: 10px">
+          <mat-icon style="font-size: 16px">save</mat-icon>
+          {{ "ບັນທຶກ" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

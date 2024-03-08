@@ -12,7 +12,7 @@ import { WorkService } from '../work.service';
 export class WorkListComponent implements OnInit {
   baseUrl = environment.baseUrl != '' ? '/' + environment.baseUrl : '';
   works: Array<any> = [];
-  displayedColumns = ['depart_name_la', 'depart_name_en','position_name_la','position_name_en','province','amount', 'edit'];
+  displayedColumns = ['image', 'depart_name_la', 'depart_name_en','position_name_la','position_name_en','province','amount', 'edit','delete'];
   loading = false;
   dataSource: MatTableDataSource<any> = new MatTableDataSource();
 
@@ -27,9 +27,15 @@ export class WorkListComponent implements OnInit {
   loadData() {
     this.service.findAllWork().subscribe((res: any) => {
       this.works = res.data;
-      console.log(res.data)
+      // console.log(res.data)
       this.dataSource = new MatTableDataSource(this.works);
       this.dataSource.paginator = this.paginator;
     });
+  }
+
+  deleteWork(id:number | null){
+    this.service.deleteWorkById(id).subscribe((res:any) => {
+      this.loadData();
+    })
   }
 }

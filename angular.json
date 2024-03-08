@@ -6,7 +6,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "sokxay_frontend": {
+    "STFrontend": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,7 +23,8 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/sokxay_frontend",
+            "localize": false,
+            "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -83,10 +84,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "sokxay_frontend:build:production"
+              "browserTarget": "STFrontend:build:production"
             },
             "development": {
-              "browserTarget": "sokxay_frontend:build:development"
+              "browserTarget": "STFrontend:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -94,7 +95,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "sokxay_frontend:build"
+            "browserTarget": "STFrontend:build"
           }
         },
         "test": {
@@ -119,7 +120,7 @@
       }
     }
   },
-  "defaultProject": "sokxay_frontend",
+  "defaultProject": "STFrontend",
   "cli": {
     "analytics": "5e9ffb7f-643b-4618-94bb-6f27283555a0"
   }

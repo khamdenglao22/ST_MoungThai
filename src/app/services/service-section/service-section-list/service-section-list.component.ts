@@ -13,7 +13,7 @@ export class ServiceSectionListComponent implements OnInit {
 
   baseUrl = environment.baseUrl != '' ? '/' + environment.baseUrl : '';
   dataType: Array<any> = [];
-  displayedColumns = ['section_name_la', 'section_name_en', 'edit'];
+  displayedColumns = ['section_name_la', 'section_name_en','position', 'edit'];
   loading = false;
   dataSource: MatTableDataSource<any> = new MatTableDataSource();
 

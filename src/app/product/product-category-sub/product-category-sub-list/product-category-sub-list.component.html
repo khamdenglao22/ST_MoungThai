@@ -51,6 +51,15 @@
       </mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="p_cate_sub_position">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ລຳດັບການສະແດງ" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <span class="la-font">{{ element.p_cate_sub_position }}</span>
+      </mat-cell>
+    </ng-container>
+
     <ng-container matColumnDef="edit">
       <mat-header-cell *matHeaderCellDef>
         <span class="la-font">{{ "ແກ້ໄຂ" | translate }}</span>
@@ -63,6 +72,15 @@
           [routerLink]="[baseUrl + '/product-category-sub/update', element.id]"
         >
           <mat-icon>edit</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <mat-header-cell *matHeaderCellDef> <span class="la-font">{{ "ລຶບ" | translate }}</span> </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button mat-icon-button color="primary" class="button-edit" (click)="deleteProduct(element.id)">
+          <mat-icon>delete</mat-icon>
         </button>
       </mat-cell>
     </ng-container>

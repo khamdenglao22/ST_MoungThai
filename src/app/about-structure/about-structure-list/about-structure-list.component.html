@@ -1,0 +1,120 @@
+<div class="_box box-toolbar">
+  <button
+    mat-flat-button
+    color="primary"
+    class="la-font my-btn"
+    [routerLink]="baseUrl + '/about-structure/create'"
+  >
+    <mat-icon>add</mat-icon>
+    {{ "ເພີ່ມ" | translate }}
+  </button>
+</div>
+<div class="_box box" style="margin-bottom: 50px">
+  <div class="loading-box" *ngIf="loading">
+    <mat-spinner></mat-spinner>
+  </div>
+  <mat-table [dataSource]="dataSource" *ngIf="!loading">
+    <ng-container matColumnDef="image">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ຮູບພາບ" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <img [src]="element.image" width="150" height="80">
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="full_name_la">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ຊື່ ແລະ ນາມສະກຸນ (ລາວ)" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <span class="la-font">{{ element.full_name_la }}</span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="full_name_en">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ຊື່ ແລະ ນາມສະກຸນ (ອັງກິດ)" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <span class="la-font">{{ element.full_name_en }}</span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="position_la">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ຕຳແໜ່ງ (ລາວ)" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <span class="la-font">{{ element.position_la }}</span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="position_en">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ຕຳແໜ່ງ (ອັງກິດ)" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <span class="la-font">{{ element.position_en }}</span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="responsible_la">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ໜ້າທີ່ຮັບຜິດຊອບ (ລາວ)" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <span class="la-font">{{ element.responsible_la }}</span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="responsible_en">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ໜ້າທີ່ຮັບຜິດຊອບ (ອັງກິດ)" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <span class="la-font">{{ element.responsible_en }}</span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="structure_order">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ລຳດັບການສະແດງ" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <span class="la-font">{{ element.structure_order }}</span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ແກ້ໄຂ" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button
+          mat-icon-button
+          color="primary"
+          class="button-edit"
+          [routerLink]="[baseUrl + '/about-structure/update', element.id]"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="delete">
+      <mat-header-cell *matHeaderCellDef> <span class="la-font">{{ "ລຶບ" | translate }}</span> </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button mat-icon-button color="primary" class="button-edit" (click)="deleteStructure(element.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+  <mat-paginator
+    [pageSize]="50"
+    [length]="data.length"
+    aria-label="Select page"
+  ></mat-paginator>
+</div>

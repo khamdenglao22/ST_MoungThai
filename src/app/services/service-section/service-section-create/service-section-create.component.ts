@@ -26,6 +26,7 @@ export class ServiceSectionCreateComponent implements OnInit {
   form = new FormGroup({
     section_name_la: new FormControl('', [Validators.required]),
     section_name_en: new FormControl('', [Validators.required]),
+    section_position: new FormControl('', [Validators.required]),
   });
 
   ngOnInit(): void {

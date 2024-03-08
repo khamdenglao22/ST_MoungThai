@@ -33,6 +33,15 @@
       </mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="position">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ລຳດັບການສະແດງ" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <span class="la-font">{{ element.section_position }}</span>
+      </mat-cell>
+    </ng-container>
+
     <ng-container matColumnDef="edit">
       <mat-header-cell *matHeaderCellDef>
         <span class="la-font">{{ "ແກ້ໄຂ" | translate }}</span>

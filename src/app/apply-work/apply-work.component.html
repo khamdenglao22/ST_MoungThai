@@ -1,0 +1,97 @@
+<!-- <div class="_box box-toolbar">
+  <button
+    mat-flat-button
+    color="primary"
+    class="la-font my-btn"
+    [routerLink]="baseUrl + '/work/create'"
+  >
+    <mat-icon>add</mat-icon>
+    {{ "ເພີ່ມ" | translate }}
+  </button>
+</div> -->
+<div class="_box box" style="margin-bottom: 50px">
+  <div class="loading-box" *ngIf="loading">
+    <mat-spinner></mat-spinner>
+  </div>
+  <mat-table [dataSource]="dataSource" *ngIf="!loading">
+
+    <ng-container matColumnDef="full_name">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ຊື່ ແລະ ນາມສະກຸນ" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <span class="la-font">{{ element.full_name }}</span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ອີເມວ" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <span class="la-font">{{ element.email }}</span>
+      </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="depart_name_la">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ພະແນກ (ລາວ)" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <span class="la-font">{{ element.Work.depart_name_la }}</span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="depart_name_en">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ພະແນກ (ອັງກິດ)" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <span class="la-font">{{ element.Work.depart_name_en }}</span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="position_name_la">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ຕຳແໜ່ງ (ລາວ)" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <span class="la-font">{{ element.Work.position_name_la }}</span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="position_name_en">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ຕຳແໜ່ງ (ອັງກິດ)" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <span class="la-font">{{ element.Work.position_name_en }}</span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="phone">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ເບີໂທ" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <span class="la-font">{{ element.phone }}</span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="file_name">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "file" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button mat-raised-button color="accent" (click)="openFile(element.file_name)">
+          ເປີດໄຟ໌
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+  <mat-paginator [pageSize]="50" [length]="applyWorks.length" aria-label="Select page"></mat-paginator>
+</div>

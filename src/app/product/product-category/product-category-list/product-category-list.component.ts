@@ -9,7 +9,7 @@ import { ProductCategoryService } from '../product-category.service';
 })
 export class ProductCategoryListComponent implements OnInit {
   baseUrl = environment.baseUrl != '' ? '/' + environment.baseUrl : '';
-  displayedColumns = ['product_cate_la', 'product_cate_en', 'edit'];
+  displayedColumns = ['product_cate_la', 'product_cate_en', 'edit','delete'];
   loading = false;
 
 
@@ -19,8 +19,18 @@ export class ProductCategoryListComponent implements OnInit {
   constructor(private service : ProductCategoryService) { }
 
   ngOnInit(): void {
+    this.loadData();
+  }
+
+  loadData(){
     this.service.findAllCategory().subscribe((res:any) => {
       this.dataProductCate = res.data;
+    })
+  }
+  deleteProductCategory(id:number | null){
+    this.service.deleteCategory(id).subscribe((res:any) => {
+      alert(res.msg)
+      this.loadData();
     })
   }
 

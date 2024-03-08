@@ -17,6 +17,8 @@ export class WorkCreateComponent implements OnInit {
   baseUrl = environment.baseUrl != '' ? '/' + environment.baseUrl : '';
   provinces:any;
   loading = false;
+  image:any;
+
   @ViewChild('autosize') autosize: CdkTextareaAutosize;
 
   constructor(
@@ -34,7 +36,7 @@ export class WorkCreateComponent implements OnInit {
     amount: new FormControl('', [Validators.required]),
     prov_cd:new FormControl('', [Validators.required]),
   });
-  
+
 
   ngOnInit(): void {
     this.loadProvince();
@@ -47,6 +49,10 @@ export class WorkCreateComponent implements OnInit {
     });
   }
 
+  onChange(event: any) {
+    this.image = event.target.files[0];
+  }
+
   submit() {
     this.loading = true;
 
@@ -55,7 +61,16 @@ export class WorkCreateComponent implements OnInit {
       return;
     }
 
-    this.service.createWork(this.form.value).subscribe(
+    let formData = new FormData();
+    formData.append('position_name_la', this.form.value.position_name_la);
+    formData.append('position_name_en', this.form.value.position_name_en);
+    formData.append('depart_name_la', this.form.value.depart_name_la);
+    formData.append('depart_name_en', this.form.value.depart_name_en);
+    formData.append('amount', this.form.value.amount);
+    formData.append('prov_cd', this.form.value.prov_cd);
+    formData.append('image', this.image);
+
+    this.service.createWork(formData).subscribe(
       (response: any) => {
         this.router.navigate([this.baseUrl + '/work']);
         this.loading = false;

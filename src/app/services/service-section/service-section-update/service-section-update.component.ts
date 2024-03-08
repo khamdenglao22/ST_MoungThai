@@ -28,6 +28,7 @@ export class ServiceSectionUpdateComponent implements OnInit {
   form = new FormGroup({
     section_name_la: new FormControl('', [Validators.required]),
     section_name_en: new FormControl('', [Validators.required]),
+    section_position: new FormControl('', [Validators.required]),
   });
 
   ngOnInit(): void {
@@ -38,6 +39,7 @@ export class ServiceSectionUpdateComponent implements OnInit {
         (response: any) => {
           this.form.controls['section_name_la'].setValue(response.data.section_name_la);
           this.form.controls['section_name_en'].setValue(response.data.section_name_en);
+          this.form.controls['section_position'].setValue(response.data.section_position);
           this.loading = false;
         },
         (err: any) => {

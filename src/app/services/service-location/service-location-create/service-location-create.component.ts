@@ -8,6 +8,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ServiceCountryService } from '../../service-country/service-country.service';
 import { ServiceSectionService } from '../../service-section/service-section.service';
+import { ProvinceService } from 'src/app/province/province.service';
 
 @Component({
   selector: 'app-service-location-create',
@@ -33,7 +34,8 @@ export class ServiceLocationCreateComponent implements OnInit {
     private serviceSection: ServiceSectionService,
     private appService: AppService,
     private router: Router,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private serviceProvince: ProvinceService
   ) {}
 
   form = new FormGroup({
@@ -79,9 +81,7 @@ export class ServiceLocationCreateComponent implements OnInit {
 
   onSectionChange() {
     this.service_section = [];
-    const service_country_id = this.form.get('service_country_id')?.value;
-
-    console.log(service_country_id);
+    let service_country_id = this.form.get('service_country_id')?.value;
 
     if (service_country_id == 4) {
       this.isThai = true;
@@ -97,6 +97,18 @@ export class ServiceLocationCreateComponent implements OnInit {
       .findAllSectionOnChange(service_country_id)
       .subscribe((res: any) => {
         this.service_section = res.data;
+      });
+
+    if (service_country_id == 6) {
+      service_country_id = 5;
+    }
+
+    this.provinces = [];
+    this.serviceProvince
+      .findAllProvinceByCountry(service_country_id)
+      .subscribe((res: any) => {
+        this.provinces = res.data;
+        // console.log(res.data)
       });
   }
 

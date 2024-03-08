@@ -37,7 +37,7 @@ export class NewsActivityListComponent implements OnInit {
   loadData() {
     this.service.findAllNews().subscribe((res: any) => {
       this.dataNews = res.dataAll;
-      console.log(res.dataAll)
+      // console.log(res.dataAll)
       this.dataSource = new MatTableDataSource(this.dataNews);
       this.dataSource.paginator = this.paginator;
     });

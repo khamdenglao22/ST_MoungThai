@@ -52,6 +52,15 @@
         <input matInput formControlName="amount" class="la-font" />
       </mat-form-field>
 
+      <div style="display: flex;">
+        <div style="margin-right: 5px;flex: 1">
+          <div style="margin-bottom: 10px">
+            <label for="" class="la-font"><strong>{{ "ຮູບພາບ" | translate }}</strong></label>
+          </div>
+          <input type="file" class="my-input" (change)="onChange($event)">
+        </div>
+      </div>
+
       <div style="margin: 40px 0 10px">
         <a mat-stroked-button class="la-font" [routerLink]="baseUrl + '/work'">
           <mat-icon style="font-size: 16px">keyboard_backspace</mat-icon>

@@ -8,6 +8,7 @@ import { ServiceCountryService } from '../../service-country/service-country.ser
 import { ServiceSectionService } from '../../service-section/service-section.service';
 import { environment } from 'src/environments/environment';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ProvinceService } from 'src/app/province/province.service';
 
 @Component({
   selector: 'app-service-location-map-update',
@@ -37,7 +38,8 @@ export class ServiceLocationMapUpdateComponent implements OnInit {
     private appService: AppService,
     private router: Router,
     private _snackBar: MatSnackBar,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private serviceProvince: ProvinceService
   ) {}
 
   form = new FormGroup({
@@ -84,7 +86,7 @@ export class ServiceLocationMapUpdateComponent implements OnInit {
       );
     });
 
-    this.loadProvince();
+    // this.loadProvince();
     this.loadServiceType();
   }
 
@@ -98,11 +100,11 @@ export class ServiceLocationMapUpdateComponent implements OnInit {
     });
   }
 
-  loadProvince() {
-    this.appService.findAllProvince().subscribe((res: any) => {
-      this.provinces = res.data;
-    });
-  }
+  // loadProvince() {
+  //   this.appService.findAllProvince().subscribe((res: any) => {
+  //     this.provinces = res.data;
+  //   });
+  // }
 
   onCountryChange() {
     this.service_country = [];
@@ -117,7 +119,7 @@ export class ServiceLocationMapUpdateComponent implements OnInit {
 
   onSectionChange() {
     this.service_section = [];
-    const service_country_id = this.form.get('service_country_id')?.value;
+    let service_country_id = this.form.get('service_country_id')?.value;
 
     if (service_country_id == 4) {
       this.isThai = true;
@@ -136,6 +138,18 @@ export class ServiceLocationMapUpdateComponent implements OnInit {
       .subscribe((res: any) => {
         this.service_section = res.data;
       });
+
+      if (service_country_id == 6) {
+        service_country_id = 5;
+      }
+
+      this.provinces = [];
+      this.serviceProvince
+        .findAllProvinceByCountry(service_country_id)
+        .subscribe((res: any) => {
+          this.provinces = res.data;
+          // console.log(res.data)
+        });
   }
 
   submit() {

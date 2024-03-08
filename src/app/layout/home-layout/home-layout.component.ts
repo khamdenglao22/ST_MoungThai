@@ -28,6 +28,8 @@ export class HomeLayoutComponent implements OnInit {
   showDropdownPromotion = false;
   showDropdownUser = false;
   showDropdownProductMenu = false;
+  showDropdownProvince = false;
+  showDropdownWork = false;
   conversation: any;
   messages: Array<any> = [];
   messageToSend = '';
