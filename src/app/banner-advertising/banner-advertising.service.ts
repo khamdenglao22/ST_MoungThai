@@ -12,22 +12,22 @@ export class BannerAdvertisingService {
   constructor(private httpClient: HttpClient) { }
 
   findAllBannerAdvertising(){
-    return this.httpClient.get(`${this.url}/backoffice/api/banner-advertising`)
+    return this.httpClient.get(`${this.url}/bof/api/banner-advertising`)
   }
 
   findAllBannerAdvertisingById(banner_id: number | null){
-    return this.httpClient.get(`${this.url}/backoffice/api/banner-advertising/${banner_id}`)
+    return this.httpClient.get(`${this.url}/bof/api/banner-advertising/${banner_id}`)
   }
 
   createNewBannerAdvertising(data:any){
-    return this.httpClient.post(`${this.url}/backoffice/api/banner-advertising`,data)
+    return this.httpClient.post(`${this.url}/bof/api/banner-advertising`,data)
   }
 
   updateBannerAdvertising(data:any,banner_id:number | null){
-    return this.httpClient.put(`${this.url}/backoffice/api/banner-advertising/${banner_id}`,data)
+    return this.httpClient.put(`${this.url}/bof/api/banner-advertising/${banner_id}`,data)
   }
 
   updateBannerAdvertisingActive(data:any,banner_id:number | null){
-    return this.httpClient.put(`${this.url}/backoffice/api/banner-advertising/update-active/${banner_id}`,data)
+    return this.httpClient.put(`${this.url}/bof/api/banner-advertising/update-active/${banner_id}`,data)
   }
 }

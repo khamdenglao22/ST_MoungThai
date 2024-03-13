@@ -11,22 +11,22 @@ export class ServiceCountryService {
   constructor(private httpClient: HttpClient) { }
 
   findAllServiceCountry(){
-    return this.httpClient.get(`${this.url}/backoffice/api/service-country`)
+    return this.httpClient.get(`${this.url}/bof/api/service-country`)
   }
 
   findAllServiceCountryOnChange(service_type_id:number | null){
-    return this.httpClient.get(`${this.url}/backoffice/api/service-country?service_type_id=${service_type_id}`)
+    return this.httpClient.get(`${this.url}/bof/api/service-country?service_type_id=${service_type_id}`)
   }
 
   findServiceCountryById(country_id:number | null){
-    return this.httpClient.get(`${this.url}/backoffice/api/service-country/${country_id}`)
+    return this.httpClient.get(`${this.url}/bof/api/service-country/${country_id}`)
   }
 
   createServiceCountry(data:any){
-    return this.httpClient.post(`${this.url}/backoffice/api/service-country`,data)
+    return this.httpClient.post(`${this.url}/bof/api/service-country`,data)
   }
 
   updateServiceCountry(data:any,country_id:number | null){
-    return this.httpClient.put(`${this.url}/backoffice/api/service-country/${country_id}`,data)
+    return this.httpClient.put(`${this.url}/bof/api/service-country/${country_id}`,data)
   }
 }

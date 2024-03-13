@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   // apiUrl: 'http://19.168.1.22:8000',
   // apiUrl: "http://141.164.110.54:8000",
-  apiUrl: 'http://localhost:8888',
+  apiUrl: 'http://34.92.144.38',
   baseUrl: '',
   phetsarathUrl: '',
 };

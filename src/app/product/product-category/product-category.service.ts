@@ -11,26 +11,26 @@ export class ProductCategoryService {
   constructor(private httpClient : HttpClient) { }
 
   findAllCategory(){
-    return this.httpClient.get(`${this.url}/backoffice/api/product-category`)
+    return this.httpClient.get(`${this.url}/bof/api/product-category`)
   }
 
   findCategoryById(cate_id:number | null){
-    return this.httpClient.get(`${this.url}/backoffice/api/product-category/${cate_id}`)
+    return this.httpClient.get(`${this.url}/bof/api/product-category/${cate_id}`)
   }
 
   createCategory(data:any) {
-    return this.httpClient.post(`${this.url}/backoffice/api/product-category`,data)
+    return this.httpClient.post(`${this.url}/bof/api/product-category`,data)
   }
 
   updateCategory(data:any,cate_id:number | null){
-    return this.httpClient.put(`${this.url}/backoffice/api/product-category/${cate_id}`,data)
+    return this.httpClient.put(`${this.url}/bof/api/product-category/${cate_id}`,data)
   }
 
   deleteCategory(cate_id:number | null){
-    return this.httpClient.delete(`${this.url}/backoffice/api/product-category/${cate_id}`)
+    return this.httpClient.delete(`${this.url}/bof/api/product-category/${cate_id}`)
   }
 
-  
+
 
 
 }

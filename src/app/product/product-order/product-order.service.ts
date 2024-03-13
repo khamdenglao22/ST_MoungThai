@@ -11,6 +11,6 @@ export class ProductOrderService {
   constructor(private httpClient : HttpClient) { }
 
   findAllProductOrder(){
-    return this.httpClient.get(`${this.url}/backoffice/api/product-order`)
+    return this.httpClient.get(`${this.url}/bof/api/product-order`)
   }
 }

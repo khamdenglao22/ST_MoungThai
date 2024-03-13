@@ -12,27 +12,27 @@ export class UserService {
   constructor(private httpClient: HttpClient) { }
 
   findAllUser() {
-    return this.httpClient.get(`${this.url}/backoffice/api/user`)
+    return this.httpClient.get(`${this.url}/bof/api/user`)
   }
 
   findUserByIdOrUsername(data: string | number) {
-    return this.httpClient.get(`${this.url}/backoffice/api/user/${data}`)
+    return this.httpClient.get(`${this.url}/bof/api/user/${data}`)
   }
 
   createUser(data: any) {
-    return this.httpClient.post(`${this.url}/backoffice/api/user`, data)
+    return this.httpClient.post(`${this.url}/bof/api/user`, data)
   }
 
   updateUser(userId: number | null, data: any) {
-    return this.httpClient.put(`${this.url}/backoffice/api/user/${userId}`, data)
+    return this.httpClient.put(`${this.url}/bof/api/user/${userId}`, data)
   }
 
   changePassword(userId: number | null, data: any) {
-    return this.httpClient.put(`${this.url}/backoffice/api/user/change-password/${userId}`, data)
+    return this.httpClient.put(`${this.url}/bof/api/user/change-password/${userId}`, data)
   }
 
   deleteUser(userId: number) {
-    return this.httpClient.delete(`${this.url}/backoffice/api/user/${userId}`)
+    return this.httpClient.delete(`${this.url}/bof/api/user/${userId}`)
   }
 
 }

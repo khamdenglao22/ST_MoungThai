@@ -11,23 +11,18 @@ export class BannerService {
   constructor(private httpClient: HttpClient) {}
 
   findAllBanner() {
-    return this.httpClient.get(`${this.url}/backoffice/api/banner`);
+    return this.httpClient.get(`${this.url}/bof/api/banner`);
   }
 
   findAllBannerById(banner_id: number | null) {
-    return this.httpClient.get(
-      `${this.url}/backoffice/api/banner/${banner_id}`
-    );
+    return this.httpClient.get(`${this.url}/bof/api/banner/${banner_id}`);
   }
 
   createNewBanner(data: any) {
-    return this.httpClient.post(`${this.url}/backoffice/api/banner`, data);
+    return this.httpClient.post(`${this.url}/bof/api/banner`, data);
   }
 
   updateBanner(data: any, banner_id: number | null) {
-    return this.httpClient.put(
-      `${this.url}/backoffice/api/banner/${banner_id}`,
-      data
-    );
+    return this.httpClient.put(`${this.url}/bof/api/banner/${banner_id}`, data);
   }
 }

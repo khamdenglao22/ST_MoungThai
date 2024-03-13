@@ -10,23 +10,23 @@ export class ProvinceService {
   constructor(private httpClient: HttpClient) { }
 
   findAllProvince(){
-    return this.httpClient.get(`${this.url}/backoffice/api/province`)
+    return this.httpClient.get(`${this.url}/bof/api/province`)
   }
 
   findProvinceById(prov_cd:any){
-    return this.httpClient.get(`${this.url}/backoffice/api/province/${prov_cd}`)
+    return this.httpClient.get(`${this.url}/bof/api/province/${prov_cd}`)
   }
 
   findAllProvinceByCountry(country_id: number | null){
-    return this.httpClient.get(`${this.url}/backoffice/api/province?country_id=${country_id}`)
+    return this.httpClient.get(`${this.url}/bof/api/province?country_id=${country_id}`)
   }
 
   createProvince(data:any){
-    return this.httpClient.post(`${this.url}/backoffice/api/province`,data)
+    return this.httpClient.post(`${this.url}/bof/api/province`,data)
   }
 
   updateProvince(data:any,prov_cd:any){
-    return this.httpClient.put(`${this.url}/backoffice/api/province/${prov_cd}`,data)
+    return this.httpClient.put(`${this.url}/bof/api/province/${prov_cd}`,data)
   }
 
 }

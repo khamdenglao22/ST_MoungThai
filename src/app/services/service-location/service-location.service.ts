@@ -13,19 +13,19 @@ export class ServiceLocationService {
 
 
   findAllLocation(){
-    return this.httpClient.get(`${this.url}/backoffice/api/service-location`)
+    return this.httpClient.get(`${this.url}/bof/api/service-location`)
   }
 
   findLocationById(service_location_id:number | null){
-    return this.httpClient.get(`${this.url}/backoffice/api/service-location/${service_location_id}`)
+    return this.httpClient.get(`${this.url}/bof/api/service-location/${service_location_id}`)
   }
 
   createLocation(data:any){
-    return this.httpClient.post(`${this.url}/backoffice/api/service-location`,data)
+    return this.httpClient.post(`${this.url}/bof/api/service-location`,data)
   }
 
   updateLocation(data:any, service_location_id:number|null){
-    return this.httpClient.put(`${this.url}/backoffice/api/service-location/${service_location_id}`,data)
+    return this.httpClient.put(`${this.url}/bof/api/service-location/${service_location_id}`,data)
   }
 
 }
