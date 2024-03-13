@@ -10,22 +10,22 @@ export class ServiceSectionService {
   constructor(private httpClient: HttpClient) { }
 
   findAllSection(){
-    return this.httpClient.get(`${this.url}/backoffice/api/service-section`)
+    return this.httpClient.get(`${this.url}/bof/api/service-section`)
   }
 
   findAllSectionOnChange(service_country_id:number | null){
-    return this.httpClient.get(`${this.url}/backoffice/api/service-section?service_country_id=${service_country_id}`)
+    return this.httpClient.get(`${this.url}/bof/api/service-section?service_country_id=${service_country_id}`)
   }
 
   findSectionById(service_section_id:number|null){
-    return this.httpClient.get(`${this.url}/backoffice/api/service-section/${service_section_id}`)
+    return this.httpClient.get(`${this.url}/bof/api/service-section/${service_section_id}`)
   }
 
   createSection(data:any){
-    return this.httpClient.post(`${this.url}/backoffice/api/service-section`,data)
+    return this.httpClient.post(`${this.url}/bof/api/service-section`,data)
   }
 
   updateSection(data:any, service_section_id:number|null){
-    return this.httpClient.put(`${this.url}/backoffice/api/service-section/${service_section_id}`,data)
+    return this.httpClient.put(`${this.url}/bof/api/service-section/${service_section_id}`,data)
   }
 }

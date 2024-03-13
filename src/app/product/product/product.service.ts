@@ -11,22 +11,22 @@ export class ProductService {
   constructor(private httpClient : HttpClient) { }
 
   findAllProduct(){
-    return this.httpClient.get(`${this.url}/backoffice/api/product`)
+    return this.httpClient.get(`${this.url}/bof/api/product`)
   }
 
   findProductById(p_id:number | null){
-    return this.httpClient.get(`${this.url}/backoffice/api/product/${p_id}`)
+    return this.httpClient.get(`${this.url}/bof/api/product/${p_id}`)
   }
 
   createProduct(data:any) {
-    return this.httpClient.post(`${this.url}/backoffice/api/product`,data)
+    return this.httpClient.post(`${this.url}/bof/api/product`,data)
   }
 
   updateProduct(data:any,p_id:number | null){
-    return this.httpClient.put(`${this.url}/backoffice/api/product/${p_id}`,data)
+    return this.httpClient.put(`${this.url}/bof/api/product/${p_id}`,data)
   }
 
   deleteProduct(p_id:number | null){
-    return this.httpClient.delete(`${this.url}/backoffice/api/product/${p_id}`)
+    return this.httpClient.delete(`${this.url}/bof/api/product/${p_id}`)
   }
 }

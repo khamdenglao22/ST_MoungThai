@@ -10,18 +10,18 @@ export class DistrictService {
   constructor(private httpClient: HttpClient) { }
 
   findAllDistrict(){
-    return this.httpClient.get(`${this.url}/backoffice/api/district`)
+    return this.httpClient.get(`${this.url}/bof/api/district`)
   }
 
   findDistrictById(dist_cd:any){
-    return this.httpClient.get(`${this.url}/backoffice/api/district/${dist_cd}`)
+    return this.httpClient.get(`${this.url}/bof/api/district/${dist_cd}`)
   }
 
   createDistrict(data:any){
-    return this.httpClient.post(`${this.url}/backoffice/api/district`,data)
+    return this.httpClient.post(`${this.url}/bof/api/district`,data)
   }
 
   updateDistrict(data:any,dist_cd:any){
-    return this.httpClient.put(`${this.url}/backoffice/api/district/${dist_cd}`,data)
+    return this.httpClient.put(`${this.url}/bof/api/district/${dist_cd}`,data)
   }
 }

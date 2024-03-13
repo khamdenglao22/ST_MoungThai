@@ -11,28 +11,28 @@ export class WorkService {
   constructor(private httpClient: HttpClient) { }
 
   findAllWork(){
-    return this.httpClient.get(`${this.url}/backoffice/api/work`)
+    return this.httpClient.get(`${this.url}/bof/api/work`)
   }
 
 
   findWorkById(work_id:number | null){
-    return this.httpClient.get(`${this.url}/backoffice/api/work/${work_id}`)
+    return this.httpClient.get(`${this.url}/bof/api/work/${work_id}`)
   }
 
   createWork(data:any){
-    return this.httpClient.post(`${this.url}/backoffice/api/work`,data)
+    return this.httpClient.post(`${this.url}/bof/api/work`,data)
   }
 
   updateWork(data:any,work_id:number | null){
-    return this.httpClient.put(`${this.url}/backoffice/api/work/${work_id}`,data)
+    return this.httpClient.put(`${this.url}/bof/api/work/${work_id}`,data)
   }
 
 
   findAllApplyWork(){
-    return this.httpClient.get(`${this.url}/backoffice/api/apply-work`)
+    return this.httpClient.get(`${this.url}/bof/api/apply-work`)
   }
 
   deleteWorkById(work_id:number | null){
-    return this.httpClient.delete(`${this.url}/backoffice/api/work/${work_id}`)
+    return this.httpClient.delete(`${this.url}/bof/api/work/${work_id}`)
   }
 }

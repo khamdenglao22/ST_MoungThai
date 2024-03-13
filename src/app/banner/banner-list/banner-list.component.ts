@@ -6,36 +6,27 @@ import { BannerService } from '../banner.service';
 @Component({
   selector: 'app-banner-list',
   templateUrl: './banner-list.component.html',
-  styleUrls: ['./banner-list.component.scss']
+  styleUrls: ['./banner-list.component.scss'],
 })
 export class BannerListComponent implements OnInit {
-
   baseUrl = environment.baseUrl != '' ? '/' + environment.baseUrl : '';
   users: Array<any> = [];
-  displayedColumns = [
-    'image',
-    'banner_position',
-    'edit',
-  ];
+  displayedColumns = ['image', 'banner_position', 'edit'];
   loading = false;
   dataSource: MatTableDataSource<any> = new MatTableDataSource();
 
-
-  constructor(private service: BannerService) { }
+  constructor(private service: BannerService) {}
 
   ngOnInit(): void {
     this.loadData();
   }
 
-  loadData(){
-    this.service.findAllBanner().subscribe((res:any) => {
-      this.dataSource = res.data
-    })
+  loadData() {
+    this.service.findAllBanner().subscribe((res: any) => {
+      this.dataSource = res.data;
+      console.log(res.data);
+    });
   }
 
-
-  updateUser(data:any){
-
-  }
-
+  updateUser(data: any) {}
 }

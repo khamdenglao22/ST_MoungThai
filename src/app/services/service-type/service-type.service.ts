@@ -11,19 +11,19 @@ export class ServiceTypeService {
   constructor(private httpClient: HttpClient) { }
 
   findAllServiceType(){
-    return this.httpClient.get(`${this.url}/backoffice/api/service-type`)
+    return this.httpClient.get(`${this.url}/bof/api/service-type`)
   }
 
   findServiceTypeById(type_id:number | null){
-    return this.httpClient.get(`${this.url}/backoffice/api/service-type/${type_id}`)
+    return this.httpClient.get(`${this.url}/bof/api/service-type/${type_id}`)
   }
 
   createServiceType(data:any){
-    return this.httpClient.post(`${this.url}/backoffice/api/service-type`,data)
+    return this.httpClient.post(`${this.url}/bof/api/service-type`,data)
   }
 
   updateServiceType(data:any,type_id:number | null){
-    return this.httpClient.put(`${this.url}/backoffice/api/service-type/${type_id}`,data)
+    return this.httpClient.put(`${this.url}/bof/api/service-type/${type_id}`,data)
   }
 
 }

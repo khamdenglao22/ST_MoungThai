@@ -10,18 +10,18 @@ export class VillageService {
   constructor(private httpClient: HttpClient) { }
 
   findAllVillage(){
-    return this.httpClient.get(`${this.url}/backoffice/api/village`)
+    return this.httpClient.get(`${this.url}/bof/api/village`)
   }
 
   findVillageById(vill_cd:any){
-    return this.httpClient.get(`${this.url}/backoffice/api/village/${vill_cd}`)
+    return this.httpClient.get(`${this.url}/bof/api/village/${vill_cd}`)
   }
 
   createVillage(data:any){
-    return this.httpClient.post(`${this.url}/backoffice/api/village`,data)
+    return this.httpClient.post(`${this.url}/bof/api/village`,data)
   }
 
   updateVillage(data:any,vill_cd:any){
-    return this.httpClient.put(`${this.url}/backoffice/api/village/${vill_cd}`,data)
+    return this.httpClient.put(`${this.url}/bof/api/village/${vill_cd}`,data)
   }
 }

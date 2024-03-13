@@ -11,18 +11,18 @@ export class SocialService {
   constructor(private httpClient: HttpClient) {}
 
   findAllSocial(){
-    return this.httpClient.get(`${this.url}/backoffice/api/social`)
+    return this.httpClient.get(`${this.url}/bof/api/social`)
   }
 
   findSocialById(social_id:number | null){
-    return this.httpClient.get(`${this.url}/backoffice/api/social/${social_id}`)
+    return this.httpClient.get(`${this.url}/bof/api/social/${social_id}`)
   }
 
   createSocial(data:any){
-    return this.httpClient.post(`${this.url}/backoffice/api/social`,data)
+    return this.httpClient.post(`${this.url}/bof/api/social`,data)
   }
 
   updateSocial(data:any, social_id:number | null){
-    return this.httpClient.put(`${this.url}/backoffice/api/social/${social_id}`,data)
+    return this.httpClient.put(`${this.url}/bof/api/social/${social_id}`,data)
   }
 }

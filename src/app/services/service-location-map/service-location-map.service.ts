@@ -10,18 +10,18 @@ export class ServiceLocationMapService {
   constructor(private httpClient : HttpClient) { }
 
   findAllMap(){
-    return this.httpClient.get(`${this.url}/backoffice/api/location-map`)
+    return this.httpClient.get(`${this.url}/bof/api/location-map`)
   }
 
   findMapById(map_id:number | null){
-    return this.httpClient.get(`${this.url}/backoffice/api/location-map/${map_id}`)
+    return this.httpClient.get(`${this.url}/bof/api/location-map/${map_id}`)
   }
 
   createMap(data:any){
-    return this.httpClient.post(`${this.url}/backoffice/api/location-map`,data)
+    return this.httpClient.post(`${this.url}/bof/api/location-map`,data)
   }
 
   updateMap(data:any,map_id:number | null){
-    return this.httpClient.put(`${this.url}/backoffice/api/location-map/${map_id}`,data)
+    return this.httpClient.put(`${this.url}/bof/api/location-map/${map_id}`,data)
   }
 }
