@@ -4,11 +4,11 @@
       <mat-spinner></mat-spinner>
     </div>
     <div style="padding: 1rem">
-      <h2 class="la-font box-title">{{ "ເພີ່ມແຜ່ນທີທີ່ບໍລີການ" | translate }}</h2>
+      <h2 class="la-font box-title">{{ "ເພີ່ມແຜ່ນທີທີ່ບໍລິການ" | translate }}</h2>
 
       <mat-form-field appearance="outline">
         <mat-label class="la-font">{{
-          "ປະເພດບໍລີການ" | translate
+          "ປະເພດບໍລິການ" | translate
         }}</mat-label>
         <mat-select class="la-font" formControlName="service_type_id" (selectionChange)="onCountryChange()">
           <mat-option *ngFor="let type of service_type" [value]="type.id">
@@ -19,7 +19,7 @@
 
       <mat-form-field appearance="outline">
         <mat-label class="la-font">{{
-          "ທີ່ບໍລີການ" | translate
+          "ທີ່ບໍລິການ" | translate
         }}</mat-label>
         <mat-select class="la-font" formControlName="service_country_id" (selectionChange)="onSectionChange()">
           <mat-option *ngFor="let country of service_country" [value]="country.id">
