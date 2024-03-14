@@ -149,16 +149,16 @@
         routerLinkActive="active-link" (click)="showDropdownLottoMenu = !showDropdownLottoMenu">
         <div style="display: flex; align-items: center;">
           <mat-icon>confirmation_number</mat-icon>
-          <span>{{ "ບໍລີການ" | translate }}</span>
+          <span>{{ "ບໍລິການ" | translate }}</span>
         </div>
         <mat-icon style="margin-left: 10px">keyboard_arrow_down</mat-icon>
       </a>
       <div style="padding-left: 30px" *ngIf="showDropdownLottoMenu">
         <a [routerLink]="baseUrl + '/service-type'" class="sidenav-link" routerLinkActive="active-link">
-          <mat-icon>date_range</mat-icon>{{ "ປະເພດບໍລີການ" | translate }}
+          <mat-icon>date_range</mat-icon>{{ "ປະເພດບໍລິການ" | translate }}
         </a>
         <a [routerLink]="baseUrl + '/service-country'" class="sidenav-link" routerLinkActive="active-link">
-          <mat-icon>details</mat-icon>{{ "ທີ່ບໍລີການ" | translate }}
+          <mat-icon>details</mat-icon>{{ "ທີ່ບໍລິການ" | translate }}
         </a>
         <a [routerLink]="baseUrl + '/service-location-map/list'" class="sidenav-link" routerLinkActive="active-link">
           <mat-icon>pin_drop</mat-icon>{{ "ແຜ່ນທີ" | translate }}
@@ -167,7 +167,7 @@
           <mat-icon>description</mat-icon>{{ "ພາກ" | translate }}
         </a>
         <a [routerLink]="baseUrl + '/service-location'" class="sidenav-link" routerLinkActive="active-link">
-          <mat-icon>chrome_reader_mode</mat-icon>{{ "ສະຖານທີໃຫ້ບໍລີການ" | translate }}
+          <mat-icon>chrome_reader_mode</mat-icon>{{ "ສະຖານທີໃຫ້ບໍລິການ" | translate }}
         </a>
 
       </div>
