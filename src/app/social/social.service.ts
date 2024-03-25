@@ -25,4 +25,8 @@ export class SocialService {
   updateSocial(data:any, social_id:number | null){
     return this.httpClient.put(`${this.url}/bof/api/social/${social_id}`,data)
   }
+
+  deleteSocial(social_id:number | null){
+    return this.httpClient.delete(`${this.url}/bof/api/social/${social_id}`)
+  }
 }

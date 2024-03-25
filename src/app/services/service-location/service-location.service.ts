@@ -28,4 +28,12 @@ export class ServiceLocationService {
     return this.httpClient.put(`${this.url}/bof/api/service-location/${service_location_id}`,data)
   }
 
+  deleteLocationById(service_location_id:number | null){
+    return this.httpClient.delete(`${this.url}/bof/api/service-location/${service_location_id}`)
+  }
+
+  searchLocation(data:any){
+    return this.httpClient.get(`${this.url}/bof/api/service-location?location_name=${data.location_name}`)
+  }
+
 }

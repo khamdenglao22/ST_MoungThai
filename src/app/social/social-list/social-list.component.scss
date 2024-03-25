@@ -1,4 +1,5 @@
-.mat-column-edit{
-  flex: 0 0 120px;
-  justify-content: center;
+.mat-column-edit,
+.mat-column-delete{
+  flex: 0 0 90px;
+  justify-content: end;
 }

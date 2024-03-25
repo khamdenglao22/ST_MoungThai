@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { ProductService } from '../product.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ProductCategorySubService } from '../../product-category-sub/product-category-sub.service';
 
 @Component({
   selector: 'app-product-list',
@@ -15,14 +17,21 @@ export class ProductListComponent implements OnInit {
     'p_name_en',
     'p_cate_sub_la',
     'p_cate_sub_en',
+    'p_order',
     'edit',
     'delete',
   ];
   loading = false;
 
   dataProduct: Array<any> = [];
+  dataProductCateSub: Array<any> = [];
 
-  constructor(private service: ProductService) {}
+  constructor(private service: ProductService,private serviceProductSub : ProductCategorySubService) {}
+
+  form: FormGroup = new FormGroup({
+    p_name: new FormControl(''),
+    p_cate_sub_id: new FormControl(''),
+  });
 
   ngOnInit(): void {
     this.loadData();
@@ -33,6 +42,11 @@ export class ProductListComponent implements OnInit {
       this.dataProduct = res.data;
       // console.log(res.data)
     });
+
+    this.serviceProductSub.findAllCategorySub().subscribe((res:any) => {
+      this.dataProductCateSub = res.data;
+      // console.log(res.data)
+    })
   }
 
   deleteProduct(id: number | null) {
@@ -41,4 +55,12 @@ export class ProductListComponent implements OnInit {
       this.loadData();
     });
   }
+
+  searchSubmit(){
+    this.service.searchProduct(this.form.value).subscribe((res:any) => {
+      this.dataProduct = res.data;
+    })
+  }
+
+
 }

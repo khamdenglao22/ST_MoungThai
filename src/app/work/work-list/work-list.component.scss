@@ -1,11 +1,22 @@
 
 .mat-column-province,
 .mat-column-amount,
-.mat-column-edit,
 .mat-column-change_password,
 .mat-column-active {
   flex: 0 0 120px;
   justify-content: center;
+}
+.mat-column-edit,
+.mat-column-delete {
+  flex: 0 0 90px;
+  justify-content: end;
+}
+
+.mat-column-depart_name_la,
+.mat-column-depart_name_en,
+.mat-column-image
+{
+  margin-right: 10px;
 }
 
 

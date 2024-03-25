@@ -1,13 +1,34 @@
 <div class="_box box-toolbar">
-  <button
-    mat-flat-button
-    color="primary"
-    class="la-font my-btn"
-    [routerLink]="baseUrl + '/product/create'"
-  >
+  <button mat-flat-button color="primary" class="la-font my-btn" [routerLink]="baseUrl + '/product/create'">
     <mat-icon>add</mat-icon>
     {{ "ເພີ່ມ" | translate }}
   </button>
+</div>
+<div class="_box box-toolbar">
+  <form (submit)="searchSubmit()" [formGroup]="form">
+    <div style="display: flex; align-items: center;">
+      <mat-form-field appearance="outline" style="width: 30%;">
+        <mat-label class="la-font">{{
+          "ຊື່ຜະລິດຕະພັນ" | translate
+          }}</mat-label>
+        <input matInput formControlName="p_name" class="la-font" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="width: 30%; margin-left: 10px;">
+        <mat-label class="la-font">{{
+          "ປະເພດຍ່ອຍ" | translate
+          }}</mat-label>
+        <mat-select class="la-font" formControlName="p_cate_sub_id">
+          <mat-option *ngFor="let type of dataProductCateSub" [value]="type.id">
+            {{ type.name_la }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-flat-button color="primary" class="la-font my-btn" style="margin-bottom: 20px;margin-left: 10px;">
+        <mat-icon>search</mat-icon>
+        {{ "ຄົ້ນຫາ" | translate }}
+      </button>
+    </div>
+  </form>
 </div>
 <div class="_box box" style="margin-bottom: 50px">
   <div class="loading-box" *ngIf="loading">
@@ -62,17 +83,22 @@
       </mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="p_order">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">{{ "ລຳດັບການສະແດງ" | translate }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <span class="la-font">{{ element.p_order }}</span>
+      </mat-cell>
+    </ng-container>
+
     <ng-container matColumnDef="edit">
       <mat-header-cell *matHeaderCellDef>
         <span class="la-font">{{ "ແກ້ໄຂ" | translate }}</span>
       </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <button
-          mat-icon-button
-          color="primary"
-          class="button-edit"
-          [routerLink]="[baseUrl + '/product/update', element.id]"
-        >
+        <button mat-icon-button color="primary" class="button-edit"
+          [routerLink]="[baseUrl + '/product/update', element.id]">
           <mat-icon>edit</mat-icon>
         </button>
       </mat-cell>
@@ -90,9 +116,5 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
   </mat-table>
-  <mat-paginator
-    [pageSize]="50"
-    [length]="dataProduct.length"
-    aria-label="Select page"
-  ></mat-paginator>
+  <mat-paginator [pageSize]="50" [length]="dataProduct.length" aria-label="Select page"></mat-paginator>
 </div>

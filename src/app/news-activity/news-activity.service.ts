@@ -42,4 +42,8 @@ export class NewsActivityService {
     return this.httpClient.put(`${this.url}/bof/api/news/update-active/${news_id}`,data)
   }
 
+  deleteNews(news_id:number | null){
+    return this.httpClient.delete(`${this.url}/bof/api/news/${news_id}`)
+  }
+
 }

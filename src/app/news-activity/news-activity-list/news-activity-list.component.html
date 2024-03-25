@@ -63,7 +63,7 @@
 
     <ng-container matColumnDef="active">
       <mat-header-cell *matHeaderCellDef>
-        <span class="la-font">ACTIVE</span>
+        <span class="la-font">ສະແດງໜ້າຫຼັກ</span>
       </mat-header-cell>
       <mat-cell *matCellDef="let element">
         <mat-slide-toggle
@@ -102,6 +102,15 @@
           [routerLink]="[baseUrl + '/news-activity/update', element.id]"
         >
           <mat-icon>edit</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <mat-header-cell *matHeaderCellDef> <span class="la-font">{{ "ລຶບ" | translate }}</span> </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button mat-icon-button color="primary" class="button-edit" (click)="deleteNewsActivity(element.id)">
+          <mat-icon>delete</mat-icon>
         </button>
       </mat-cell>
     </ng-container>

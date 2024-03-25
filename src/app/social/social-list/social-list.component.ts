@@ -17,6 +17,7 @@ export class SocialListComponent implements OnInit {
     'social_link',
     'social_position',
     'edit',
+    'delete'
   ];
   loading = false;
   dataSource: MatTableDataSource<any> = new MatTableDataSource();
@@ -36,5 +37,12 @@ export class SocialListComponent implements OnInit {
       this.dataSource = new MatTableDataSource(this.dataNews);
       this.dataSource.paginator = this.paginator;
     });
+  }
+
+  deleteSocial(id:number | null){
+    this.service.deleteSocial(id).subscribe((res:any) => {
+      alert(res.msg);
+      this.loadData();
+    })
   }
 }

@@ -25,4 +25,13 @@ export class BannerService {
   updateBanner(data: any, banner_id: number | null) {
     return this.httpClient.put(`${this.url}/bof/api/banner/${banner_id}`, data);
   }
+
+  updateBannerActive(data:any,banner_id:number | null){
+    return this.httpClient.put(`${this.url}/bof/api/banner/update-active/${banner_id}`,data)
+  }
+
+  deleteBanner(banner_id: number | null) {
+    return this.httpClient.delete(`${this.url}/bof/api/banner/${banner_id}`);
+  }
+
 }

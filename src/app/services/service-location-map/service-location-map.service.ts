@@ -24,4 +24,8 @@ export class ServiceLocationMapService {
   updateMap(data:any,map_id:number | null){
     return this.httpClient.put(`${this.url}/bof/api/location-map/${map_id}`,data)
   }
+
+  deleteMapById(map_id:number | null){
+    return this.httpClient.delete(`${this.url}/bof/api/location-map/${map_id}`)
+  }
 }

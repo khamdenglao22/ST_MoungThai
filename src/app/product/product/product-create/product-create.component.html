@@ -45,7 +45,7 @@
       <div style="display: flex; margin-bottom: 20px">
         <div style="margin-right: 5px;flex: 1">
           <div style="margin-bottom: 10px">
-            <label for="" class="la-font"><strong>{{ "ຮູບພາບ" | translate }}</strong></label>
+            <label for="" class="la-font"><strong>{{ "ຮູບພາບ ( 328 x 374 )" | translate }}</strong></label>
           </div>
           <input type="file" class="my-input" (change)="onChangeProductImage($event)">
         </div>
@@ -105,15 +105,12 @@
                   <input type="file" class="my-input" (change)="onImageChange($event,i)">
                 </div>
               </div>
-
               <div style="margin: 20px 0;">
                 <mat-label class="la-font">{{
                   "ລາຍລະອຽດ" | translate
                   }}</mat-label>
                 <angular-editor id="editor1" formControlName="p_section_des" [config]="editorConfig"></angular-editor>
               </div>
-
-
               <mat-form-field appearance="outline">
                 <mat-label class="la-font">{{
                   "ລຳດັບໃນການສະແດງຜົນ" | translate
@@ -125,8 +122,6 @@
                 style="margin-left: 5px;margin-bottom: 10px;">
                   <span class="la-font">ເສັ້ນແບ່ງແຖວ</span>
               </mat-checkbox>
-
-
             </div>
           </div>
 
