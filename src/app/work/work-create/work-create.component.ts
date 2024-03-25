@@ -72,6 +72,7 @@ export class WorkCreateComponent implements OnInit {
 
     this.service.createWork(formData).subscribe(
       (response: any) => {
+        console.log(response)
         this.router.navigate([this.baseUrl + '/work']);
         this.loading = false;
       },

@@ -9,6 +9,22 @@
     {{ "ເພີ່ມ" | translate }}
   </button>
 </div>
+<div class="_box box-toolbar">
+  <form (submit)="searchSubmit()" [formGroup]="form">
+    <div style="display: flex; align-items: center;">
+      <mat-form-field appearance="outline" style="width: 30%;">
+        <mat-label class="la-font">{{
+          "ຊື່ທີ່ໃຫ້ບໍລິການ (ລາວ ຫຼື ອັງກິດ)" | translate
+          }}</mat-label>
+        <input matInput formControlName="location_name" class="la-font" />
+      </mat-form-field>
+      <button mat-flat-button color="primary" class="la-font my-btn" style="margin-bottom: 20px;margin-left: 10px;">
+        <mat-icon>search</mat-icon>
+        {{ "ຄົ້ນຫາ" | translate }}
+      </button>
+    </div>
+  </form>
+</div>
 <div class="_box box" style="margin-bottom: 50px">
   <div class="loading-box" *ngIf="loading">
     <mat-spinner></mat-spinner>
@@ -90,6 +106,15 @@
           [routerLink]="[baseUrl + '/service-location/update', element.id]"
         >
           <mat-icon>edit</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <mat-header-cell *matHeaderCellDef> <span class="la-font">{{ "ລຶບ" | translate }}</span> </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button mat-icon-button color="primary" class="button-edit" (click)="deleteServiceLocation(element.id)">
+          <mat-icon>delete</mat-icon>
         </button>
       </mat-cell>
     </ng-container>

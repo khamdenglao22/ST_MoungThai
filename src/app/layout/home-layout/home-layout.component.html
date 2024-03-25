@@ -55,18 +55,72 @@
         <mat-icon>move_up</mat-icon>{{ "ແບນເນີໂຄສະນາ" | translate }}
       </a>
 
-
-      <a [routerLink]="baseUrl + '/about-structure'" class="sidenav-link" routerLinkActive="active-link">
-        <mat-icon>account_tree</mat-icon>{{ "ແຜນຜັງໂຄງຮ່າງ" | translate }}
+      <a [routerLink]="baseUrl + '/social'" class="sidenav-link" routerLinkActive="active-link">
+        <mat-icon>public</mat-icon>{{ "ຊ່ອງທາງຕິດຕໍ່" | translate }}
       </a>
+
+      <!-- Product -------------------------------------------------- -->
+      <a class="sidenav-link"
+        style="cursor: pointer;display: flex; justify-content: space-between; align-items: center;"
+        routerLinkActive="active-link" (click)="showDropdownProductMenu = !showDropdownProductMenu">
+        <div style="display: flex; align-items: center;">
+          <mat-icon>inventory_2</mat-icon>
+          <span>{{ "ຜະລິດຕະພັນ" | translate }}</span>
+        </div>
+        <mat-icon style="margin-left: 10px">keyboard_arrow_down</mat-icon>
+      </a>
+      <div style="padding-left: 30px" *ngIf="showDropdownProductMenu">
+        <a [routerLink]="baseUrl + '/product-category'" class="sidenav-link" routerLinkActive="active-link">
+          <mat-icon>category</mat-icon>{{ "ປະເພດ" | translate }}
+        </a>
+        <a [routerLink]="baseUrl + '/product-category-sub'" class="sidenav-link" routerLinkActive="active-link">
+          <mat-icon>precision_manufacturing</mat-icon>{{ "ປະເພດຍ່ອຍ" | translate }}
+        </a>
+        <a [routerLink]="baseUrl + '/product'" class="sidenav-link" routerLinkActive="active-link">
+          <mat-icon>inventory</mat-icon>{{ "ຜະລິດຕະພັນ" | translate }}
+        </a>
+        <a [routerLink]="baseUrl + '/product-order'" class="sidenav-link" routerLinkActive="active-link">
+          <mat-icon>favorite</mat-icon>{{ "ຜະລິດຕະພັນທີ່ສົນໃຈ" | translate }}
+        </a>
+
+      </div>
+      <!-- Product -------------------------------------------------- -->
+
+      <a class="sidenav-link"
+        style="cursor: pointer;display: flex; justify-content: space-between; align-items: center;"
+        routerLinkActive="active-link" (click)="showDropdownLottoMenu = !showDropdownLottoMenu">
+        <div style="display: flex; align-items: center;">
+          <mat-icon>confirmation_number</mat-icon>
+          <span>{{ "ບໍລິການ" | translate }}</span>
+        </div>
+        <mat-icon style="margin-left: 10px">keyboard_arrow_down</mat-icon>
+      </a>
+      <div style="padding-left: 30px" *ngIf="showDropdownLottoMenu">
+        <a [routerLink]="baseUrl + '/service-type'" class="sidenav-link" routerLinkActive="active-link">
+          <mat-icon>date_range</mat-icon>{{ "ປະເພດບໍລິການ" | translate }}
+        </a>
+        <a [routerLink]="baseUrl + '/service-country'" class="sidenav-link" routerLinkActive="active-link">
+          <mat-icon>details</mat-icon>{{ "ທີ່ບໍລິການ" | translate }}
+        </a>
+        <a [routerLink]="baseUrl + '/service-location-map/list'" class="sidenav-link" routerLinkActive="active-link">
+          <mat-icon>pin_drop</mat-icon>{{ "ແຜ່ນທີ" | translate }}
+        </a>
+        <a [routerLink]="baseUrl + '/service-section'" class="sidenav-link" routerLinkActive="active-link">
+          <mat-icon>description</mat-icon>{{ "ພາກ" | translate }}
+        </a>
+        <a [routerLink]="baseUrl + '/service-location'" class="sidenav-link" routerLinkActive="active-link">
+          <mat-icon>chrome_reader_mode</mat-icon>{{ "ສະຖານທີໃຫ້ບໍລິການ" | translate }}
+        </a>
+      </div>
 
       <a [routerLink]="baseUrl + '/news-activity'" class="sidenav-link" routerLinkActive="active-link">
         <mat-icon>assignment</mat-icon>{{ "ຂ່າວ ແລະ ກິດຈະກຳ" | translate }}
       </a>
 
-      <a [routerLink]="baseUrl + '/social'" class="sidenav-link" routerLinkActive="active-link">
-        <mat-icon>public</mat-icon>{{ "ຊ່ອງທາງຕິດຕໍ່" | translate }}
+      <a [routerLink]="baseUrl + '/about-structure'" class="sidenav-link" routerLinkActive="active-link">
+        <mat-icon>account_tree</mat-icon>{{ "ແຜນຜັງໂຄງຮ່າງ" | translate }}
       </a>
+
 
 <!-- ----------------------- job            ---------------------- -->
       <a class="sidenav-link"
@@ -116,61 +170,10 @@
       </div>
 
 
-      <!-- Product -------------------------------------------------- -->
-      <a class="sidenav-link"
-        style="cursor: pointer;display: flex; justify-content: space-between; align-items: center;"
-        routerLinkActive="active-link" (click)="showDropdownProductMenu = !showDropdownProductMenu">
-        <div style="display: flex; align-items: center;">
-          <mat-icon>inventory_2</mat-icon>
-          <span>{{ "ຜະລິດຕະພັນ" | translate }}</span>
-        </div>
-        <mat-icon style="margin-left: 10px">keyboard_arrow_down</mat-icon>
-      </a>
-      <div style="padding-left: 30px" *ngIf="showDropdownProductMenu">
-        <a [routerLink]="baseUrl + '/product-category'" class="sidenav-link" routerLinkActive="active-link">
-          <mat-icon>category</mat-icon>{{ "ປະເພດ" | translate }}
-        </a>
-        <a [routerLink]="baseUrl + '/product-category-sub'" class="sidenav-link" routerLinkActive="active-link">
-          <mat-icon>precision_manufacturing</mat-icon>{{ "ປະເພດຍ່ອຍ" | translate }}
-        </a>
-        <a [routerLink]="baseUrl + '/product'" class="sidenav-link" routerLinkActive="active-link">
-          <mat-icon>inventory</mat-icon>{{ "ຜະລິດຕະພັນ" | translate }}
-        </a>
-        <a [routerLink]="baseUrl + '/product-order'" class="sidenav-link" routerLinkActive="active-link">
-          <mat-icon>favorite</mat-icon>{{ "ຜະລິດຕະພັນທີ່ສົນໃຈ" | translate }}
-        </a>
-
-      </div>
-      <!-- Product -------------------------------------------------- -->
 
 
-      <a class="sidenav-link"
-        style="cursor: pointer;display: flex; justify-content: space-between; align-items: center;"
-        routerLinkActive="active-link" (click)="showDropdownLottoMenu = !showDropdownLottoMenu">
-        <div style="display: flex; align-items: center;">
-          <mat-icon>confirmation_number</mat-icon>
-          <span>{{ "ບໍລິການ" | translate }}</span>
-        </div>
-        <mat-icon style="margin-left: 10px">keyboard_arrow_down</mat-icon>
-      </a>
-      <div style="padding-left: 30px" *ngIf="showDropdownLottoMenu">
-        <a [routerLink]="baseUrl + '/service-type'" class="sidenav-link" routerLinkActive="active-link">
-          <mat-icon>date_range</mat-icon>{{ "ປະເພດບໍລິການ" | translate }}
-        </a>
-        <a [routerLink]="baseUrl + '/service-country'" class="sidenav-link" routerLinkActive="active-link">
-          <mat-icon>details</mat-icon>{{ "ທີ່ບໍລິການ" | translate }}
-        </a>
-        <a [routerLink]="baseUrl + '/service-location-map/list'" class="sidenav-link" routerLinkActive="active-link">
-          <mat-icon>pin_drop</mat-icon>{{ "ແຜ່ນທີ" | translate }}
-        </a>
-        <a [routerLink]="baseUrl + '/service-section'" class="sidenav-link" routerLinkActive="active-link">
-          <mat-icon>description</mat-icon>{{ "ພາກ" | translate }}
-        </a>
-        <a [routerLink]="baseUrl + '/service-location'" class="sidenav-link" routerLinkActive="active-link">
-          <mat-icon>chrome_reader_mode</mat-icon>{{ "ສະຖານທີໃຫ້ບໍລິການ" | translate }}
-        </a>
 
-      </div>
+
 
 
       <!-- user -->

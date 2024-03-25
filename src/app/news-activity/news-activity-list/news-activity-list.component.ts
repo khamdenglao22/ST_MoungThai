@@ -7,7 +7,7 @@ import { MatPaginator } from '@angular/material/paginator';
 @Component({
   selector: 'app-news-activity-list',
   templateUrl: './news-activity-list.component.html',
-  styleUrls: ['./news-activity-list.component.scss']
+  styleUrls: ['./news-activity-list.component.scss'],
 })
 export class NewsActivityListComponent implements OnInit {
   baseUrl = environment.baseUrl != '' ? '/' + environment.baseUrl : '';
@@ -21,14 +21,14 @@ export class NewsActivityListComponent implements OnInit {
     'active',
     'gallery',
     'edit',
+    'delete',
   ];
   loading = false;
   dataSource: MatTableDataSource<any> = new MatTableDataSource();
 
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
 
-
-  constructor(private service: NewsActivityService) { }
+  constructor(private service: NewsActivityService) {}
 
   ngOnInit(): void {
     this.loadData();
@@ -43,18 +43,20 @@ export class NewsActivityListComponent implements OnInit {
     });
   }
 
-
   updateNews(news: any) {
     const data = {
       active: !news.active,
     };
 
-    this.service.updateNewsActive(news.id, data).subscribe(
-      (response: any) => {
-        this.loadData();
-      },
-
-    );
+    this.service.updateNewsActive(news.id, data).subscribe((response: any) => {
+      this.loadData();
+    });
   }
 
+  deleteNewsActivity(id: number | null) {
+    this.service.deleteNews(id).subscribe((res: any) => {
+      alert(res.message);
+      this.loadData();
+    });
+  }
 }

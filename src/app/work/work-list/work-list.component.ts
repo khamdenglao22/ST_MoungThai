@@ -35,6 +35,7 @@ export class WorkListComponent implements OnInit {
 
   deleteWork(id:number | null){
     this.service.deleteWorkById(id).subscribe((res:any) => {
+      alert(res.msg)
       this.loadData();
     })
   }

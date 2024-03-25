@@ -32,6 +32,19 @@
       </mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="active">
+      <mat-header-cell *matHeaderCellDef>
+        <span class="la-font">ACTIVE</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-slide-toggle
+          (change)="updateBannerAdvertising(element)"
+          [checked]="element.active"
+        >
+        </mat-slide-toggle>
+      </mat-cell>
+    </ng-container>
+
     <ng-container matColumnDef="edit">
       <mat-header-cell *matHeaderCellDef>
         <span class="la-font">{{ "ແກ້ໄຂ" | translate }}</span>
@@ -44,6 +57,14 @@
           [routerLink]="[baseUrl + '/banner/update', element.id]"
         >
           <mat-icon>edit</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="delete">
+      <mat-header-cell *matHeaderCellDef> <span class="la-font">{{ "ລຶບ" | translate }}</span> </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button mat-icon-button color="primary" class="button-edit" (click)="deleteBanner(element.id)">
+          <mat-icon>delete</mat-icon>
         </button>
       </mat-cell>
     </ng-container>

@@ -30,4 +30,8 @@ export class BannerAdvertisingService {
   updateBannerAdvertisingActive(data:any,banner_id:number | null){
     return this.httpClient.put(`${this.url}/bof/api/banner-advertising/update-active/${banner_id}`,data)
   }
+
+  deleteBannerAdvertisingActive(banner_id:number | null){
+    return this.httpClient.delete(`${this.url}/bof/api/banner-advertising/${banner_id}`)
+  }
 }

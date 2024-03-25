@@ -29,4 +29,8 @@ export class ProductService {
   deleteProduct(p_id:number | null){
     return this.httpClient.delete(`${this.url}/bof/api/product/${p_id}`)
   }
+
+  searchProduct(data:any){
+    return this.httpClient.get(`${this.url}/bof/api/product?p_name=${data.p_name}&p_cate_sub_id=${data.p_cate_sub_id}`)
+  }
 }
