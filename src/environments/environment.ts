@@ -7,8 +7,8 @@ export const environment = {
   // apiUrl: 'http://19.168.1.22:8000',
   // apiUrl: "http://141.164.110.54:8000",
   // apiUrl: 'https://34.92.144.38',
-  apiUrl: 'https://www.stmuangthai.com',
-  // apiUrl: 'http://localhost:8888',
+  // apiUrl: 'https://www.stmuangthai.com',
+  apiUrl: 'http://localhost:8888',
   baseUrl: '',
   phetsarathUrl: '',
 };

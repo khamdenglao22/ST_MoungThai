@@ -38,6 +38,10 @@ export class ProductCreateComponent implements OnInit {
     p_order: new FormControl(''),
     p_cate_id: new FormControl(''),
     p_cate_sub_id: new FormControl(''),
+    seo_title: new FormControl('', [Validators.required]),
+    seo_key_word: new FormControl('', [Validators.required]),
+    seo_rewrite: new FormControl('', [Validators.required]),
+    seo_description: new FormControl('', [Validators.required]),
     // sectionList: new FormArray([this.getSectionFields()]),
     sectionList: new FormArray([]),
   });
@@ -144,6 +148,12 @@ export class ProductCreateComponent implements OnInit {
   submit() {
     console.log("data ====" ,this.productForm.value);
     console.log(this.p_image);
+    this.loading = true;
+
+    if (this.productForm.invalid) {
+      this.loading = false;
+      return;
+    }
 
     let formData = new FormData();
     formData.append('p_name_la', this.productForm.value.p_name_la);
@@ -152,6 +162,10 @@ export class ProductCreateComponent implements OnInit {
     formData.append('p_outline', this.productForm.value.p_outline);
     formData.append('p_cate_id', this.productForm.value.p_cate_id);
     formData.append('p_cate_sub_id', this.productForm.value.p_cate_sub_id);
+    formData.append('seo_title', this.productForm.value.seo_title);
+    formData.append('seo_key_word', this.productForm.value.seo_key_word);
+    formData.append('seo_rewrite', this.productForm.value.seo_rewrite);
+    formData.append('seo_description', this.productForm.value.seo_description);
     // formData.append('sectionList', JSON.stringify(this.productForm.value.sectionList));
 
     let data: Array<any> = [];

@@ -8,6 +8,7 @@ import {
   FormArray,
   FormControl,
   FormGroup,
+  Validators,
 } from '@angular/forms';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { environment } from 'src/environments/environment';
@@ -44,6 +45,10 @@ export class ProductUpdateComponent implements OnInit {
     p_order: new FormControl(''),
     p_cate_id: new FormControl(''),
     p_cate_sub_id: new FormControl(''),
+    seo_title: new FormControl('', [Validators.required]),
+    seo_key_word: new FormControl('', [Validators.required]),
+    seo_rewrite: new FormControl('', [Validators.required]),
+    seo_description: new FormControl('', [Validators.required]),
     sectionList: new FormArray([]),
   });
 
@@ -135,6 +140,10 @@ export class ProductUpdateComponent implements OnInit {
           this.productForm.controls['p_name_en'].setValue(res.data.p_name_en);
           this.productForm.controls['p_order'].setValue(res.data.p_order);
           this.productForm.controls['p_cate_id'].setValue(res.data.p_cate_id);
+          this.productForm.controls['seo_title'].setValue(res.data.seo_title);
+          this.productForm.controls['seo_key_word'].setValue(res.data.seo_key_word);
+          this.productForm.controls['seo_rewrite'].setValue(res.data.seo_rewrite);
+          this.productForm.controls['seo_description'].setValue(res.data.seo_description);
           this.onCategorySubChange();
           this.productForm.controls['p_cate_sub_id'].setValue(
             res.data.p_cate_sub_id
@@ -197,7 +206,12 @@ export class ProductUpdateComponent implements OnInit {
 
   submit() {
     console.log(this.productForm.value);
+    this.loading = true;
 
+    if (this.productForm.invalid) {
+      this.loading = false;
+      return;
+    }
     let formData = new FormData();
     formData.append('p_name_la', this.productForm.value.p_name_la);
     formData.append('p_name_en', this.productForm.value.p_name_en);
@@ -205,6 +219,10 @@ export class ProductUpdateComponent implements OnInit {
     formData.append('p_outline', this.productForm.value.p_outline);
     formData.append('p_cate_id', this.productForm.value.p_cate_id);
     formData.append('p_cate_sub_id', this.productForm.value.p_cate_sub_id);
+    formData.append('seo_title', this.productForm.value.seo_title);
+    formData.append('seo_key_word', this.productForm.value.seo_key_word);
+    formData.append('seo_rewrite', this.productForm.value.seo_rewrite);
+    formData.append('seo_description', this.productForm.value.seo_description);
     // formData.append('sectionList', JSON.stringify(this.productForm.value.sectionList));
 
     let data: Array<any> = [];
