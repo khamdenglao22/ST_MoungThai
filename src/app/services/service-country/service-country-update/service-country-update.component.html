@@ -32,6 +32,35 @@
       </mat-form-field>
 
 
+      <mat-form-field appearance="outline">
+        <mat-label class="la-font">{{
+          "SEO Title" | translate
+          }}</mat-label>
+        <input matInput formControlName="seo_title" class="la-font" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label class="la-font">{{
+          "SEO Keyword" | translate
+          }}</mat-label>
+        <input matInput formControlName="seo_key_word" class="la-font" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label class="la-font">{{
+          "SEO Rewrite" | translate
+          }}</mat-label>
+        <input matInput formControlName="seo_rewrite" class="la-font" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label class="la-font">{{
+          "SEO Description" | translate
+          }}</mat-label>
+        <input matInput formControlName="seo_description" class="la-font" />
+      </mat-form-field>
+
+
       <div style="margin: 40px 0 10px">
         <a mat-stroked-button class="la-font" [routerLink]="baseUrl + '/service-country'">
           <mat-icon style="font-size: 16px">keyboard_backspace</mat-icon>

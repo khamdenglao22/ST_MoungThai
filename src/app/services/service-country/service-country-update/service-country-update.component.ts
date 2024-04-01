@@ -30,6 +30,10 @@ export class ServiceCountryUpdateComponent implements OnInit {
     country_name_la: new FormControl('', [Validators.required]),
     country_name_en: new FormControl('', [Validators.required]),
     service_type_id: new FormControl('', [Validators.required]),
+    seo_title: new FormControl('', [Validators.required]),
+    seo_key_word: new FormControl('', [Validators.required]),
+    seo_rewrite: new FormControl('', [Validators.required]),
+    seo_description: new FormControl('', [Validators.required]),
   });
 
   ngOnInit(): void {
@@ -41,6 +45,10 @@ export class ServiceCountryUpdateComponent implements OnInit {
           this.form.controls['country_name_la'].setValue(response.data.country_name_la);
           this.form.controls['country_name_en'].setValue(response.data.country_name_en);
           this.form.controls['service_type_id'].setValue(response.data.service_type_id);
+          this.form.controls['seo_title'].setValue(response.data.seo_title);
+          this.form.controls['seo_key_word'].setValue(response.data.seo_key_word);
+          this.form.controls['seo_rewrite'].setValue(response.data.seo_rewrite);
+          this.form.controls['seo_description'].setValue(response.data.seo_description);
           this.loading = false;
         },
         (err: any) => {
@@ -59,6 +67,13 @@ export class ServiceCountryUpdateComponent implements OnInit {
   }
 
   submit(){
+    this.loading = true;
+
+    if (this.form.invalid) {
+      this.loading = false;
+      return;
+    }
+
     this.service.updateServiceCountry(this.form.value,this.service_country_id).subscribe((res:any) => {
       this.router.navigate([this.baseUrl + "service-country"])
     },

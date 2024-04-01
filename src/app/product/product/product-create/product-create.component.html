@@ -58,6 +58,35 @@
         <input matInput formControlName="p_order" class="la-font" />
       </mat-form-field>
 
+      <mat-form-field appearance="outline">
+        <mat-label class="la-font">{{
+          "SEO Title" | translate
+          }}</mat-label>
+        <input matInput formControlName="seo_title" class="la-font" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label class="la-font">{{
+          "SEO Keyword" | translate
+          }}</mat-label>
+        <input matInput formControlName="seo_key_word" class="la-font" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label class="la-font">{{
+          "SEO Rewrite" | translate
+          }}</mat-label>
+        <input matInput formControlName="seo_rewrite" class="la-font" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label class="la-font">{{
+          "SEO Description" | translate
+          }}</mat-label>
+        <input matInput formControlName="seo_description" class="la-font" />
+      </mat-form-field>
+
+
       <div class="section-body" formArrayName="sectionList">
         <div class="section-form" *ngFor="let student of sectionListArray().controls; let i = index;">
           <div class="section-main">

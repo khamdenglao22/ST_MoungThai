@@ -86,6 +86,10 @@ export class NewsActivityUpdateComponent implements OnInit {
     description_en: new FormControl('', [Validators.required]),
     to_date: new FormControl(null),
     end_date: new FormControl(null),
+    seo_title: new FormControl('', [Validators.required]),
+    seo_key_word: new FormControl('', [Validators.required]),
+    seo_rewrite: new FormControl('', [Validators.required]),
+    seo_description: new FormControl('', [Validators.required]),
   });
 
   ngOnInit(): void {
@@ -99,6 +103,10 @@ export class NewsActivityUpdateComponent implements OnInit {
           this.form.controls['description_en'].setValue(response.data.description_en);
           this.form.controls['to_date'].setValue(response.data.to_date);
           this.form.controls['end_date'].setValue(response.data.end_date);
+          this.form.controls['seo_title'].setValue(response.data.seo_title);
+          this.form.controls['seo_key_word'].setValue(response.data.seo_key_word);
+          this.form.controls['seo_rewrite'].setValue(response.data.seo_rewrite);
+          this.form.controls['seo_description'].setValue(response.data.seo_description);
           this.imageUrl =response.data.image
           this.newsVideoUrl = response.data.news_video
           this.loading = false;
@@ -137,6 +145,10 @@ export class NewsActivityUpdateComponent implements OnInit {
     formData.append('end_date', this.form.value.end_date);
     formData.append('image', this.image);
     formData.append('news_video', this.news_video);
+    formData.append('seo_title', this.form.value.seo_title);
+    formData.append('seo_key_word', this.form.value.seo_key_word);
+    formData.append('seo_rewrite', this.form.value.seo_rewrite);
+    formData.append('seo_description', this.form.value.seo_description);
 
     this.service.updateNews(formData,this.news_id).subscribe(
       (response: any) => {

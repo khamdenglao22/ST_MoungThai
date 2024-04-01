@@ -83,6 +83,10 @@ editorConfig: AngularEditorConfig = {
     description_en: new FormControl('', [Validators.required]),
     to_date: new FormControl(null),
     end_date: new FormControl(null),
+    seo_title: new FormControl('', [Validators.required]),
+    seo_key_word: new FormControl('', [Validators.required]),
+    seo_rewrite: new FormControl('', [Validators.required]),
+    seo_description: new FormControl('', [Validators.required]),
   });
 
   ngOnInit(): void {}
@@ -112,6 +116,10 @@ editorConfig: AngularEditorConfig = {
     formData.append('end_date', this.form.value.end_date);
     formData.append('image', this.image);
     formData.append('news_video', this.news_video);
+    formData.append('seo_title', this.form.value.seo_title);
+    formData.append('seo_key_word', this.form.value.seo_key_word);
+    formData.append('seo_rewrite', this.form.value.seo_rewrite);
+    formData.append('seo_description', this.form.value.seo_description);
 
     this.service.createNews(formData).subscribe(
       (response: any) => {
